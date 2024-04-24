@@ -7,3 +7,10 @@ Objective: Demonstrate how Python and Ansible can be integrated for more complex
     Custom Modules: Create custom Ansible modules with Python for tasks that require specific logic not available in existing modules. 
 
     Real-World Scenarios: Scripting complex network operations combining both Python and Ansible.
+
+
+1. Dynamic Inventory
+2. Custom Python modules
+3. Filter plugins
+4. Ansible playbook that uses custom modules and filter plugin created above to achieve a network automation related complex task
+5. 

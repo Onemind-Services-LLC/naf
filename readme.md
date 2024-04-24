@@ -1,3 +1,6 @@
+# URL
+https://networkautomation.forum/autocon1#workshop
+
 # Lab Topology
 
 [image]
@@ -16,8 +19,7 @@
 6. Dashy
 7. ZT Gateway
 8. AAP
-9. Can consider using Netbox, Grafana, Prometheus etc for showing any sort of workflows
-10. Multivendor router and switch topology
+9. Multivendor router and switch topology
 
 
 # Lab Ownersip
@@ -31,9 +33,10 @@
 | Version Control Systems in Network Automation with Git  | Tejasree | @Tejasree-Kotte           |
 | Multi-Vendor Network Automation                         | Sagar    | @sagar-oms                |
 | Building Custom Automation Workflows                    | Sagar    | @sagar-oms                |
-| Introduction to CICD in Network Automation              | Abhi     | @abhi1693                 |
+| Introduction to CICD in Network Automation              | Tejasree | @Tejasree-Kotte/@abhi1693 |
 | Network Security Automation Practices                   | Deepak   |                           |
 
+Network Security Automation Practices -- || https://public.cyber.mil/stigs/
 
 Aman, Jaswant and Vignesh should be added as buddys to one of the primary owner ( TBD )
 
