@@ -2,6 +2,19 @@
 
 [image]
 
+## Lab Requirements
+
+1. Gitlab CE
+2. Gitlab Runner
+3. VSCode
+4. Ubuntu dev machine ( python + Ansible )
+5. Techtinium DNS Server
+6. Dashy
+7. ZT Gateway
+8. AAP
+9. Can consider using Netbox, Grafana, Prometheus etc for showing any sort of workflows
+10. Multivendor router and switch topology
+
 
 # Lab Ownersip
 
@@ -19,3 +32,11 @@
 
 
 Aman, Jaswant and Vignesh should be added as buddys to one of the primary owner ( TBD )
+
+# How to access Dev environment
+
+1. Install ZeroTier
+2. Connect to af78bf94366c3c9e
+3. Ping gkochar@onemindservices for approving access to the network
+4. Ignore above steps if you are already connected to this network.
+5. 
