@@ -2,6 +2,10 @@
 
 [image]
 
+## Lab Credentials
+
+
+
 ## Lab Requirements
 
 1. Gitlab CE
@@ -39,4 +43,6 @@ Aman, Jaswant and Vignesh should be added as buddys to one of the primary owner 
 2. Connect to af78bf94366c3c9e
 3. Ping gkochar@onemindservices for approving access to the network
 4. Ignore above steps if you are already connected to this network.
-5. 
+5. To test connectivity, ensure you are able to ping 192.168.192.36 after connecting to ZeroTier.
+It might take a few minutes for pings to start working.
+
