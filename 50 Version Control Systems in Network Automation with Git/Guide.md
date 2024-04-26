@@ -128,9 +128,6 @@ git pull origin master
 
 If there are merge conflicts when pulling changes, Git will indicate them. Manually resolve conflicts in the affected files, then add and commit the changes to complete the merge.
 
-Here's a README.md file covering the topics you mentioned for Lab 3:
-
-```markdown
 # Lab 3: Exploring Remote Repositories with GitHub/GitLab
 
 ## Creating a repository on GitHub/GitLab:
@@ -200,5 +197,3 @@ git branch -d <branch_name>
 (Use `-D` instead of `-d` to force delete a branch)
 
 ```
-
-Save this content in a file named `README.md` in your project directory.
