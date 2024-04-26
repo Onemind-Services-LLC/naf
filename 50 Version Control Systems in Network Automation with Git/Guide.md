@@ -190,3 +190,52 @@ git branch -d <branch_name>
 ```
 (Use `-D` instead of `-d` to force delete a branch)
 
+## Lab 4 & 5:
+# Router Configuration Management with Git
+
+This guide outlines how to manage router configurations using Git for version control and automation.
+
+## 1. Starting a Git Repository:
+
+- Choose a Git hosting platform like GitHub or GitLab.
+- Create a new repository specifically for router setups.
+- Ensure appropriate access controls to limit visibility and changes.
+
+## 2. Saving Router Backups:
+
+- Determine backup methods such as SSH or FTP for routers.
+- Implement scripts or tools to automate backup procedures.
+- Store backups securely in designated folders on your computer.
+
+## 3. Starting Git:
+
+- Navigate to the folder containing your router backups.
+- Initialize a new Git repository with `git init`.
+- Add router files to the repository staging area with `git add .`.
+- Commit the changes with a descriptive message using `git commit -m "First router settings"`.
+
+## 4. Connecting to a Remote Repository:
+
+- Specify the remote repository URL with `git remote add origin <remote_repository_URL>`.
+- Push your local changes to the remote repository with `git push -u origin master`.
+
+## 5. Updating Configurations Automatically:
+
+- Utilize configuration management tools like Ansible or Puppet for automated router setup changes.
+- Configure these tools to fetch router setups from Git repositories and apply them to routers.
+- Implement regular checks for changes and updates to keep configurations up to date.
+
+## 6. Undoing Changes:
+
+- Use Git to revert to a previous setup if issues arise.
+- Review commit history with `git log` to identify the desired setup.
+- Reset router configurations to a specific commit using `git reset --hard <commit_SHA>`.
+
+## 7. Keeping Baseline Setups:
+
+- Maintain a separate folder in Git for baseline setups.
+- Document changes made over time to monitor network evolution.
+- Ensure clear labeling to distinguish between different setups easily.
+
+By following these steps, you can effectively manage and track router configurations using Git, ensuring consistency, automation, and version control in your network infrastructure.
+
