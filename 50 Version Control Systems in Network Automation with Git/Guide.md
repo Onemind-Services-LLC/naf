@@ -56,13 +56,7 @@
 
 2. **Follow Prompts:** You'll be prompted to choose a location for the SSH key pair and to optionally set a passphrase.
 
-3. **Add SSH Key to SSH Agent (Optional):** If you've set a passphrase, you can add your SSH key to the SSH agent to manage your keys securely.
-   ```bash
-   eval "$(ssh-agent -s)"
-   ssh-add ~/.ssh/id_rsa
-   ```
-
-4. **Add SSH Key to Git Account:** Copy the contents of the public key (`~/.ssh/id_rsa.pub`) and add it to your Git hosting service (e.g., GitHub, GitLab) in the SSH keys settings.
+3. **Add SSH Key to Git Account:** Copy the contents of the public key (`~/.ssh/id_rsa.pub`) and add it to your Git hosting service (e.g., GitHub, GitLab) in the SSH keys settings.
 
 These steps should get you set up with Git, both on Linux and Windows, and configure it for secure authentication using SSH keys.
 
