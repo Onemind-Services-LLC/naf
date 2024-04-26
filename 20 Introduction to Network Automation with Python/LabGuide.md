@@ -30,3 +30,4 @@
 - Assumption: Baseline Configurations are available on GitHub
 - Pulling Baseline Configurations from GitHub
 - Log-in into Devices and Updating Configurations with Baseline Configurations from GitHub
+![alt text](image.png)
