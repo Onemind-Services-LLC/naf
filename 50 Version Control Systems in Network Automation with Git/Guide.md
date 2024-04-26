@@ -190,4 +190,3 @@ git branch -d <branch_name>
 ```
 (Use `-D` instead of `-d` to force delete a branch)
 
-```
