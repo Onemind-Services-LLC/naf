@@ -183,11 +183,47 @@ import paramiko
 ssh_client = paramiko.SSHClient()
 ```
 
+---
+Absolutely! Here's a guide on error handling in Python, with examples relevant to networking devices like routers and switches:
+
+
+### Error Handling Overview
+- Error handling in Python allows you to gracefully manage and respond to unexpected errors that may occur during program execution.
+- With error handling, you can catch and handle exceptions, preventing your program from crashing.
+- Error handling is crucial in networking applications to ensure robustness and reliability.
+- By using try-except blocks, you can gracefully handle errors and prevent your program from crashing, improving the overall stability of your networking scripts.
+
+#### Try-Except Blocks
+- `try-except` blocks are used to catch and handle exceptions in Python.
+- Syntax:
+```python
+try:
+    # Code that may raise an exception
+except ExceptionType as e:
+    # Code to handle the exception
+```
+
+#### Example
+Below program creates a function called connect_to_router that simulates a delay of 60 seconds. It's designed to mimic some processing or waiting time when attempting to connect to a router. If the user interrupts the program by pressing Ctrl+C, it gracefully handles the interruption by printing a message indicating that the program was terminated by the user.
+```python
+import time
+
+def connect_to_router(router_ip, username, password):
+    try:
+        time.sleep(60)  # Simulating a delay
+    except KeyboardInterrupt:
+        print("\nProgram terminated by user.")
+```
+
+
 ## Check Router Available or not
 Let's now combine all the components to check if a device is online or not.
 
 ```python
 import os
+import time
+
+MAX_RETRIES = 5
 
 def check_router_status(router_ip):
     response = os.system("ping -c 1 " + router_ip)  # Ping the router once
@@ -197,14 +233,27 @@ def check_router_status(router_ip):
         return False  # Router is unreachable
 
 def main():
-    router_ip = input("Enter the IP address of your router: ")
-    if check_router_status(router_ip):
-        print("Router is online")
-    else:
-        print("Router is offline")
+    retry_count = 0
+    while True:
+        try:
+            router_ip = input("Enter the IP address of your router: ")
+            if check_router_status(router_ip):
+                print("Router is online")
+                break  # Exit the loop if router is online
+            else:
+                retry_count += 1
+                print("Router is offline. Retrying...")
+                if retry_count == MAX_RETRIES:
+                    print("Router is not reachable after", MAX_RETRIES, "attempts.")
+                    break
+                time.sleep(1)  # Wait for 1 second before retrying
+        except KeyboardInterrupt:
+            print("\nProgram terminated by user.")
+            break
 
 if __name__ == "__main__":
     main()
+
 ```
 
 In this program:
