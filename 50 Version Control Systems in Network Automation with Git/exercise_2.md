@@ -6,15 +6,15 @@ This guide will help you set up GitLab for managing remote repositories, includi
 
 1. Visit [GitLab](https://gitlab.com/users/sign_in) in your browser and sign in with your credentials.
 
-![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/38eb5716-3d7e-483a-9258-d73c702ace60)
+   ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/38eb5716-3d7e-483a-9258-d73c702ace60)
 
 2. On the left sidebar, select **Create new (+)** and then **New project/repository**.
    
-![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/f7871d9d-d521-43c8-96ff-9f3bc840cd10)
+   ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/f7871d9d-d521-43c8-96ff-9f3bc840cd10)
 
 3. Enter `git-nw-automation` as the Project name. The project slug (URL) will be generated automatically.
 
-![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/1a1e68f8-dcd4-40ff-95e4-bf7494c27948)
+   ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/1a1e68f8-dcd4-40ff-95e4-bf7494c27948)
 
 4. Ensure **Initialize repository with a README** is selected. You can fill in the other fields as desired.
 5. Click **Create project**.
