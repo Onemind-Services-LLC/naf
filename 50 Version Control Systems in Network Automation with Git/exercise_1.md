@@ -1,4 +1,4 @@
-# Git Installation and Setup
+# How to install and setup Git?
 
 ## Installing Git on Linux:
 
@@ -13,13 +13,19 @@
    ```bash
    sudo apt install git
    ```
+   ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/f662efd4-9601-4ebd-8256-2042f9e0b2b7)
+
    For other distributions, the command might be different (e.g., yum for CentOS, dnf for Fedora).
 
 3. **Verify Installation:** After installation, verify that Git has been installed successfully by running:
    ```bash
    git --version
    ```
+   ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/3b09dcad-f75c-4959-ae3b-4e785e3025bc)
+
    This should display the installed Git version.
+
+
 
 ## Installing Git on Windows:
 
