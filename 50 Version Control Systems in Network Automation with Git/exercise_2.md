@@ -74,3 +74,6 @@ ssh-keygen -t rsa -b 4096 -C your_email@example.com
 8. Select **Add key**.
 
 ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/45d5e76c-85dc-40b5-a949-1c2d24cacc34)
+
+
+By following the instructions outlined here, you've successfully created a sample project, configured Git with your user information and preferences, and set up SSH keys for secure authentication. With these setup steps completed, you're now ready to start collaborating on projects and managing your code effectively using GitLab. 
