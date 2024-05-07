@@ -1,4 +1,4 @@
-# How to install and setup Git?
+# Exercise-1 How to install and setup Git?
 
 ## Installing Git on Linux:
 
@@ -26,7 +26,6 @@
    This should display the installed Git version.
 
 
-
 ## Installing Git on Windows:
 
 1. **Download Git Installer:** Go to the [official Git website](https://git-scm.com/) and download the Git installer for Windows.
@@ -36,3 +35,5 @@
    - Use default settings if you're unsure.
 
 3. **Complete Installation:** Once the installation is complete, Git should be ready to use.
+
+By following the provided instructions, you have successfully installed Git on both Linux and Windows platforms.
