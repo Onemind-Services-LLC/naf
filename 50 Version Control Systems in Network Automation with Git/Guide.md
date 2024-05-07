@@ -6,6 +6,8 @@
    ```bash
    sudo apt update
    ```
+   ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/cb37bbf9-f093-4810-b200-1344da420e44)
+
 
 2. **Install Git:** Use the package manager to install Git. For Ubuntu/Debian based systems, you can do this with:
    ```bash
