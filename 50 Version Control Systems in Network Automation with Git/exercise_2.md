@@ -31,6 +31,13 @@ git config --global user.email your_email@example.com
 ```
 ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/ff35f020-4d8a-4d2c-a027-cd516471cae7)
 
+### Set Default Editor (Optional)
+
+You can set your preferred text editor for Git. For example, to set Vim as the default editor:
+
+```bash
+git config --global core.editor "vi"
+```
 
 ### View Configuration
 
