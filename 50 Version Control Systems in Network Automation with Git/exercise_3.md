@@ -1,4 +1,4 @@
-# Exercise-3 GitLab Remote Repository Lab Exercise
+# Exercise-3 Exploring Remote Repositories with GitHub/GitLab
 
 In this lab exercise, you will learn how to clone a remote repository, create a new branch, make changes, commit them, and push them back to the remote repository.
 
