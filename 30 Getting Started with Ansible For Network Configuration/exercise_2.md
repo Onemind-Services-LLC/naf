@@ -1,5 +1,9 @@
-### Create an ansible playbook that fetches "show version" output from all devices in dc_group and store it to a file
+## Exercise:
+### Problem Statement:
+#### Create an ansible playbook that fetches "show version" output from all devices in dc_group and store it to a file, Make sure to use the Docker environment created earlier for your development.
 
+### Solution
+- lets create playbook in your current working directory (that is `ansible_automation`)  create a file `run_cmnd.yaml` with the below content
 ```yaml
 ---
 - name: Fetch show version from devices in dc_group
@@ -25,11 +29,13 @@
       loop: "{{ show_version_output.results }}"
 
 ```
-
+#TODO: above playbook not working
+#TODO: fix the issue and update the development dockerfile.
+![alt text](image-12.png)
 ### Execute the above playbook
 
 ```
-ansible-playbook -i inventory.ini your_playbook.yml
+ansible-playbook -i inventory.ini run_cmnd.yaml
 ```
 
 Make sure the playbook file and the inventory file are in the same directory, or provide the correct path to the playbook file if it's in a different directory.

@@ -1,3 +1,5 @@
+##  Exercise:
+### Problem Statement:
 ### Create an Ansible inventory that includes the following hosts
 
 | Device name  | Device Group |      IP         | username | password |
@@ -20,11 +22,29 @@ Organize the hosts into groups:
 - a nested group "branch" that includes "sitea" and "siteb" as children.
 - Include variables such as "connection," "netbox_os," "username," "password," and "become_method" within the inventory.
 
-## INI Format
-
-1. Create a file named inventory.ini
-2. Copy paste the below content in that file
-
+### Solution
+to do this exercise create a folder `ansible_automation` in user's home directory using
+- in last excercise we were in containers shell to exit from there run the exit command
+```sh
+exit
+```
+![alt text](image.png)
+- to create a ansible_automation directory in users home directory run the below commands
+```sh
+cd ~
+mkdir ansible_automation
+cd ansible_automation
+```
+![alt text](image-1.png)
+open the vscode in newly created directory for that lets run the below command
+```sh
+code .
+```
+![alt text](image-2.png)
+it will ask you the password for the user, when u give the password, it should open vscode in `ansible_automation` folder
+![alt text](image-3.png)
+lets create a new file with `inventory.ini` with below content
+![alt text](image-4.png)
 ```ini
 local_test ansible_connection=local
 
@@ -55,6 +75,7 @@ ansible_become=true
 ansible_become_method=enable
 ansible_become_password=admin
 ```
+![alt text](image-5.png)
 
 ## YAML FORMAT
 
@@ -127,3 +148,4 @@ all:
         ansible_user: admin
         ansible_password: admin
 ```
+![alt text](image-6.png)
