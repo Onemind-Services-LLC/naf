@@ -8,14 +8,17 @@ Ansible is an open-source automation tool that simplifies IT automation tasks, i
 # Role of Ansible in Network Automation:
 In the context of network automation, Ansible allows network engineers and administrators to automate repetitive tasks across their network infrastructure. These tasks may include:
 
-### 1. Configuration Management:  
-Ansible enables the management and configuration of network devices such as routers, switches, and firewalls. It ensures consistency in device configurations and helps enforce compliance with network policies.  
-### 2. Provisioning: 
-Ansible streamlines the process of provisioning new network resources by automating tasks such as device initialization, VLAN configuration, and IP address allocation.  
-### 3. Orchestration:  
+### 1. Configuration Management:
+Ansible enables the management and configuration of network devices such as routers, switches, and firewalls. It ensures consistency in device configurations and helps enforce compliance with network policies.
+
+### 2. Provisioning:
+Ansible streamlines the process of provisioning new network resources by automating tasks such as device initialization, VLAN configuration, and IP address allocation.
+
+### 3. Orchestration:
 Ansible orchestrates complex network operations by coordinating tasks across multiple devices and platforms. It facilitates the automation of workflows such as network upgrades, migrations, and disaster recovery.
 
-# Benefits of Using Ansible for Network Automation:  
+
+# Benefits of Using Ansible for Network Automation:
 
 ### 1. Increased Efficiency:  
 Ansible automates repetitive tasks, reducing the time and effort required to manage network infrastructure.
@@ -68,10 +71,44 @@ We'll explore the key components of Ansible, an automation tool widely used for 
 2. Each task calls a module and specifies the desired state of the system.
 3. Tasks are executed sequentially by Ansible, and the results are reported back to the control node.  
 
+### 7. Handlers
+
+1. Handlers are a way to trigger actions or tasks only when notified by other tasks.
+2. They are typically used for actions that should be performed at the end of a playbook, after all tasks have been executed, or in response to specific events.
+3. Handlers are particularly useful for tasks like restarting services or triggering other system actions that should only occur if specific changes have been made.
+
+```yaml
+---
+- name: Configure Network Devices
+  hosts: network_devices
+  tasks:
+    - name: Ensure configuration file is present
+      template:
+        src: network_config.j2
+        dest: /etc/network_config.conf
+      notify: restart network service
+
+  handlers:
+    - name: restart network service
+      service:
+        name: networkd
+        state: restarted
+
+```
+
+In this example:
+
+- We have a playbook named "Configure Network Devices" that applies to hosts defined in the "network_devices" group.
+- The tasks section contains a task that ensures the configuration file (network_config.j2) is present on the network devices. This task notifies the handler named "restart network service" if changes are made during the template application.
+- The handlers section contains a handler named "restart network service" that restarts the network service (networkd) on the network devices. This handler is triggered by the task when changes are made to the configuration file.  
+
 # Setting Up Ansible for Network Automation
 We'll cover the installation of Ansible and the configuration steps required to work with network devices, including setting up the inventory file. By the end of this presentation, beginners will have a solid foundation for using Ansible to automate tasks across their network infrastructure.
 
 ### Installing Ansible:
+
+##### Official Documentation  
+https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html
 
 Ansible can be installed on various operating systems, including Linux distributions such as Ubuntu, CentOS, and Red Hat Enterprise Linux.
 
@@ -306,8 +343,7 @@ ansible-playbook playbook.yml --syntax-check
 
 ### 1. Ansible Documentation:
 
-The official Ansible documentation is a comprehensive resource that covers all aspects of Ansible, including installation, usage, modules, and best practices.  
-The documentation is regularly updated and maintained by the Ansible community, ensuring accuracy and relevance.  
+The official Ansible documentation is a comprehensive resource that covers all aspects of Ansible, including installation, usage, modules, and best practices. The documentation is regularly updated and maintained by the Ansible community, ensuring accuracy and relevance.  
 
 ### 2. Ansible Galaxy:
 
