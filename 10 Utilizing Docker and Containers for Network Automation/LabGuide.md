@@ -4,7 +4,6 @@
 
 - Understanding containerization
 - Installing Docker
-  - on Windows
   - on Linux
 
 ## Lab 2: Docker Basics
