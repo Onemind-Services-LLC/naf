@@ -1,35 +1,41 @@
 ## Lab 1: Git Installation and Setup
 
-- Installing Git on Linux
-- Installing Git on Windows
-- Configuring Git
-- Setting up SSH keys for secure authentication
+```py
+from netmiko import ConnectHandler
+import subprocess
 
-## Lab 2: Git Fundamentals
+# Router details
+router_details = {
+    'device_type': 'cisco_xe',
+    'host':   '172.16.14.110',
+    'username': 'admin',
+    'password': 'admin',
+    'secret': 'admin'  # Assuming this is the enable secret
+}
 
-- Initializing a Git repository
-- Adding files to the staging area
-- Committing changes to the repository
-- Viewing commit history
-- Collaborative Development with Git
-- Cloning a remote repository
-- Pushing changes to a remote repository
-- Pulling changes from a remote repository
-- Resolving merge conflicts
+# Prompt the user to enter GitLab access token
+gitlab_access_token = input("Enter GitLab access token: ")
+gitlab_repo_url = f'http://auth2:{gitlab_access_token}@172.16.14.101/ansible/router_configurations.git'
 
-## Lab 3: Exploring Remote Repositories with GitHub/GitLab
+# Clone the GitLab repository
+clone_command = f'git clone {gitlab_repo_url}'
+# subprocess.run(clone_command, shell=True, check=True)
 
-- Creating a repository on GitHub/GitLab
-- Cloning a remote repository locally
-- Forking a repository
-- Creating and managing branches
+# Path to the configuration file within the cloned repository
+config_file_path = './router_configurations/routerconf.txt'
 
-## Lab 4: Advancing Your Skills (will work on these topics along with Gaurav)
+# Read configurations from file
+with open(config_file_path, "r") as file:
+    router_config = file.readlines()
 
-- Taking Backups from Routers or Network Devices
-- Storing Backups on Git
+# Connect to router
+with ConnectHandler(**router_details) as ssh:
+    ssh.enable()  # Enter enable mode
 
-## Lab 5: Restoring Routers with Baseline Configurations (will work on these topics along with Gaurav)
-- Assumption: Baseline Configurations are available on GitHub
-- Pulling Baseline Configurations from GitHub
-- Log-in into Devices and Updating Configurations with Baseline Configurations from GitHub
+    # Configure router
+    ssh.send_config_set(router_config)
+
+    # Optionally, you can save the configuration
+    ssh.save_config()
+
+```
