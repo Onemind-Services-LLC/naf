@@ -39,7 +39,7 @@ no shutdown
   ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/a7899266-15d2-4bb1-b856-7cea00faf978)
 
 
-### 4. Execute Python Scripts:
+### 4. Manage Router Configurations:
 
 Log in to the interface server via SSH and execute the following command
 
@@ -52,6 +52,7 @@ sh run int gig4
 Note that the current IP address is 5.5.5.5 from the interface configuration
 
 Ensure you have Python installed on your system. Check using python --version.
+
 #### 4.1. restore_config.py:
 
 ```python
@@ -106,6 +107,8 @@ print("Router configuration has been updated.")
   - In the main block (if __name__ == "__main__":), it specifies the commands to run on the router (commands_to_run), which includes "sh run int gig4" to show the configuration of interface GigabitEthernet4.
   - It executes the commands using the run_commands_on_router function and prints the output.
 
+## Note: 
+   When prompted, ensure to pass the GitLab access token for authentication.
 
 Run check_interface.py script using the following command:
 
