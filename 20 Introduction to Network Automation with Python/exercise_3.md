@@ -21,24 +21,41 @@ import time
 
 MAX_RETRIES = 5
 
+import subprocess
+import socket
+
+def is_valid_ip(ip):
+    try:
+        socket.inet_aton(ip)
+        return True
+    except socket.error:
+        return False
+
 def check_router_status(router_ip):
-    response = os.system("ping -c 1 " + router_ip)  # Ping the router once
+    if not is_valid_ip(router_ip):
+        raise ValueError("Invalid IP address provided.")
+    
+    # Suppress output by sending it to /dev/null
+    with open(os.devnull, 'w') as devnull:
+        response = subprocess.call(["ping", "-c", "1", router_ip], stdout=devnull, stderr=subprocess.STDOUT)
+    
     if response == 0:
         return True  # Router is reachable
     else:
         return False  # Router is unreachable
 
+
 def main():
     retry_count = 0
+    router_ip = input("Enter the IP address of your router: ")
     while True:
         try:
-            router_ip = input("Enter the IP address of your router: ")
             if check_router_status(router_ip):
                 print("Router is online")
                 break  # Exit the loop if router is online
             else:
                 retry_count += 1
-                print("Router is offline. Retrying...")
+                print("Router is offline. Retrying", ("." * retry_count))
                 if retry_count == MAX_RETRIES:
                     print("Router is not reachable after", MAX_RETRIES, "attempts.")
                     break
