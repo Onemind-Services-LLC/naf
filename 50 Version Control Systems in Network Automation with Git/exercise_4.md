@@ -20,7 +20,7 @@ In this lab, you will learn how to manage router configurations using GitLab for
 - Add the following content to the file:
 
 ```
-interface GigabitEthernet4
+interface Loopback0
 ip address 1.1.1.1 255.255.255.0
 no shutdown
 ```
