@@ -1,4 +1,4 @@
-##  Exercise:
+##  Exercise: Manage Router Configurations using Python and Gitlab
 ### Problem Statement:
 1. **Create a Private Git Repository on GitLab**: Start by creating a private Git repository on GitLab where you'll store your router configurations. Ensure that the repository is private to restrict access.
 
