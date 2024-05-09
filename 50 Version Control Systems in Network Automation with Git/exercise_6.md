@@ -1,5 +1,5 @@
 ## Problem Statement: GitLab Integration with Ansible Tower
-Automate lab setup by pushing existing Ansible files to GitLab, then execute them from Ansible Tower for streamlined processes and version control.
+Automate lab setup by pushing existing Ansible files from the laste exercise to GitLab, then execute them from Ansible Tower for streamlined processes and version control.
 
 ## Steps
 
