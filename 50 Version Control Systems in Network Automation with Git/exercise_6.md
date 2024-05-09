@@ -27,3 +27,10 @@ When prompted pass the username and password
 
 
 
+
+![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/249b8d5f-2253-415f-a64d-4627f66d36b1)
+
+
+create project
+![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/1c15be9f-1955-4a26-807c-4aa4c5fdc046)
+
