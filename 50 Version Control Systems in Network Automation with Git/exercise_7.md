@@ -1,20 +1,24 @@
-## Problem Statement: Automating Lab Infrastructure Setup with Ansible and GitLab Integration
+## Problem Statement: GitLab Integration with Ansible Tower
+Automate lab setup by pushing existing Ansible files to GitLab, then execute them from Ansible Tower for streamlined processes and version control.
 
 ## Steps
 
-1. **Inventory Creation in Ansible Automation Platform (AAP):**
+1. **Push existing code into gitlab:**
+   - Push the existing Ansible playbook, ansible.cfg, and inventory.ini files to the GitLab repository.
+
+2. **Inventory Creation in Ansible Automation Platform (AAP):**
    - Develop a comprehensive inventory within AAP, detailing all lab environment hosts and groups for efficient resource management.
 
-2. **Creation of GitLab Credentials in AAP:**
+3. **Creation of GitLab Credentials in AAP:**
    - Establish GitLab credentials within AAP to securely access the GitLab repository, enabling version control and collaboration for automation scripts.
 
-3. **Creation of Server Credentials in AAP:**
+4. **Creation of Server Credentials in AAP:**
    - Configure server credentials within AAP to facilitate secure access to lab resources, ensuring seamless execution of automation tasks.
 
-4. **Project Creation with GitLab as Source Control:**
+5. **Project Creation with GitLab as Source Control:**
    - Create a dedicated project within AAP, leveraging GitLab as the source control system to store and manage Ansible playbooks and templates.
 
-5. **Template Creation and Scheduled Execution:**
+6. **Template Creation and Scheduled Execution:**
    - Develop an Ansible template within the AAP project, automating lab infrastructure setup and configuration.
    - Schedule the template to run at regular intervals, ensuring routine maintenance and updates every 7 days for optimal performance and reliability.
 
@@ -22,7 +26,38 @@
 ### Solution
 ## Steps
 
-### 1. Inventory Creation in Ansible Automation Platform (AAP):
+### 1. Push existing code into gitlab:
+
+- Change directory to "backup_configurations".
+  ```bash
+  cd backup_configurations
+  ```
+- Move playbook.yml into backup_configurations
+
+  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/1db60960-f284-4c99-abdf-664be472d125)
+
+- Use the command `git add` to add files to the repository.
+   ```bash
+   git add .
+   ```
+
+- Commit the files using the command
+   ```bash
+   git commit -m "Adding playbook.yaml
+   ```
+  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/67e0c22c-059b-43a6-b0e7-68be6bb43f53)
+
+- Push changes to the repository
+
+   ```bash
+   git push origin master
+   ```
+   When prompted pass the username and password
+
+   ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/96065772-806f-46cd-8c39-8a0ce72de6ea)
+
+
+### 2. Inventory Creation in Ansible Automation Platform (AAP):
 - Log in to Ansible Automation Platform (AAP) dashboard using credentials
 
   ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/7a97eb2e-acbb-455e-8eb5-5bce6e4de33e)
@@ -46,7 +81,7 @@
 
 - Save the inventory configuration.
 
-### 2. Creation of GitLab Credentials in AAP:
+### 3. Creation of GitLab Credentials in AAP:
 
    - Navigate to the "Credentials" section in AAP.
    - Click on "Add Credentials" and select "Source control" as the credential type.
@@ -57,7 +92,7 @@
 
    - GitLab credentials are configured within AAP, allowing seamless access to the GitLab repository.
 
-### 3. Creation of Server Credentials in AAP:
+### 4. Creation of Server Credentials in AAP:
 
   - Navigate to the "Credentials" section in AAP.
   - Click on "Add Credentials" and select "Machine" as the credential type.
@@ -68,7 +103,7 @@
 
   - Server credentials are configured within AAP, enabling secure access to lab resources during automation tasks.
 
-### 4. Project Creation with GitLab as Source Control:
+### 5. Project Creation with GitLab as Source Control:
 
   - Navigate to the "Projects" section in AAP.
   - Click on "Create Project" and specify config-backup as the name.
@@ -80,7 +115,7 @@
 
   - A project is created within AAP, utilizing GitLab as the source control system for storing and managing automation scripts.
 
-### 5. Template Creation and Scheduled Execution:
+### 6. Template Creation and Scheduled Execution:
 
   - Create a template with "router-backup-conf" as the name.
   - Select eve-inventory and backup-config for inventory and the project.
@@ -96,7 +131,7 @@
 
   - An Ansible template is developed within the AAP project, automating lab infrastructure setup and configuration.
 
-### 6. Template Execution:
+### 7. Template Execution:
   - Launch the template from templates section.
     
    ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/5a56c379-cb8c-4a39-9806-bb216e50952d)
@@ -105,4 +140,4 @@
 
   ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/41438900-88dc-4599-8845-43909182003c)
 
-  
+In this lab, we successfully automated the process of backing up configurations and integrating Ansibke with Git for version control using GitLab.
