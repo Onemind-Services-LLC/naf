@@ -61,6 +61,7 @@ def configure_ospf(device, ospf_process_id, ospf_networks):
         ]
         ssh_conn.enable()
         output = ssh_conn.send_config_set(ospf_config)
+        print(output)
         print(f"OSPF configured successfully on {device['device_type']} device.")
         ssh_conn.disconnect()
         return True
@@ -87,6 +88,7 @@ def verify_ospf(device, ospf_process_id, ospf_networks):
     try:
         ssh_conn = ConnectHandler(**device)
         output = ssh_conn.send_command("show ip ospf neighbor")
+        print(output)
         if "FULL" in output:
             print(f"OSPF neighbors are fully adjacent on {device['device_type']} device.")
             return True
@@ -103,15 +105,21 @@ if __name__ == "__main__":
 
     if cisco_connectivity and arista_connectivity:
         print("\nDevice connectivity test successful. Proceeding with configuration.")
-
+        print('#'*100)
+        print('Configuring cisco device')
+        print('#'*100)
         configure_loopback(cisco_device, cisco_config['loopback_ip'])
         configure_point_to_point(cisco_device, cisco_config['point_to_point_interface'], cisco_config['point_to_point_ip'])
         configure_ospf(cisco_device, cisco_config['ospf_process_id'], cisco_config['ospf_networks'])
-
+        print('#'*100)
+        print('Configuring aristra device')
+        print('#'*100)
         configure_loopback(arista_device, arista_config['loopback_ip'])
         configure_point_to_point(arista_device, arista_config['point_to_point_interface'], arista_config['point_to_point_ip'])
         configure_ospf(arista_device, arista_config['ospf_process_id'],arista_config['ospf_networks'])
-
+        print('#'*100)
+        print('Verifing device config')
+        print('#'*100)
         # Verification tasks
         verify_loopback(cisco_device, cisco_config['loopback_ip'])
         verify_loopback(arista_device, arista_config['loopback_ip'])
