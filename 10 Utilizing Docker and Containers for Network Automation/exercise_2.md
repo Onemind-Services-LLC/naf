@@ -46,7 +46,7 @@ FROM python:3
 RUN apt update
 RUN  apt install iputils-ping -y
 RUN  apt install git -y
-RUN pip install ansible netmiko
+RUN pip install ansible netmiko ansible-pylibssh pexpect
 CMD ["bash"]
 ```
 
