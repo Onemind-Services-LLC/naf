@@ -30,9 +30,6 @@ By following these steps, you'll have a Python program that securely pulls route
 - Ensure "Initialize repository with a README" is selected.
 - Click "Create project".
 
-  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/f59bf45e-ed1e-4a35-aa46-01827c9a071a)
-
-
 ### 2. Add Configuration to the Repository:
 
 - Inside the repository, create a new file named `routerconf.txt`.
