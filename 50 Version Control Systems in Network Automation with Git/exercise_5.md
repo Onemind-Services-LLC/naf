@@ -185,3 +185,6 @@
    ![alt text](image-26.png)
    
    ![alt text](image-27.png)
+
+
+In this lab, we established a infrastructure by creating a private Git repository on GitLab to store router configurations, ensuring data confidentiality. We then automated the configuration backup process using Ansible, enhancing efficiency and reliability.
