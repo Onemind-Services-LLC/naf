@@ -16,8 +16,8 @@ To complete all the steps, follow these instructions:
 8. Paste the following content into your config file. Replace "172.16.14.100" with your Dev server IP and "*cml*" with your username.
     ```
     Host Dev_server
-    HostName 172.16.14.100
-    User cml
+      HostName 172.16.14.100
+      User cml
     ```
    It should look like the image below.
    ![alt text](image-7.png)

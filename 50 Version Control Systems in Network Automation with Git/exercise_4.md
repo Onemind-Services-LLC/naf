@@ -1,13 +1,32 @@
-# Exercise-4: Managing Router Configurations with GitLab and Python
+##  Exercise:
+### Problem Statement:
+1. **Create a Private Git Repository on GitLab**: Start by creating a private Git repository on GitLab where you'll store your router configurations. Ensure that the repository is private to restrict access.
 
-## Objective:
-In this lab, you will learn how to manage router configurations using GitLab for version control and Python scripts for automation.
+2. **Add Router Configuration File**: Inside the private Git repository, add a file containing your router configurations.
 
+3. **Python Program Input**: Develop a Python program that prompts the user to input the following information:
+   - Username
+   - IP address
+   - Password
+   - Port
+
+4. **Use GitLab Access Token**: Ensure that your Python program uses a GitLab access token to access the private repository. This token will provide authentication and authorization to pull the router configurations.
+
+5. **Pull and Apply Configurations**: Your Python program should then use the provided credentials and the GitLab access token to pull the router configurations from the private repository and apply them to the router.
+
+By following these steps, you'll have a Python program that securely pulls router configurations from a private Git repository on GitLab and applies them to the router based on user input.
+
+### Solution
 ## Steps:
 
 ### 1. Create a New GitLab Project:
-
+- in the top menu click on plus icon
+![alt text](image.png)
+- click on new project
+![alt text](image-1.png)
+- click on *create blank project*
 - Go to GitLab and create a new project/repository named `router_configurations`.
+![alt text](image-2.png)
 - Ensure "Initialize repository with a README" is selected.
 - Click "Create project".
 
@@ -18,6 +37,7 @@ In this lab, you will learn how to manage router configurations using GitLab for
 
 - Inside the repository, create a new file named `routerconf.txt`.
 - Add the following content to the file:
+![alt text](image-3.png)
 
 ```
 interface Loopback0
@@ -37,19 +57,6 @@ no shutdown
 - Copy the access token.
 
   ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/a7899266-15d2-4bb1-b856-7cea00faf978)
-
-
-### 4. Manage Router Configurations:
-
-Log in to the interface server via SSH and execute the following command
-
-```bash
-ssh 172.16.14.10 -l admin
-sh run int gig4
-```
-![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/2cd88f8e-8581-46fe-b9a1-e95049167e1c)
-
-Note that the current IP address is 5.5.5.5 from the interface configuration
 
 #### 4.1. restore_config.py:
 
@@ -123,46 +130,11 @@ The ip configuration is now changed to 1.1.1.1 from 5.5.5.5
 ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/b0a43161-e4c8-4a08-b824-7ebee0cc43dd)
 
 
-#### 4.2. Verify Interface Status Using Python:
+Log in to the interface server via SSH and execute the following command
 
-Alternatively execute the check_interface.py script to verify the configuration change by running `check_interface.py` script using the command `python3 check_interface.py`.
-
-## check_interface.py:
-
-```python
-from netmiko import ConnectHandler
-
-csr1000v = {
-    'device_type': 'cisco_xe',
-    'host': '172.16.14.110',
-    'username': 'admin',
-    'password': 'admin',
-    'port': 22,
-    'secret': 'admin'
-}
-
-def run_commands_on_router(device_info, commands):
-    try:
-        with ConnectHandler(**device_info) as ssh:
-            ssh.enable()  # Enter privileged mode
-            output = ""
-            for command in commands:
-                output += ssh.send_command(command) + "\n"
-            return output
-    except Exception as e:
-        print("An error occurred:", str(e))
-        return None
-
-if __name__ == "__main__":
-    commands_to_run = [
-        "sh run int gig4"  # Add more commands as needed
-    ]
-    router_output = run_commands_on_router(csr1000v, commands_to_run)
-    if router_output:
-        print("Router Output:")
-        print(router_output)
-    else:
-        print("Failed to retrieve router output.")
+```bash
+ssh 172.16.14.10 -l admin
+sh run int gig4
 ```
 
 ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/a1bfd081-8871-435f-9698-8610ccc36065)

@@ -4,7 +4,7 @@
 - Make sure you use Docker for your development environment, with the image you made in the last exercise.
 - Write the program in Python.
 - Import necessary modules to enable functionality.
-- Define a function `check_router_status(router_ip)` to determine the online or offline status of the router.
+- Define a function `check_device_status(router_ip)` to determine the online or offline status of the router.
 - Implement the main logic within the `main()` function:
     - Prompt the user to input the IP address of the router.
     - Use a loop to retry connectivity if the router is offline, with a maximum number of retries specified by the constant `MAX_RETRIES`.
@@ -120,7 +120,7 @@ docker container run -it -v $(pwd):/python_automation ansible_lab
 3. Navigate to the `/python_automation` directory within the container:
 
 ```sh
-cd python_automation
+cd /python_automation
 ```
 
 4. Run the Python program:

@@ -45,6 +45,7 @@ FROM python:3
 # Install Ansible and Netmiko
 RUN apt update
 RUN  apt install iputils-ping -y
+RUN  apt install git -y
 RUN pip install ansible netmiko
 CMD ["bash"]
 ```
