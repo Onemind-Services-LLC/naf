@@ -161,6 +161,9 @@ This will execute the `restore_config.py` program within the Docker container, a
 
 #### Note: When prompted, ensure to pass the GitLab access token for authentication.
 
+Exit from container using `exit` command
+![alt text](image-13.png)
+
 ## Conclusion:
 
 This lab exercise provides a practical guide for managing router configurations using GitLab and Python scripts, facilitating automation and version control in network management tasks.
