@@ -24,7 +24,7 @@ By following these steps, you'll have a Python program that securely pulls route
 ![alt text](image.png)
 - Click on new project
 ![alt text](image-1.png)
-- click on *create blank project*
+- Click on *create blank project*
 - Go to GitLab and create a new project/repository named `router_configurations`.
 ![alt text](image-2.png)
 - Ensure "Initialize repository with a README" is selected.
