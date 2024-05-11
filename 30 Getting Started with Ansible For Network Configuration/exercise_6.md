@@ -1,9 +1,8 @@
-# Using AAP
+# Parse command outputs with Ansible using Pyats
 
-TODO
-
-- Add file to git repository
-- Create project in AAP
-- Create inventory in AAP
-- Create template in AAP
-- Execute the job
+- name: "Run command and parse with pyats"
+  ansible.utils.cli_parse:
+    command: show interface
+    parser:
+      name: ansible.netcommon.pyats
+    set_fact: interfaces

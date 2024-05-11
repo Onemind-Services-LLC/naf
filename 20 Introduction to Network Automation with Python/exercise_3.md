@@ -1,8 +1,7 @@
 ## Exercise:
 ### Problem Statement:
 Create a Python program that does the following:
-- It reads device details from a JSON file (a list of objects).
-- It runs all the commands listed in a text file on each device mentioned in the JSON file.
+- It runs all the commands listed in a text file on each device mentioned in vars file
 - The program should be executed in the Docker environment created earlier.
 
 ### Solution

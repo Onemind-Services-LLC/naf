@@ -22,17 +22,14 @@ To complete all the steps, follow these instructions:
    It should look like the image below.
    
    ![alt text](image-18.png)
-9. Click on "Refresh" to update the SSH server list.
-
+9. Click on "Refresh" to update the SSH server list.  
    ![alt text](image-15.png)
-10. If everything is correct, you should see "Dev_server" in the SSH server list.
+10. If everything is correct, you should see "Dev_server" in the SSH server list.  
     ![alt text](image-16.png)
-11. Click on "Connect in Current Window".
-   
-   ![alt text](image-17.png)
-
+11. Click on "Connect in Current Window".  
+      ![alt text](image-17.png)
 12. Select "Linux", click "Yes", and then enter the password from the details table.
-![alt text](image-14.png)
+   ![alt text](image-14.png)
     ![alt text](image-11.png)
 13. In the menu, click on "Terminal" and then "New Terminal".
     ![alt text](image-12.png)

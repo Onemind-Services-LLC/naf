@@ -14,8 +14,6 @@
           filename: {{ inventory_hostname }}.cfg
           dir_path: ./vyos_backups
 
-   
-
 ```
 
 ### Execute the above playbook
