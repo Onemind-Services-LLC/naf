@@ -4,23 +4,21 @@
 
 | Device name  | Device Group |      IP         | username | password |
 |--------------|--------------|-----------------|----------|----------|
-| csr          | ny           | 172.16.14.110   | admin    | admin    |
-| arista       | dc_group     | 172.16.14.111   | admin    | admin    |
-| nxos_1       | dc_group     | 172.16.14.112   | admin    | admin    |
-| nxos_2       | dc_group     | 172.16.14.113   | admin    | admin    |
-| vios1        | sitea_group  | 172.16.14.114   | admin    | admin    |
-| vyos1        | sitea_group  | 172.16.14.115   | admin    | admin    |
-| vios2        | siteb_group  | 172.16.14.116   | admin    | admin    |
-| vyos2        | siteb_group  | 172.16.14.117   | admin    | admin    |
+| nexus-site1  | ny           | 172.16.14.210   | admin    | admin    |
+| vmx1-site1   | ny           | 172.16.14.211   | root     | Juniper  |
+| pa-site1     | ny           | 172.16.14.212   | admin    | Test12345|
+| pa-site2     | sf           | 172.16.14.213   | admin    | Test12345|
+| arista1-site2| sf           | 172.16.14.214   | admin    | password |
+| vyos1-site1  | sf           | 172.16.14.215   | vyos     | vyos     |
+| vyos2-site2  | sf           | 172.16.14.216   | vyos     | vyos     |
+
 
 For the host named "local_test," ensure it uses a local connection method. Additionally  
 Organize the hosts into groups:
 
-- dc_group,
-- sitea_group
-- siteb_group
-- a nested group "branch" that includes "sitea" and "siteb" as children.
-- Include variables such as "connection," "netbox_os," "username," "password," and "become_method" within the inventory.
+- ny
+- sf
+- Include variables such as "connection," "network_os," "username," "password," and "become_method" within the inventory.
 
 ### Solution
 to do this exercise create a folder `ansible_automation` in user's home directory using
@@ -68,7 +66,7 @@ ansible_become_method=enable
 ansible_become_password=admin
 
 ```
-![alt text](image-5.png)
+![alt text](image-26.png)
 
 ## YAML FORMAT
 
@@ -95,7 +93,7 @@ ny:
     vmx1-site1:
       ansible_host: 172.16.14.211
       ansible_user: root
-      ansible_password: Junper
+      ansible_password: Juniper
       ansible_network_os: junos
     pa-site1:
       ansible_host: 172.16.14.212
@@ -129,4 +127,4 @@ sf:
       ansible_network_os: vyos
 
 ```
-![alt text](image-14.png)
+![alt text](image-27.png)
