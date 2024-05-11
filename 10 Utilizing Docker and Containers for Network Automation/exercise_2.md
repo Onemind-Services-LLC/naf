@@ -44,8 +44,8 @@ Inside this file, write down these lines:
 FROM python:3
 # Install Ansible and Netmiko
 RUN apt update
-RUN  apt install iputils-ping -y
-RUN  apt install git -y
+RUN apt install iputils-ping -y
+RUN apt install git -y
 RUN pip install rich ansible netmiko pexpect pandas
 CMD ["bash"]
 ```

@@ -2,15 +2,15 @@
 ### Problem Statement:
 ### Create an Ansible inventory that includes the following hosts
 
-| Device name  | Device Group |      IP         | username | password |
-|--------------|--------------|-----------------|----------|----------|
-| nexus-site1  | ny           | 172.16.14.210   | admin    | admin    |
-| vmx1-site1   | ny           | 172.16.14.211   | root     | Juniper  |
-| pa-site1     | ny           | 172.16.14.212   | admin    | Test12345|
-| pa-site2     | sf           | 172.16.14.213   | admin    | Test12345|
-| arista1-site2| sf           | 172.16.14.214   | admin    | password |
-| vyos1-site1  | sf           | 172.16.14.215   | vyos     | vyos     |
-| vyos2-site2  | sf           | 172.16.14.216   | vyos     | vyos     |
+| Device name  | Device Group |      IP         | username | password | network_os |
+|--------------|--------------|-----------------|----------|----------|------------|
+| nexus-site1  | ny           | 172.16.14.210   | admin    | admin    |   nxos     |
+| vmx1-site1   | ny           | 172.16.14.211   | root     | Juniper  |   junos    |
+| pa-site1     | ny           | 172.16.14.212   | admin    | Test12345|   panos    |
+| pa-site2     | sf           | 172.16.14.213   | admin    | Test12345|   panos    |
+| arista1-site2| sf           | 172.16.14.214   | admin    | password |   eos      |
+| vyos1-site1  | sf           | 172.16.14.215   | vyos     | vyos     |   vyos     |
+| vyos2-site2  | sf           | 172.16.14.216   | vyos     | vyos     |   vyos     |
 
 
 For the host named "local_test," ensure it uses a local connection method. Additionally  
@@ -47,7 +47,7 @@ lets create a new file with `inventory.ini` with below content
 local_test ansible_connection=local
 
 [ny]
-nexus-site1     ansible_host=172.16.14.210  ansible_user=admin  ansible_password=admin ansible_network_os=eos
+nexus-site1     ansible_host=172.16.14.210  ansible_user=admin  ansible_password=admin ansible_network_os=nxos
 vmx1-site1      ansible_host=172.16.14.211  ansible_user=root   ansible_password=Juniper ansible_network_os=junos
 pa-site1        ansible_host=172.16.14.212  ansible_user=admin  ansible_password=Test12345 ansible_network_os=panos ansible_connection=local
 
@@ -89,7 +89,7 @@ ny:
       ansible_host: 172.16.14.210
       ansible_user: admin
       ansible_password: admin
-      ansible_network_os: eos
+      ansible_network_os: nxos
     vmx1-site1:
       ansible_host: 172.16.14.211
       ansible_user: root
