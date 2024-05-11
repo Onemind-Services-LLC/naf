@@ -4,7 +4,7 @@
 
 | Device name  | Device Group |      IP         | username | password |
 |--------------|--------------|-----------------|----------|----------|
-| csr          | dc_group     | 172.16.14.110   | admin    | admin    |
+| csr          | ny           | 172.16.14.110   | admin    | admin    |
 | arista       | dc_group     | 172.16.14.111   | admin    | admin    |
 | nxos_1       | dc_group     | 172.16.14.112   | admin    | admin    |
 | nxos_2       | dc_group     | 172.16.14.113   | admin    | admin    |

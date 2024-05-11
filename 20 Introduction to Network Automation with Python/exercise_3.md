@@ -6,44 +6,69 @@ Create a Python program that does the following:
 - The program should be executed in the Docker environment created earlier.
 
 ### Solution
-- create a file device_details.json
-```json
-[
-    {
-        "device_type": "cisco_xe",
-        "host": "172.16.14.110",
-        "username": "admin",
-        "password": "admin",
-        "port": 22,
-        "secret": "admin"
-    },
-    {
-        "device_type": "arista_eos",
-        "host": "172.16.14.111",
-        "username": "admin",
-        "password": "admin",
-        "port": 22,
-        "secret": "admin"
-    },
-    {
-        "device_type": "cisco_nxos",
-        "host": "172.16.14.112",
-        "username": "admin",
-        "password": "admin",
-        "port": 22,
-        "secret": "admin"
-    },
-    {
-        "device_type": "cisco_nxos",
-        "host": "172.16.14.113",
-        "username": "admin",
-        "password": "admin",
-        "port": 22,
-        "secret": "admin"
-    }
-]
+- create a file device_vars.py
+```py
+nexus_site1= {
+    "device_type": "cisco_nxos",
+    "host": "172.16.14.210",
+    "username": "admin",
+    "password": "admin",
+    "port": 22,
+    "secret": "admin",
+    "timeout":60
+}
+vmx1_site1 = {
+    "device_type": "juniper_junos",
+    "host": "172.16.14.211",
+    "username": "root",
+    "password": "Juniper",
+    "port": 22,
+    "secret": "admin"
+}
+pa_site1 = {
+    "device_type": "paloalto_panos",
+    "host": "172.16.14.212",
+    "username": "admin",
+    "password": "Test12345",
+    "port": 22,
+    "secret": "Test12345"
+}
+pa_site2 = {
+    "device_type": "paloalto_panos",
+    "host": "172.16.14.213",
+    "username": "admin",
+    "password": "Test12345",
+    "port": 22,
+    "secret": "Test12345"
+}
+arista1_site2 = {
+    "device_type": "arista_eos",
+    "host": "172.16.14.214",
+    "username": "admin",
+    "password": "password",
+    "port": 22,
+    "secret": "admin",
+    "timeout": 60
+}
+vyos1_site2 = {
+    "device_type": "vyos",
+    "host": "172.16.14.215",
+    "username": "vyos",
+    "password": "vyos",
+    "port": 22,
+    "secret": "admin"
+}
+vyos2_site2 = {
+    "device_type": "vyos",
+    "host": "172.16.14.216",
+    "username": "vyos",
+    "password": "vyos",
+    "port": 22,
+    "secret": "admin"
+}
+
 ```
-![alt text](image-10.png)
+
 - create a file commands.txt with below content.
 ```
 show version
@@ -52,12 +77,8 @@ show ip interface brief
 - create a pyton program with name `run_multi_command.py`
 
 ```py
-import json
+from device_vars import *
 from netmiko import ConnectHandler
-
-def read_device_details_from_json(filename):
-    with open(filename, 'r') as file:
-        return json.load(file)
 
 def read_commands_from_file(filename):
     with open(filename, 'r') as file:
@@ -65,6 +86,7 @@ def read_commands_from_file(filename):
 
 def run_commands_on_device(device_info, commands):
     try:
+        print(device_info, commands)
         with ConnectHandler(**device_info) as ssh:
             ssh.enable()  # Enter privileged mode
             output = ""
@@ -76,7 +98,7 @@ def run_commands_on_device(device_info, commands):
         return None
 
 if __name__ == "__main__":
-    device_details = read_device_details_from_json('device_details.json')
+    device_details = [vyos1_site2, vyos2_site2, nexus_site1]
     commands = read_commands_from_file('commands.txt')
 
     for device in device_details:
@@ -94,124 +116,104 @@ if __name__ == "__main__":
 You can see the output below.
 
 ```txt
-Device: 172.16.14.110
+{'device_type': 'vyos', 'host': '172.16.14.215', 'username': 'vyos', 'password': 'vyos', 'port': 22, 'secret': 'admin'} ['show version\n', 'show ip interface brief']
+Device: 172.16.14.215
 =============
-Cisco IOS XE Software, Version 17.03.02
-Cisco IOS Software [Amsterdam], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 17.3.2, RELEASE SOFTWARE (fc3)
-Technical Support: http://www.cisco.com/techsupport
-Copyright (c) 1986-2020 by Cisco Systems, Inc.
-Compiled Sat 31-Oct-20 13:16 by mcpre
+Version:          VyOS 1.5-rolling-202405060019
+Release train:    current
+
+Built by:         autobuild@vyos.net
+Built on:         Mon 06 May 2024 02:42 UTC
+Build UUID:       82799f1b-a40f-434c-ba7d-63b45c7b2690
+Build commit ID:  663255a3a67a39
+
+Architecture:     x86_64
+Boot via:         installed image
+System type:      KVM guest
+
+Hardware vendor:  QEMU
+Hardware model:   Standard PC (i440FX + PIIX, 1996)
+Hardware S/N:     
+Hardware UUID:    8499fc34-3697-4e63-9ba2-14e44f8fe686
+
+Copyright:        VyOS maintainers and contributors
+
+  Invalid command: show ip [interface]
 
 
-Cisco IOS-XE software, Copyright (c) 2005-2020 by cisco Systems, Inc.
-All rights reserved.  Certain components of Cisco IOS-XE software are
-licensed under the GNU General Public License ("GPL") Version 2.0.  The
-software code licensed under GPL Version 2.0 is free software that comes
-with ABSOLUTELY NO WARRANTY.  You can redistribute and/or modify such
-GPL code under the terms of GPL Version 2.0.  For more details, see the
-documentation or "License Notice" file accompanying the IOS-XE software,
-or the applicable URL provided on the flyer accompanying the IOS-XE
-software.
-
-
-ROM: IOS-XE ROMMON
-
-CSR uptime is 2 days, 1 hour, 38 minutes
-Uptime for this control processor is 2 days, 1 hour, 40 minutes
-System returned to ROM by reload
-System image file is "bootflash:packages.conf"
-Last reload reason: reload
-
-
-
-This product contains cryptographic features and is subject to United
-States and local country laws governing import, export, transfer and
-use. Delivery of Cisco cryptographic products does not imply
-third-party authority to import, export, distribute or use encryption.
-Importers, exporters, distributors and users are responsible for
-compliance with U.S. and local country laws. By using this product you
-agree to comply with applicable laws and regulations. If you are unable
-to comply with U.S. and local laws, return this product immediately.
-
-A summary of U.S. laws governing Cisco cryptographic products may be found at:
-http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
-
-If you require further assistance please contact us by sending email to
-export@cisco.com.
-
-License Level: ax
-License Type: N/A(Smart License Enabled)
-Next reload license Level: ax
-
-The current throughput level is 1000 kbps 
-
-
-Smart Licensing Status: UNREGISTERED/No Licenses in Use
-
-cisco CSR1000V (VXE) processor (revision VXE) with 2072007K/3075K bytes of memory.
-Processor board ID 91933KYI7V9
-Router operating mode: Autonomous
-4 Gigabit Ethernet interfaces
-32768K bytes of non-volatile configuration memory.
-3978436K bytes of physical memory.
-6188032K bytes of virtual hard disk at bootflash:.
-
-Configuration register is 0x2102
-
-Interface              IP-Address      OK? Method Status                Protocol
-GigabitEthernet1       unassigned      YES TFTP   up                    up      
-GigabitEthernet2       172.16.14.110   YES NVRAM  up                    up      
-GigabitEthernet3       unassigned      YES NVRAM  up                    up      
-GigabitEthernet4       1.1.1.1         YES manual down                  down    
-
-Device: 172.16.14.111
+{'device_type': 'vyos', 'host': '172.16.14.216', 'username': 'vyos', 'password': 'vyos', 'port': 22, 'secret': 'admin'} ['show version\n', 'show ip interface brief']
+Device: 172.16.14.216
 =============
-Arista vEOS-lab
-Hardware version: 
-Serial number: 8A63B3E12DCE6F2E9AF9133ACDE2F859
-Hardware MAC address: 5000.0072.8b31
-System MAC address: 5000.0072.8b31
+Version:          VyOS 1.5-rolling-202405060019
+Release train:    current
 
-Software image version: 4.28.2F
-Architecture: x86_64
-Internal build version: 4.28.2F-28369039.4282F
-Internal build ID: 21327e1a-35a8-40c3-a5af-42ff8f4c06f7
-Image format version: 1.0
-Image optimization: None
+Built by:         autobuild@vyos.net
+Built on:         Mon 06 May 2024 02:42 UTC
+Build UUID:       82799f1b-a40f-434c-ba7d-63b45c7b2690
+Build commit ID:  663255a3a67a39
 
-Uptime: 2 days, 1 hour and 40 minutes
-Total memory: 2005444 kB
-Free memory: 886736 kB
+Architecture:     x86_64
+Boot via:         installed image
+System type:      KVM guest
 
-                                                                                Address
-Interface         IP Address             Status       Protocol           MTU    Owner  
------------------ ---------------------- ------------ -------------- ---------- -------
-Ethernet4         172.16.14.111/24       up           up                1500           
-Management1       unassigned             down         down              1500           
+Hardware vendor:  QEMU
+Hardware model:   Standard PC (i440FX + PIIX, 1996)
+Hardware S/N:     
+Hardware UUID:    cdcc6385-91a5-459d-bc5c-60ff8e23b7d4
+
+Copyright:        VyOS maintainers and contributors
+
+  Invalid command: show ip [interface]
 
 
-An error occurred: TCP connection to device failed.
+{'device_type': 'cisco_nxos', 'host': '172.16.14.210', 'username': 'admin', 'password': 'admin', 'port': 22, 'secret': 'admin', 'timeout': 60} ['show version\n', 'show ip interface brief']
+Device: 172.16.14.210
+=============
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Documents: http://www.cisco.com/en/US/products/ps9372/tsd_products_support_series_home.html
+Copyright (c) 2002-2020, Cisco Systems, Inc. All rights reserved.
+The copyrights to certain works contained herein are owned by
+other third parties and are used and distributed under license.
+Some parts of this software are covered under the GNU Public
+License. A copy of the license is available at
+http://www.gnu.org/licenses/gpl.html.
 
-Common causes of this problem are:
-1. Incorrect hostname or IP address.
-2. Wrong TCP port.
-3. Intermediate firewall blocking access.
+Nexus 9000v is a demo version of the Nexus Operating System
 
-Device settings: cisco_nxos 172.16.14.112:22
-
-
-Failed to retrieve output for device: 172.16.14.112
-An error occurred: TCP connection to device failed.
-
-Common causes of this problem are:
-1. Incorrect hostname or IP address.
-2. Wrong TCP port.
-3. Intermediate firewall blocking access.
-
-Device settings: cisco_nxos 172.16.14.113:22
+Software
+  BIOS: version 
+ NXOS: version 9.3(6)
+  BIOS compile time:  
+  NXOS image file is: bootflash:///nxos.9.3.6.bin
+  NXOS compile time:  11/9/2020 23:00:00 [11/10/2020 11:00:21]
 
 
-Failed to retrieve output for device: 172.16.14.113
+Hardware
+  cisco Nexus9000 C9500v Chassis ("Supervisor Module")
+   with 7935696 kB of memory.
+  Processor Board ID 9RLR3ECFOO6
 
+  Device name: nexus-site1
+  bootflash:    4287040 kB
+Kernel uptime is 0 day(s), 12 hour(s), 53 minute(s), 2 second(s)
+
+Last reset 
+  Reason: Unknown
+  System version: 
+  Service: 
+
+plugin
+  Core Plugin, Ethernet Plugin
+
+Active Package(s):
+        
+
+
+IP Interface Status for VRF "default"(1)
+Interface            IP Address      Interface Status
+Vlan10               192.168.1.1     protocol-up/link-up/admin-up       
+Eth1/1               10.10.10.2      protocol-up/link-up/admin-up       
+Eth1/3               10.10.10.6      protocol-up/link-up/admin-up       
 
 ```
