@@ -13,21 +13,26 @@ To complete all the steps, follow these instructions:
    ![alt text](image-5.png)
 7. Open the SSH configuration file (usually located at C:\User\user1\\.ssh\config on my machine).
    ![alt text](image-6.png)
-8. Paste the following content into your config file. Replace "172.16.14.100" with your Dev server IP and "*cml*" with your username.
+8. Paste the following content into your config file. Replace "172.16.14.200" with your Dev server IP and "*cml*" with your username.
     ```
     Host Dev_server
-      HostName 172.16.14.100
+      HostName 172.16.14.200
       User cml
     ```
    It should look like the image below.
-   ![alt text](image-7.png)
+   
+   ![alt text](image-18.png)
 9. Click on "Refresh" to update the SSH server list.
-   ![alt text](image-8.png)
+
+   ![alt text](image-15.png)
 10. If everything is correct, you should see "Dev_server" in the SSH server list.
-    ![alt text](image-9.png)
+    ![alt text](image-16.png)
 11. Click on "Connect in Current Window".
-    ![alt text](image-10.png)
+   
+   ![alt text](image-17.png)
+
 12. Select "Linux", click "Yes", and then enter the password from the details table.
+![alt text](image-14.png)
     ![alt text](image-11.png)
 13. In the menu, click on "Terminal" and then "New Terminal".
     ![alt text](image-12.png)

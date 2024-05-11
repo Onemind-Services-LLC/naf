@@ -6,36 +6,41 @@
 - lets create playbook in your current working directory (that is `ansible_automation`)  create a file `run_cmnd.yaml` with the below content
 ```yaml
 ---
-- name: Fetch show version from devices in dc_group
-  hosts: dc_group
+- name: Fetch show version from devices in sf
+  hosts: sf
   gather_facts: no
   tasks:
-    - name: Run show version command (Cisco)
-      when: inventory_hostname != "arista"
-      ios_command:
-        commands: show version
-      register: show_version_output
+    - name: Create Config directory
+      run_once: true
+      ansible.builtin.file:
+        path: "./configs/"
+        state: directory
 
-    - name: Run show version command (Arista)
-      when: inventory_hostname == "arista"
-      arista.eos_command:
-        commands: show version
-      register: show_version_output
+    - name: Block for non palo alto devices
+      when: "'pa' not in inventory_hostname"
+      block:
+        - name: Run show version command
+          register: show_version_output
+          ios_command:
+            commands: show version
 
-    - name: Save show version output to file
-      ansible.builtin.copy:
-        content: "{{ item.stdout[0] }}"
-        dest: "/path/to/save/{{ inventory_hostname }}_show_version.txt"
-      loop: "{{ show_version_output.results }}"
-
+        - name: Save show version output to file
+          ansible.builtin.copy:
+            content: "{{ show_version_output.stdout[0] | replace('\\n','\n')}}"
+            dest: "./configs/{{ inventory_hostname }}_show_version.cfg"
 ```
-#TODO: above playbook not working
-#TODO: fix the issue and update the development dockerfile.
-![alt text](image-12.png)
+![alt text](image-22.png)
+
 ### Execute the above playbook
 
 ```
 ansible-playbook -i inventory.ini run_cmnd.yaml
 ```
-
+![alt text](image-16.png)
 Make sure the playbook file and the inventory file are in the same directory, or provide the correct path to the playbook file if it's in a different directory.
+
+The output shows an image similar to the one below:
+![alt text](image-24.png)
+
+Additionally, you can find the saved configuration files in the "config" folder within your current working directory:
+![alt text](image-23.png)

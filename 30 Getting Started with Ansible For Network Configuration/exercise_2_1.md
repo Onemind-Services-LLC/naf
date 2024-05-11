@@ -6,7 +6,7 @@ In the previous task, we created an inventory of devices. Now, we need to use An
 
 1. Open the terminal.
 
-![alt text](image-7.png)
+![alt text](image-25.png)
 
 2. Run the container with the appropriate bind mount using the following command:
 
@@ -38,4 +38,4 @@ Alternatively, you can use a YAML inventory with the following command:
 ansible -m ping all -i inventory.yaml 
 ```
 
-![alt text](image-11.png)
+![alt text](image-13.png)

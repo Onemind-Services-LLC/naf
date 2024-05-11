@@ -48,32 +48,25 @@ lets create a new file with `inventory.ini` with below content
 ```ini
 local_test ansible_connection=local
 
-[dc_group]
-csr ansible_host=172.16.14.110 ansible_user=admin ansible_password=admin
-arista ansible_host=172.16.14.111 ansible_user=admin ansible_password=admin
-nxos_1 ansible_host=172.16.14.112 ansible_user=admin ansible_password=admin
-nxos_2 ansible_host=172.16.14.113 ansible_user=admin ansible_password=admin
+[ny]
+nexus-site1     ansible_host=172.16.14.210  ansible_user=admin  ansible_password=admin ansible_network_os=eos
+vmx1-site1      ansible_host=172.16.14.211  ansible_user=root   ansible_password=Juniper ansible_network_os=junos
+pa-site1        ansible_host=172.16.14.212  ansible_user=admin  ansible_password=Test12345 ansible_network_os=panos ansible_connection=local
 
-[sitea_group]
-vios1 ansible_host=172.16.14.114 ansible_user=admin ansible_password=admin
-vyos1 ansible_host=172.16.14.115 ansible_user=admin ansible_password=admin
-
-[siteb_group]
-vios1 ansible_host=172.16.14.116 ansible_user=admin ansible_password=admin
-vyos1 ansible_host=172.16.14.117 ansible_user=admin ansible_password=admin
-
-[branch:children]
-sitea_group
-siteb_group
+[sf]
+pa-site2        ansible_host=172.16.14.213  ansible_user=admin  ansible_password=Test12345 ansible_network_os=panos ansible_connection=local
+arista1-site2   ansible_host=172.16.14.214  ansible_user=admin  ansible_password=password ansible_network_os=eos
+vyos1-site1     ansible_host=172.16.14.215  ansible_user=vyos   ansible_password=vyos ansible_network_os=vyos
+vyos2-site2     ansible_host=172.16.14.216  ansible_user=vyos   ansible_password=vyos ansible_network_os=vyos
 
 [all:vars]
 ansible_connection=ansible.netcommon.network_cli
-ansible_network_os=cisco.ios.ios
 ansible_user=admin
 ansible_password=admin
 ansible_become=true
 ansible_become_method=enable
 ansible_become_password=admin
+
 ```
 ![alt text](image-5.png)
 
@@ -85,67 +78,55 @@ ansible_become_password=admin
 ```yaml
 all:
   vars:
-    # ansible_become: 'true'
-    # ansible_become_method: enable
-    ansible_become_password: admin
     ansible_connection: ansible.netcommon.network_cli
-    ansible_network_os: cisco.ios.ios
     ansible_user: admin
     ansible_password: admin
-  children:
-    dc_group:
-      hosts:
-        csr:
-          ansible_host: 172.16.14.110
-          ansible_user: admin
-          ansible_password: admin
-        arista:
-          ansible_host: 172.16.14.111
-          ansible_user: admin
-          ansible_password: admin
-        nxos_1:
-          ansible_host: 172.16.14.112
-          ansible_user: admin
-          ansible_password: admin
-        nxos_2:
-          ansible_host: 172.16.14.113
-          ansible_user: admin
-          ansible_password: admin
-    sitea_group:
-      hosts:
-        vios1:
-          ansible_host: 172.16.14.114
-          ansible_user: admin
-          ansible_password: admin
-        vyos1:
-          ansible_host: 172.16.14.115
-          ansible_user: admin
-          ansible_password: admin
-      vars:
-        # ansible_become: 'true'
-        # ansible_become_method: enable
-        ansible_become_password: admin
-        ansible_connection: ansible.netcommon.network_cli
-        ansible_network_os: cisco.ios.ios
-        ansible_user: admin
-        ansible_password: admin
-    siteb_group:
-      hosts:
-        vios2:
-          ansible_host: 172.16.14.116
-          ansible_user: admin
-          ansible_password: admin
-        vyos2:
-          ansible_host: 172.16.14.117
-          ansible_user: admin
-          ansible_password: admin
-      vars:
-        # ansible_become: 'true'
-        # ansible_become_method: enable
-        ansible_become_password: admin
-        ansible_connection: ansible.netcommon.network_cli
-        ansible_network_os: cisco.ios.ios
-        ansible_user: admin
-        ansible_password: admin
+    ansible_become: true
+    ansible_become_method: enable
+    ansible_become_password: admin
+
+ny:
+  hosts:
+    nexus-site1:
+      ansible_host: 172.16.14.210
+      ansible_user: admin
+      ansible_password: admin
+      ansible_network_os: eos
+    vmx1-site1:
+      ansible_host: 172.16.14.211
+      ansible_user: root
+      ansible_password: Junper
+      ansible_network_os: junos
+    pa-site1:
+      ansible_host: 172.16.14.212
+      ansible_user: admin
+      ansible_password: Test12345
+      ansible_network_os: panos
+      ansible_connection: local
+
+sf:
+  hosts:
+    pa-site2:
+      ansible_host: 172.16.14.213
+      ansible_user: admin
+      ansible_password: Test12345
+      ansible_network_os: panos
+      ansible_connection: local
+    arista1-site2:
+      ansible_host: 172.16.14.214
+      ansible_user: admin
+      ansible_password: password
+      ansible_network_os: eos
+    vyos1-site1:
+      ansible_host: 172.16.14.215
+      ansible_user: vyos
+      ansible_password: vyos
+      ansible_network_os: vyos
+    vyos2-site2:
+      ansible_host: 172.16.14.216
+      ansible_user: vyos
+      ansible_password: vyos
+      ansible_network_os: vyos
+
 ```
-![alt text](image-6.png)
+![alt text](image-14.png)

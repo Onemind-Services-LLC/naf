@@ -26,9 +26,13 @@ open the vscode in newly created directory for that lets run the below command
 code .
 ```
 ![alt text](image-2.png)
+
 it should open vscode in `python_automation` folder
+
 ![alt text](image-3.png)
+
 lets create a new file with `device_status.py` with below content
+
 ![alt text](image-4.png)
 
 ```python
@@ -129,6 +133,6 @@ cd /python_automation
 python device_status.py
 ```
 
-![alt text](image-7.png)
+![alt text](image-12.png)
 
 This will execute the `device_status.py` program within the Docker container, allowing you to check the status of the device.

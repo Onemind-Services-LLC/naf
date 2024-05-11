@@ -39,20 +39,20 @@ Make sure the file is named exactly `Dockerfile`.
 
 Inside this file, write down these lines:
 
-#TODO: update the image
+
 ```dockerfile
 FROM python:3
 # Install Ansible and Netmiko
 RUN apt update
 RUN  apt install iputils-ping -y
 RUN  apt install git -y
-RUN pip install ansible netmiko ansible-pylibssh pexpect
+RUN pip install ansible netmiko pexpect
 CMD ["bash"]
 ```
 
 Your file should look like this:
 
-![alt text](image-18.png)
+![alt text](image-23.png)
 
 Now, let's open a new terminal window in VS Code:
 

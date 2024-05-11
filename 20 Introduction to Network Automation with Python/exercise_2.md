@@ -6,6 +6,7 @@ Write a Python program that takes the following as user input:
 - Username
 - Password
 - Port
+- Device Type
 
 Then, it runs the following commands on a device:
 - show version
@@ -37,9 +38,10 @@ if __name__ == "__main__":
     username = input("Enter the username: ")
     password = input("Enter the password: ")
     port = input("Enter the port: ")
+    device_type = input("Enter the device type(like cisco_nxos, arista_eos): ")
 
     device_info = {
-        'device_type': 'cisco_xe',
+        'device_type': device_type, # nxos, arista
         'host':   device_ip,
         'username': username,
         'password': password,
@@ -64,8 +66,8 @@ This program connects to a device using the netmiko library and runs specified c
 
 - Execute the `run_command.py` in the container.
 
-![alt text](image-8.png)
+![alt text](image-13.png)
 
 You can see the output below.
 
-![alt text](image-9.png)
+![alt text](image-14.png)

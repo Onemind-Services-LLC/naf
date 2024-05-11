@@ -61,8 +61,9 @@
   ```ini
   [defaults]
   host_key_checking = false
+  timeout = 60
   ```
-  ![alt text](image-17.png)
+  ![alt text](image-28.png)
 
 - Create a file with name `inventory.ini` with below content
   ```ini
