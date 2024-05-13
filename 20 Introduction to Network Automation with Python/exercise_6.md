@@ -1,4 +1,7 @@
 ## Multithreading with Netmiko
+### While using automation can be extremely satisfying and you can see extremely high efficiency while collecting data from multiple devices or pushing configs
+However, when the code is scallig to tens of thousands of devices, sequential read and write to a network device which has IO delay can incur significant delays
+Hence we are going to explore the usage of executing commands on multiple devices in parallel to speed up the overall process by manyfolds.
 
 Create a file called multithreading_netmiko.py
 
