@@ -1,34 +1,150 @@
-## Problem Statement: GitLab Integration with Ansible Tower
-Automate lab setup by pushing existing Ansible files from the laste exercise to GitLab, then execute them from Ansible Tower for streamlined processes and version control.
+## Problem Statement: 
+### GitLab Integration with Ansible Tower
+Let's utilize Ansible Tower to execute all the tasks we completed in the previous exercise and initiate the playbook through Ansible Tower.
 
 ## Steps
 
-1. **Push existing code into gitlab:**
-   - Push the existing Ansible playbook, ansible.cfg, and inventory.ini files to the GitLab repository.
 
-2. **Inventory Creation in Ansible Automation Platform (AAP):**
-   - Develop a comprehensive inventory within AAP, detailing all lab environment hosts and groups for efficient resource management.
+- first login to ansible tower details of the tower you can found in the first lab.
+![alt text](image-35.png)
 
-3. **Creation of GitLab Credentials in AAP:**
-   - Establish GitLab credentials within AAP to securely access the GitLab repository, enabling version control and collaboration for automation scripts.
+#### Creation of GitLab Credentials in AAP:
 
-4. **Creation of Server Credentials in AAP:**
-   - Configure server credentials within AAP to facilitate secure access to lab resources, ensuring seamless execution of automation tasks.
+   - Navigate to the "Credentials" section in AAP.
 
-5. **Project Creation with GitLab as Source Control:**
-   - Create a dedicated project within AAP, leveraging GitLab as the source control system to store and manage Ansible playbooks and templates.
+   ![alt text](image-37.png)
 
-6. **Template Creation and Scheduled Execution:**
-   - Develop an Ansible template within the AAP project, automating lab infrastructure setup and configuration.
-   - Schedule the template to run at regular intervals, ensuring routine maintenance and updates every 7 days for optimal performance and reliability.
+   - Click on "Add Credentials" and select "Source control" as the credential type.
+   ![alt text](image-36.png)
+   - Provide the required GitLab credentials(username and password).
+   - Save the credential configuration.
+   ![alt text](image-38.png)
+
+  - GitLab credentials are configured within AAP, allowing seamless access to the GitLab repository.
 
 
-### Solution
-## Steps
+#### Inventory Creation in Ansible Automation Platform (AAP):
+- Navigate to the "Inventory" section under Resources.
 
-### 1. Push existing code into gitlab:
+![alt text](image-39.png)
 
-- Change directory to "backup_configurations".
+- Click on "Add" and enter "eve_inventory" as the name and select organization as default.
+  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/ca2c021b-f443-45ad-a3fa-566c8fdc53e3)
+
+- Next add a host "vyos1-site2" to the inventory.
+  - go to hosts in eve_inventory
+  ![alt text](image-40.png)
+  - click on add fil the below details
+  ```yaml
+    ---
+    ansible_host: 172.16.14.215
+    ansible_network_os: vyos
+  ```
+  ![alt text](image-41.png)
+  - click on save
+  - lets add one more host go to hosts again
+  
+  ![alt text](image-42.png)
+  - click on add and fill the below details
+
+- Next add a host "vyos2-site2" to the inventory.
+  ```yaml
+    ---
+    ansible_host: 172.16.14.216
+    ansible_network_os: vyos
+  ```
+  ![alt text](image-43.png)
+- click on save and now you can see we have 2 devices in our inventory
+![alt text](image-44.png)
+
+
+#### now lets create creds for these routers that we are going to use in our inventory
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- create a project in gitlab
+![alt text](image-33.png)
+
+- open the repo in web ide
+![alt text](image-34.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- create the files that we created in last lab (playbook.yaml, ansible.cfg)
   ```bash
   cd backup_configurations
   ```
@@ -57,51 +173,7 @@ Automate lab setup by pushing existing Ansible files from the laste exercise to 
    ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/96065772-806f-46cd-8c39-8a0ce72de6ea)
 
 
-### 2. Inventory Creation in Ansible Automation Platform (AAP):
-- Log in to Ansible Automation Platform (AAP) dashboard using credentials
 
-  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/7a97eb2e-acbb-455e-8eb5-5bce6e4de33e)
-
-- Navigate to the "Inventory" section under Resources.
-- Click on "Add" and enter "eve_inventory" as the name and select organization as default.
-
-  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/ca2c021b-f443-45ad-a3fa-566c8fdc53e3)
-
-- Under groups add a new group "dc_group" and the extra variables
-
-  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/353d5b65-f1b5-4d5f-8b0d-34d0b3190192)
-
-- Next add a host "arista" to the inventory.
-
-  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/42f2f85f-b5c4-4660-9edb-65d604344b39)
-
-- Add one more host "csr" like below
-
-  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/80421cc1-c6aa-41e3-8e96-3e0f1223aa09)
-
-- Save the inventory configuration.
-
-### 3. Creation of GitLab Credentials in AAP:
-
-   - Navigate to the "Credentials" section in AAP.
-   - Click on "Add Credentials" and select "Source control" as the credential type.
-   - Provide the required GitLab credentials(username and password).
-   - Save the credential configuration.
-
-  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/170c6e6c-c28b-4a67-92c2-a0b0e37daede)
-
-   - GitLab credentials are configured within AAP, allowing seamless access to the GitLab repository.
-
-### 4. Creation of Server Credentials in AAP:
-
-  - Navigate to the "Credentials" section in AAP.
-  - Click on "Add Credentials" and select "Machine" as the credential type.
-  - Provide the necessary server credentials(username and password).
-  - Save the credential configuration.
-  
-  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/d4eea390-c8fd-4409-97d8-a00001cd1a70)
-
-  - Server credentials are configured within AAP, enabling secure access to lab resources during automation tasks.
 
 ### 5. Project Creation with GitLab as Source Control:
 

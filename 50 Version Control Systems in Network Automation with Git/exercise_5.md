@@ -55,95 +55,88 @@
   ![alt text](image-28.png)
 
 - Create a file with name `inventory.ini` with below content
-  ```ini
-  local_test ansible_connection=local
-  csr ansible_host=172.16.14.110 ansible_user=admin ansible_password=admin
-  arista ansible_host=172.16.14.111 ansible_user=admin ansible_password=admin ansible_connection=network_cli ansible_network_os=eos
-  
-  [all:vars]
-  ansible_connection=ansible.netcommon.network_cli
-  ansible_network_os=cisco.ios.ios
-  ansible_user=admin
-  ansible_password=admin
-  ansible_become=true
-  ansible_become_method=enable
-  ansible_become_password=admin
-  ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+```ini
+local_test ansible_connection=local
+
+[ny]
+nexus-site1     ansible_host=172.16.14.210  ansible_user=admin  ansible_password=admin ansible_network_os=nxos
+vmx1-site1      ansible_host=172.16.14.211  ansible_user=root   ansible_password=Juniper ansible_network_os=junos
+pa-site1        ansible_host=172.16.14.212  ansible_user=admin  ansible_password=Test12345 ansible_network_os=panos ansible_connection=local
+
+[sf]
+pa-site2        ansible_host=172.16.14.213  ansible_user=admin  ansible_password=Test12345 ansible_network_os=panos ansible_connection=local
+arista1-site2   ansible_host=172.16.14.214  ansible_user=admin  ansible_password=password ansible_network_os=eos
+vyos1-site2     ansible_host=172.16.14.215  ansible_user=vyos   ansible_password=vyos ansible_network_os=vyos
+vyos2-site2     ansible_host=172.16.14.216  ansible_user=vyos   ansible_password=vyos ansible_network_os=vyos
+
+[all:vars]
+ansible_connection=ansible.netcommon.network_cli
+ansible_user=admin
+ansible_password=admin
+ansible_become=true
+ansible_become_method=enable
+ansible_become_password=admin
   ```
   
-  ![alt text](image-18.png)
+ ![alt text](image-29.png)
 
 - Create a playbook with `playbook.yaml` name with below content
-  ```python
-  ---
-  - name: Fetch show version from devices in dc_group
-    hosts: csr, arista
-    gather_facts: no
-    vars: 
-      gitlab_username: ansible
-      gitlab_password: cisco!23
-    tasks:
-      - name: Clone the gitlab repository
-        delegate_to: localhost
-        run_once: true
-        ansible.builtin.expect:
-          command: git clone http://172.16.14.101/ansible/backup_configurations.git --verbose
-          responses:
-            (?i)Username: "{{ gitlab_username }}"
-            (?i)Password: "{{ gitlab_password }}"
-      
-      - name: For non arista devices
-        when: inventory_hostname != "arista"
-        block:
-          - name: Run show version command (Cisco)
-            register: show_version_output
-            ios_command:
-              commands: show version
-          
-          - name: debug
-            debug:
-              msg: "{{ show_version_output }}"
-          
-          - name: Save show version output to file
-            ansible.builtin.copy:
-              content: "{{ show_version_output.stdout }}"
-              dest: "./backup_configurations/{{ inventory_hostname }}_show_version.txt"
-  
-      - name: For non arista devices
-        when: inventory_hostname == "arista"
-        block:
-          - name: run multiple commands on remote 
-            register: show_version_output
-            arista.eos.eos_command:
-              commands:
-                - show version
-          
-          - name: debug
-            debug:
-              msg: "{{ show_version_output }}"
-  
-          - name: Save show version output to file
-            ansible.builtin.copy:
-              content: "{{ show_version_output.stdout }}"
-              dest: "./backup_configurations/{{ inventory_hostname }}_show_version.txt"
-      
-      - name: commit the code
-        delegate_to: localhost
-        run_once: true
-        with_items:
-          - "git add ."
-          - git config --global user.name "user1"
-          - git config --global user.email "user1@onemindservices.com"
-          - "git commit -m 'configurations update'"
-          - git push origin master
-        ansible.builtin.expect:
-          chdir: "./backup_configurations"
-          command: "{{ item }}"
-          responses:
-            (?i)Username: "{{ gitlab_username }}"
-            (?i)Password: "{{ gitlab_password }}"
-  
-  ```
+
+```python
+---
+- name: Fetch show version from devices in dc_group
+  hosts: vyos1-site2,vyos2-site2
+  gather_facts: no
+  vars: 
+    gitlab_username: ansible
+    gitlab_password: cisco!23
+  tasks:
+    - name: Clone the gitlab repository
+      delegate_to: localhost
+      run_once: true
+      ansible.builtin.expect:
+        command: git clone http://172.16.14.202/ansible/backup_configurations.git --verbose
+        responses:
+          (?i)Username: "{{ gitlab_username }}"
+          (?i)Password: "{{ gitlab_password }}"
+    
+    - name: Run show version command
+      register: show_version_output
+      vyos_command:
+        commands:
+          - show version
+          - show interfaces
+    
+    - name: Concatenate show version and show IP interface brief outputs
+      set_fact:
+        combined_output: "{{ show_version_output.stdout[0] }}\n\n{{ show_version_output.stdout[1] }}"
+
+    - name: Save show version output to file
+      ansible.builtin.copy:
+        content: "{{ show_version_output.stdout[0] | replace('\\n','\n')}}"
+        dest: "./backup_configurations/{{ inventory_hostname }}_show_version.cfg"
+    
+    - name: Save show version output to file
+      ansible.builtin.copy:
+        content: "{{ show_version_output.stdout[1] | replace('\\n','\n')}}"
+        dest: "./backup_configurations/{{ inventory_hostname }}_show_interfaces.cfg"
+    
+    - name: commit the code
+      delegate_to: localhost
+      run_once: true
+      with_items:
+        - "git add ."
+        - git config --global user.name "user1"
+        - git config --global user.email "user1@onemindservices.com"
+        - "git commit -m 'configurations update'"
+        - git push origin master
+      ansible.builtin.expect:
+        chdir: "./backup_configurations"
+        command: "{{ item }}"
+        responses:
+          (?i)Username: "{{ gitlab_username }}"
+          (?i)Password: "{{ gitlab_password }}"
+```
 
 1. Open the terminal.
 
@@ -169,12 +162,12 @@
    ```
    Sample Output
    
-   ![alt text](image-25.png)
+   ![alt text](image-30.png)
 
 5. Now check if the backup configuration exists on GitLab.
-   ![alt text](image-26.png)
+   ![alt text](image-31.png)
    
-   ![alt text](image-27.png)
+   ![alt text](image-32.png)
 
 
 In this lab, we established a infrastructure by creating a private Git repository on GitLab to store router configurations, ensuring data confidentiality. We then automated the configuration backup process using Ansible, enhancing efficiency and reliability.
