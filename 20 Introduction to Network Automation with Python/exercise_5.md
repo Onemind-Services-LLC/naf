@@ -1,4 +1,5 @@
 # Use Netmiko to push a simple configuration change to a device
+## The objective of this exercise is to go through the most commonly used methods of netmiko while configuring devices
 
 For this example, we need to focus on find_prompt() and enable()
 
@@ -98,3 +99,6 @@ Vlan10                   --
 ======================================
 ```
 
+BONUS EXERCISE
+- Explore the usage of netmiko's send_config_from_file instead of the above send_config
+- Explore the difference between send_command and send_command_timing
