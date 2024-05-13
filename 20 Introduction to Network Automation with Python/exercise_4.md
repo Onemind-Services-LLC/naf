@@ -52,3 +52,9 @@ Expected output
     {'vrf': 'default', 'interface': 'Eth1/3', 'ip_address': '10.10.10.6', 'status': 'admin-up', 'link': 'link-up', 'proto': 'protocol-up'}
 ]
 ```
+
+- Extra exercise:-
+- - Try to execute multiple commands together on same and then on seperate devices.
+  - To complete further, you can chose combination of commands and different platforms.
+  - Try logging the parsed output to a single text file or to seperate text file, one for each command or one for each host instead.
+ 
