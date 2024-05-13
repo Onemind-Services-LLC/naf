@@ -1,0 +1,17 @@
+---
+- name: Create block policy
+  hosts: ny
+  gather_facts: no
+  vars:
+    provider:
+      ip_address: "172.16.14.212"
+      username: "admin"
+      password: "Test12345"
+
+  tasks:
+    - name: Remove SSH inbound rule to Panorama device group
+      paloaltonetworks.panos.panos_security_rule:
+        provider: '{{ provider }}'
+        state: 'absent'
+        rule_name: 'block'
+        commit: 'true'
