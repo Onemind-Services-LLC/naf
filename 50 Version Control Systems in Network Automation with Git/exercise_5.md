@@ -25,17 +25,6 @@
 - Ensure "Initialize repository with a README" is selected.
 - Click "Create project".
 
-# Create an Access Token:
-
-- Go to the project's settings and click on "Access Tokens".
-- Give a name to the token "access-token-for-python" and generate a new access token.
-
-  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/d9ded552-6e91-4728-a52d-3e9b974c2645)
-
-- Copy the access token.
-
-  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/a7899266-15d2-4bb1-b856-7cea00faf978) 
-
 - If you're logged into a container, exit from the container using the following command.
   ![alt text](image-14.png)
 
