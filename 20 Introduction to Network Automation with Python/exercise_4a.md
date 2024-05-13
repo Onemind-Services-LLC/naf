@@ -41,7 +41,14 @@ if __name__ == "__main__":
         df.to_excel('junos.xlsx', index=False)
 ```
 
+- You can right click and download the excel file and view it on your desktop.
+- You can also install a VSCODE plugin to view excel sheets withi vscode.
+
 ![alt text](image-18.png)
 
 ![alt text](image-19.png)
 
+- Extra challenge:-
+- - Execute multiple commands and save the parsed output in seperate tabs of excel. One tab for each command.
+  - Execute the commands over multiple hosts and now each host's output can be a sepreate excel file.
+ 
