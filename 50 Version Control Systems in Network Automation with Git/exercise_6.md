@@ -1,11 +1,10 @@
-## Problem Statement: 
+## Problem Statement:
 ### GitLab Integration with Ansible Tower
 Let's utilize Ansible Tower to execute all the tasks we completed in the previous exercise and initiate the playbook through Ansible Tower.
 
 ## Steps
 
-
-- first login to ansible tower details of the tower you can found in the first lab.
+- **First login to Ansible Tower**: Details of the Tower can be found in the first lab.
 ![alt text](image-35.png)
 
 #### Creation of GitLab Credentials in AAP:
@@ -13,187 +12,208 @@ Let's utilize Ansible Tower to execute all the tasks we completed in the previou
    - Navigate to the "Credentials" section in AAP.
 
    ![alt text](image-37.png)
-
+   
    - Click on "Add Credentials" and select "Source control" as the credential type.
+
    ![alt text](image-36.png)
-   - Provide the required GitLab credentials(username and password).
+   
+   - Provide the required GitLab credentials (username and password).
    - Save the credential configuration.
    ![alt text](image-38.png)
 
-  - GitLab credentials are configured within AAP, allowing seamless access to the GitLab repository.
-
+   - GitLab credentials are configured within AAP, allowing seamless access to the GitLab repository.
 
 #### Inventory Creation in Ansible Automation Platform (AAP):
 - Navigate to the "Inventory" section under Resources.
 
-![alt text](image-39.png)
+    ![alt text](image-39.png)
 
-- Click on "Add" and enter "eve_inventory" as the name and select organization as default.
-  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/ca2c021b-f443-45ad-a3fa-566c8fdc53e3)
+- Click on "Add" and enter "eve_inventory" as the name and select the organization as default.
+    in the variables please fill the below text.
+    ```yaml
+    ansible_connection: ansible.netcommon.network_cli
+    ```
 
-- Next add a host "vyos1-site2" to the inventory.
-  - go to hosts in eve_inventory
+  ![alt text](image-63.png)
+
+- Next, add a host "vyos1-site2" to the inventory.
+  - Go to hosts in eve_inventory
   ![alt text](image-40.png)
-  - click on add fil the below details
+  - Click on add and fill in the below details
   ```yaml
     ---
     ansible_host: 172.16.14.215
     ansible_network_os: vyos
   ```
   ![alt text](image-41.png)
-  - click on save
-  - lets add one more host go to hosts again
-  
-  ![alt text](image-42.png)
-  - click on add and fill the below details
+  - Click on save
+  - Let's add one more host, go to hosts again.
 
-- Next add a host "vyos2-site2" to the inventory.
+  ![alt text](image-42.png)
+  - Click on add and fill in the below details
+
+- Next, add a host "vyos2-site2" to the inventory.
   ```yaml
     ---
     ansible_host: 172.16.14.216
     ansible_network_os: vyos
   ```
   ![alt text](image-43.png)
-- click on save and now you can see we have 2 devices in our inventory
+- Click on save, and now you can see we have 2 devices in our inventory.
 ![alt text](image-44.png)
 
+#### Now let's create credentials for these routers that we are going to use in our inventory.
+ - Click on "Add Credentials" and select "machine" as the credential type.
 
-#### now lets create creds for these routers that we are going to use in our inventory
+ ![alt text](image-45.png)
+ ![alt text](image-46.png)
+- Fill in the details as per your need.
+![alt text](image-47.png)
+- Click on save.
 
+#### Now Create custom creds that are going to be used for cloning the repo and also pushing the code into that repo.
+- Go to the credential type.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![alt text](image-51.png)
+- Click on add.
+- Fill the details like name *Gitlab Creds*
+    - Input configurations
+    ```yaml
+    fields:
+      - id: gitlab_username
+        type: string
+        label: Gitlab user
+        secret: false
+      - id: gitlab_password
+        type: string
+        label: Gitlab Password
+        secret: true
+    required:
+      - gitlab_username
+      - gitlab_password
+    ```
+    - Injector configurations
+    ```yaml
+    extra_vars:
+      gitlab_password: '{{ gitlab_password }}'
+      gitlab_username: '{{ gitlab_username }}'
+    ```
+    ![alt text](image-50.png)
 
 
+- Now go to credentials and create a new credential with the type (Gitlab Creds) 
+- Click on add and fill in the details
+![alt text](image-52.png)
+- Click on save.
 
-
-
-
-
-
-
-
-- create a project in gitlab
+#### Now our required steps are completed. Let's go to GitLab and commit our playbook in the GitLab repository. 
+- Now go to GitLab and create the project (my project name is gitlab-ansible-tower), feel free to change it.
 ![alt text](image-33.png)
 
-- open the repo in web ide
+- Open the repo in the web IDE.
 ![alt text](image-34.png)
 
 
+- Create the files that we created in the last lab (playbook.yaml) with the below content.
+
+![alt text](image-48.png)
+
+```yaml
+---
+- name: Fetch show version from devices in dc_group
+  hosts: vyos1-site2,vyos2-site2
+  gather_facts: no
+
+  tasks:
+    - name: Clone the GitLab repository
+      delegate_to: localhost
+      run_once: true
+      ansible.builtin.expect:
+        command: git clone http://172.16.14.202/ansible/backup_configurations.git --verbose
+        responses:
+          (?i)Username: "{{ gitlab_username }}"
+          (?i)Password: "{{ gitlab_password }}"
+    
+    - name: Run show version command
+      register: show_version_output
+      vyos_command:
+        commands:
+          - show version
+          - show interfaces
+
+    - name: Get current date and time
+      set_fact:
+        current_datetime: "{{ '%Y-%m-%d %H:%M:%S' | strftime }}"
+    
+    - name: Save show version output to file
+      ansible.builtin.copy:
+        content: "# This code is dynamically generated by Ansible {{ current_datetime }}\n{{ show_version_output.stdout[0] | replace('\\n','\n')}}"
+        dest: "./backup_configurations/{{ inventory_hostname }}_show_version.cfg"
+    
+    - name: Save show version output to file
+      ansible.builtin.copy:
+        content: "# This code is dynamically generated by Ansible {{ current_datetime }}\n{{ show_version_output.stdout[1] | replace('\\n','\n')}}"
+        dest: "./backup_configurations/{{ inventory_hostname }}_show_interfaces.cfg"
+
+    - name: commit the code
+      delegate_to: localhost
+      run_once: true
+      with_items:
+        - "git add ."
+        - git config --global user.name "user1"
+        - git config --global user.email "user1@onemindservices.com"
+        - "git commit -m 'configurations update'"
+        - git push origin master
+      ansible.builtin.expect:
+        chdir: "./backup_configurations"
+        command: "{{ item }}"
+        responses:
+          (?i)Username: "{{ gitlab_username }}"
+          (?i)Password: "{{ gitlab_password }}"
+
+```
+- Click on *commit...*.
+![alt text](image-53.png)
+
+- Click on commit to the master branch.
+
+![alt text](image-54.png)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- create the files that we created in last lab (playbook.yaml, ansible.cfg)
-  ```bash
-  cd backup_configurations
-  ```
-- Move playbook.yml into backup_configurations
-
-  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/1db60960-f284-4c99-abdf-664be472d125)
-
-- Use the command `git add` to add files to the repository.
-   ```bash
-   git add .
-   ```
-
-- Commit the files using the command
-   ```bash
-   git commit -m "Adding playbook.yaml
-   ```
-  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/67e0c22c-059b-43a6-b0e7-68be6bb43f53)
-
-- Push changes to the repository
-
-   ```bash
-   git push origin master
-   ```
-   When prompted pass the username and password
-
-   ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/96065772-806f-46cd-8c39-8a0ce72de6ea)
-
-
-
+#### Now we have placed our project in GitLab. Let's go to Ansible Tower and create a project in it.
 
 ### 5. Project Creation with GitLab as Source Control:
 
   - Navigate to the "Projects" section in AAP.
-  - Click on "Create Project" and specify config-backup as the name.
-  - Choose Git as the source control type and add the source control url and branch
+
+![alt text](image-55.png)
+
+  - Click on "add" and specify config-backup as the name.
+
+  - Choose Git as the source control type and add the source control URL and branch.
   - Link the project to the previously configured GitLab credentials.
   - Save the project configuration.
 
-  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/5e8a66eb-3d3c-4f8d-8720-569863530775)
+  ![alt text](image-56.png)
 
-  - A project is created within AAP, utilizing GitLab as the source control system for storing and managing automation scripts.
+  - A project is created within AAP, utilizing GitLab
+
+ as the source control system for storing and managing automation scripts.
 
 ### 6. Template Creation and Scheduled Execution:
+  - Go to the template.
+
+  ![alt text](image-57.png)
+  - Click on *add job template*.
+
+![alt text](image-59.png)
 
   - Create a template with "router-backup-conf" as the name.
   - Select eve-inventory and backup-config for inventory and the project.
   - Select playbook.yaml as the playbook.
-  - Link the previously configured server-creds.
-  - Click create template
+  - Link the previously configured credentials (select routers_creds, gitlab user details).
+  - Click create template.
+![alt text](image-60.png)
 
   ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/5ae74808-a621-4a74-abbf-b776c7f641e1)
 
@@ -204,12 +224,12 @@ Let's utilize Ansible Tower to execute all the tasks we completed in the previou
   - An Ansible template is developed within the AAP project, automating lab infrastructure setup and configuration.
 
 ### 7. Template Execution:
-  - Launch the template from templates section.
-    
-   ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/5a56c379-cb8c-4a39-9806-bb216e50952d)
+  - Go to the templates list.
+  - Select the template that you just created.
+  - Click on launch.
+ ![alt text](image-61.png)
 
-  - Check the status of the job
+- Now you can go and check in GitLab your configurations files updated.
+![alt text](image-62.png)
 
-  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/41438900-88dc-4599-8845-43909182003c)
-
-In this lab, we successfully automated the process of backing up configurations and integrating Ansibke with Git for version control using GitLab.
+In this lab, we successfully automated the process of backing up configurations and integrating Ansible with Git for version control using GitLab.

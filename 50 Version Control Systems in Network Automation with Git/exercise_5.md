@@ -82,7 +82,7 @@ ansible_become_password=admin
 
 - Create a playbook with `playbook.yaml` name with below content
 
-```python
+```yaml
 ---
 - name: Fetch show version from devices in dc_group
   hosts: vyos1-site2,vyos2-site2
