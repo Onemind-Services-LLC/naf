@@ -34,14 +34,14 @@ mkdir ansible_automation
 cd ansible_automation
 ```
 ![alt text](image-1.png)
-open the vscode in newly created directory for that lets run the below command
+- open the vscode in newly created directory for that lets run the below command
 ```sh
 code .
 ```
 ![alt text](image-2.png)
-it will ask you the password for the user, when u give the password, it should open vscode in `ansible_automation` folder
+- it will ask you the password for the user, when u give the password, it should open vscode in `ansible_automation` folder
 ![alt text](image-3.png)
-lets create a new file with `inventory.ini` with below content
+- lets create a new file with `inventory.ini` with below content
 ![alt text](image-4.png)
 ```ini
 local_test ansible_connection=local
