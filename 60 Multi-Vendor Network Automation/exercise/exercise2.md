@@ -377,15 +377,16 @@ Below is configuration done for VYOS. We can see configured commands for OSPF.
 
     ![alt text](image-23.png)
 
-    Open VYOS device CLI and run below command.
-
-    ![alt text](image-24.png)
-
-    Open PAN OS device and clic on network >> Virtual Routers >> More routing stats >> OSPF. We can see currently ospf is not configured.
+    Open arista device CLI and run below command.
 
     ![alt text](image-25.png)
 
+    Open PAN OS device and clic on network >> Virtual Routers >> More routing stats >> OSPF. We can see currently ospf is not configured.
+
+    ![alt text](image-24.png)
+
 6. We have successfully configured OSPF at New York site.
+
 
 
 
