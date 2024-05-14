@@ -1,3 +1,4 @@
+need to have panos and pan-python
 # Multi-Vendor Network Automation: OSPF Configuration
 
 *This repository contains a Python script (`ospf_config.py`) that automates OSPF configuration on Juniper EOS and Cisco IOS devices using the Netmiko library. Palo alto device with REST API.*
