@@ -316,11 +316,17 @@ if __name__ == "__main__":
     step1: Open EVENG lab.
     Open NXOS device CLI and run below command.
 
+    ```code
     show ip ospf neighbors 
+    ```
 
     ![alt text](image-2.png)
 
     Open Juniper device CLI and run below command.
+    
+    ```code
+    show ospf neighbor
+    ```
 
     ![alt text](image-3.png)
 
@@ -356,13 +362,17 @@ We are using Rest API for palo alto. Program will connect to palo alto and gener
     
     Open NXOS device CLI and run below command.
 
-    show ip ospf neighbors 
+    ```code
+    show ip ospf neighbors
+    ```
 
     ![alt text](image-11.png)
 
     Open Juniper device CLI and run below command.
 
+    ```code
     show ospf neighbor
+    ```
 
     ![alt text](image-12.png)
 
