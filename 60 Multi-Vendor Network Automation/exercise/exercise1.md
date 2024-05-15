@@ -1,20 +1,28 @@
 # Multi-Vendor Network Automation: Configuring VLAN on different vendor switches
 
 # Lab topology
-Please find below lab topology used for this lab demonstration.
+* Below is the lab topology used for this configuration demonstration.
+
 
 ![alt text](image.png)
 
 ### Problem Statement:
-* Configure VLAN on different vendor devices
+* Configure VLANs on devices from different vendors.
 
 ### Solution:
-* Writing python script to configure vlan and vlan description which is given as input by user.
+* Develop a Python script to configure VLANs and their descriptions on devices from various vendors.
+
+* The script should prompt the user to input the VLAN number and its description.
+
+* Upon receiving the input, it should establish SSH connections to the respective devices and apply the configurations accordingly.
+
+* The goal is to automate the VLAN configuration process across heterogeneous network infrastructure.
+
 
 ### Lab guide:
-Steps:
+Follow these steps to set up the lab environment:
 
-1. Create new file with name devices.py and below code.
+1. Create a new file named devices.py and add the following code:
 
 ```inventory
 # Define Arista device details
@@ -33,7 +41,7 @@ cisco_device = {
     'password': 'admin',
 }
 ```
-2. Create new file with name vlan.py and below code.
+2. Create a new file named vlan.py and add the following code:
 
 ```python
 import os
@@ -114,7 +122,7 @@ if __name__ == "__main__":
     if cisco_ssh:
         configure_device(cisco_ssh, cisco_config, "Cisco", vlan_number, vlan_description)
 ```
-3. Verifying current VLAN status in Cisco NXOS.
+3. Verify the current VLAN status in Cisco NX-OS by running the following command:
 
 ```code
 show vlan
@@ -122,42 +130,49 @@ show vlan
 
 ![alt text](image-27.png)
 
-4. Verifying current VLAN status in Arista OS.
+4. To verify the current VLAN status in Arista EOS, execute the following command:
 ```code
 show vlan
 ```
 
 ![alt text](image-28.png)
 
-5. Executing python script.
+5. Execute the Python script by running the following command:
 ```code
 python3 vlan.py
 ```
 
 ![alt text](image-29.png)
 
-6. Enter vlan number between 1-3096. hit enter
-    Enter description which you want to configure on interface. hit enter
+6. Please enter a VLAN number between 1 and 3096. This restriction is because Cisco NX-OS reserves VLANs above 3096.
+
+    After that, input the description you wish to configure on the interface, and hit Enter again.
+
+
+
+
 
 ![alt text](image-30.png)
 
-    Output description:
-    Below is arista_eos device configuration commands in output.
+Output Explanation:
+
+The provided output displays the configuration commands for the Arista EOS device. These commands represent the VLAN configuration applied to the device.
     
 ![alt text](image-31.png)
 
-    Below is cisco_ios device configuration commands in output.
+Below are the Cisco IOS device configuration commands displayed in the output. These commands represent the VLAN configuration applied to the device.
 
 ![alt text](image-32.png)
 
-7. Verifying current VLAN status in Cisco NXOS.
+7. After executing, you can verify the current VLAN status in Cisco NX-OS by running the following command:
 ```code
 show vlan
 ```
 
 ![alt text](image-33.png)
 
-8. Verifying current VLAN status in Arista OS.
+8. To verify the current VLAN status in Arista EOS, execute the following command:
+
 ```code
 show vlan
 ```

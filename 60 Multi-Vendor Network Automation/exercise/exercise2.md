@@ -2,27 +2,30 @@ need to have panos and pan-python
 # Multi-Vendor Network Automation: LAN OSPF Configuration New York site(Cisco NXOS, Juniper OS, PALO ALTO OS)
 
 # Lab topology
-Please find below lab topology used for this lab demonstration.
+
+Below is the lab topology used for this lab demonstration.
 
 ![alt text](image.png)
 
 # Devices used for current excercise:
-Below is the topology for the New York site which we are going to use for configuring OSPF.
+Below is the topology for the New York site, which we will use to configure OSPF.
 
 ![alt text](image-1.png)
 
 ### Problem Statement:
-* Configure dynamic Routing Protocol in New York site.
+* Configure a dynamic routing protocol in the New York site.
 
 ### Solution
-* We will create ospf between Cisco NXOS and Juniper OS device at newyork site.
-* We will create ospf between Juniper OS and Palo alto device at newyork site.
+* We will establish OSPF between a Cisco NX-OS device and a Juniper OS device at the New York site.
+* Also, we will configure OSPF between a Juniper OS device and a Palo Alto device at the New York site.
 
 ### Lab guide:
 Steps:
-1. Create device_vars_ny.py and add below config.
+1. Create a file named device_vars_ny.py and add the following configuration:
 
-Description: In below we are creating device variables file which will be having the three device details Nexus OS and palo Alto OS and Juniper OS. This file is having dictionary with three device IP details and username and password our script will authenticate to the devices using these details. 
+Description: In the code snippet below, we are creating a file to store device variables. This file will contain details for three devices: Nexus OS, Palo Alto OS, and Juniper OS.
+Each device is represented as a dictionary with its IP address, username, and password.
+These details will be utilized by our script to authenticate to the respective devices during the configuration process. 
 
 ```python
 #device_vars_ny.py
@@ -56,9 +59,11 @@ devices_vars = {
 }
 
 ```
-2. Create configurations_ny.py and add below command.
+2. Next, create a file named configurations_ny.py and add the following command:
 
-Description: Below is the configuration which we define for each device. In total we have three different devices. So we are defining three dictionary cisco_config, Juniper_config, Palo_alto_config. Each dictionary is having OSPF required information for configuring the OSPF on those devices.
+Description: This file contains configuration commands for setting up OSPF between Nexus OS, Juniper OS, and Palo Alto OS devices in the New York site.
+The commands are organized into lists corresponding to each device's configuration requirements.
+
 ```python
 # configurations.py
 
@@ -78,22 +83,21 @@ palo_alto_config= {
     'interfaces' :['ethernet1/1','ethernet1/3']
 }
 ```
-3. Create configure_ospf_ny.py and add below config
+3. Proceed by creating a file named configure_ospf_ny.py and add the following configuration:
 
-Description: Below mentioned code will configure the OSPF on all the devices. Below is the brief description about each function which is defined in the code.
+Description: This script configures OSPF on all devices in the network. Below is a brief description of each function defined in the code.
 
-check_ssh_connectivity: This function will check the connectivity status to the all devices before configuring the OSPF.
+check_ssh_connectivity: This function checks the connectivity status to all devices before configuring OSPF.
 
-apply_ospf_config_cisco: This function uses the netmiko library and configures the Cisco NXOS device.
+apply_ospf_config_cisco: This function utilizes the netmiko library to configure OSPF on Cisco NX-OS devices.
 
+apply_ospf_config_juniper: This function uses the netmiko library to configure OSPF on Juniper devices.
 
-apply_ospf_config_juniper: This function uses the netmiko library and configures the Juniper device.
+generate_palo_alto_api_key: This function connects to the Palo Alto device and generates the API token for the REST API.
 
-generate_palo_alto_api_key: This function connects to the Palo Alto device and generates the API token for rest API.
+modify_virtual_router: This function modifies the virtual router in Palo Alto and enables OSPF.
 
-modify_virtual_router: This function modifies the virtual router in the Palo Alto and enables the OSPF in it.
-
-commit_configuration: This function safe The PALO Alto configuration.
+commit_configuration: This function safely commits the Palo Alto configuration.
 
 ```python
 import requests
@@ -312,27 +316,36 @@ if __name__ == "__main__":
 
 ```
 
-3. Let's check the current status of the connectivity.
-    step1: Open EVENG lab.
-    Open NXOS device CLI and run below command.
+3. Checking Current Connectivity Status
+Open the EVE-NG lab environment.
 
-    ```code
+    Access the Cisco Nexus OS (NX-OS) device Command Line Interface (CLI).
+
+    Run the following command to display the OSPF neighbor information:
+
+```code
     show ip ospf neighbors 
-    ```
+```
 
-    ![alt text](image-2.png)
+![alt text](image-2.png)
 
-    Open Juniper device CLI and run below command.
+  Access the Juniper device Command Line Interface (CLI).
+
+Run the following command to display OSPF neighbor information:
     
-    ```code
+```code
     show ospf neighbor
-    ```
+```
 
-    ![alt text](image-3.png)
+![alt text](image-3.png)
 
-    Open PAN OS device and clic on network device. We can see currently ospf is not configured.
+Open a web browser and navigate to the PAN-OS device by accessing the following URL: https://172.16.14.212
 
-    ![alt text](image-4.png)
+Click on "Network" to access network-related configurations.
+
+Verify that OSPF configuration is not present or not enabled. This can be confirmed by checking the OSPF configuration section or by searching for OSPF-related settings.
+
+![alt text](image-4.png)
 
 
 4. Open VSCODE terminal and run below command.
@@ -380,6 +393,7 @@ We are using Rest API for palo alto. Program will connect to palo alto and gener
     Open PAN OS device and clic on network >> Virtual Routers >> More routing stats >> OSPF. We can see currently ospf is not configured.
 
     ![alt text](image-13.png)
+
 
 6. We have successfully configured OSPF at New York site.
 
