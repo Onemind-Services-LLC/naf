@@ -62,7 +62,45 @@ ansible_become_password=admin
         location: 'top'
         commit: 'true'
 ```
-3. Open VSCODE terminal. Run below command.
+
+3. Check the current connection status.
+
+![alt text](image-35.png)
+
+4. Open VSCODE terminal. Run below command.
 
 ansible-playbook add_block_policy.yml -i inventory.ini
 
+5. Ping is got blocked.
+
+![alt text](image-36.png)
+
+
+6. Open VSCODE terminal. Run below command.
+
+ansible-playbook remove_block_policy.yml -i inventory.ini
+
+```ansible
+---
+- name: Create block policy
+  hosts: ny
+  gather_facts: no
+  vars:
+    provider:
+      ip_address: "172.16.14.212"
+      username: "admin"
+      password: "Test12345"
+
+  tasks:
+    - name: Remove SSH inbound rule to Panorama device group
+      paloaltonetworks.panos.panos_security_rule:
+        provider: '{{ provider }}'
+        state: 'absent'
+        rule_name: 'block'
+        commit: 'true'
+```
+
+
+5. Connection is restored.
+
+![alt text](image-37.png)
