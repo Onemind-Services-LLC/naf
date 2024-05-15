@@ -71,7 +71,7 @@ ansible_become_password=admin
 
 ansible-playbook add_block_policy.yml -i inventory.ini
 
-5. Ping is got blocked.
+5. We can see we are able to ping the destination IP from source.
 
 ![alt text](image-36.png)
 
