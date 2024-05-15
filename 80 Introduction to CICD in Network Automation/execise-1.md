@@ -122,37 +122,34 @@ deploy:
   hosts: localhost
   connection: local
   gather_facts: true
+  vars:
+    commit_sha: "{{ lookup('ansible.builtin.env', 'CI_COMMIT_SHORT_SHA') }}"
+    commit_author: "{{ lookup('ansible.builtin.env', 'CI_COMMIT_AUTHOR' ) }}"
+    scm_url: "{{ lookup('ansible.builtin.env', 'CI_PROJECT_URL' ) | replace('gitlab-ce','172.16.14.202') }}"
+    project_name: "{{ lookup('ansible.builtin.env', 'CI_PROJECT_NAME' ) }}"
+    branch_name: "{{ lookup('ansible.builtin.env', 'CI_COMMIT_REF_NAME' ) }}"
   tasks:
-    - name: Return motd to registered var
-      ansible.builtin.command: printenv
-      register: mymotd
-      
-    - name: debug
-      debug:
-        msg: "{{ mymotd }}"
-
     - name: Create Project
       awx.awx.tower_project:
-        name: "test_project_name"
-        description: "Commit Author author_Name_here SHA commit_sh_here" # make it dynamic
+        name: "{{ project_name }}_{{ branch_name }}_project"
+        description: "Commit Author {{ commit_author }} SHA {{ commit_sha }}"
         scm_update_on_launch: true
         scm_delete_on_update: true
         credential: "gitlab-creds_details" 
         scm_type: git
-        scm_url: "http://172.16.14.202/ansible/cicd_automation_lab.git" # make it dynamic
-        scm_branch: "master" # make it dynamic
+        scm_url: "{{ scm_url }}"
+        scm_branch: "{{ commit_sha }}"
         timeout: 3600
         wait: true
         state: present
         validate_certs: false
 
-
     - name: Create Job Template
       awx.awx.tower_job_template:
-        name: "test_project_name_template"
+        name: "{{ project_name }}_{{ branch_name }}_template"
         job_type: run
         inventory: "eve_inventory"
-        project: "test_project_name"
+        project: "{{ project_name }}_{{ branch_name }}_project"
         playbook: "playbook.yaml"
         validate_certs: false
         credentials:
@@ -219,3 +216,9 @@ deploy:
           (?i)Username: "{{ gitlab_username }}"
           (?i)Password: "{{ gitlab_password }}"
 ```
+
+Once you commit this code a new project and a template gets created in ansible tower
+![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/1fcdb5eb-194a-4193-b2c8-e70743eed8e6)
+
+![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/40ed7795-9b7f-4f54-b187-e592e2a1e8a1)
+
