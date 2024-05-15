@@ -87,7 +87,7 @@ arista_config ={
 palo_alto_config= {
     'device_ip': '172.16.14.213',
     'router_id' : "10.10.10.21",
-    'interfaces' :['ethernet1/1']
+    'interfaces' :['ethernet1/1','ethernet1/3']
 }
 ```
 3. Create config_sf.py and add below config

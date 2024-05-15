@@ -75,7 +75,7 @@ juniper_config = {
 palo_alto_config= {
     'device_ip': '172.16.14.212',
     'router_id' : "10.10.10.13",
-    'interfaces' :['ethernet1/1']
+    'interfaces' :['ethernet1/1','ethernet1/3']
 }
 ```
 3. Create configurations_ny.py and add below config
