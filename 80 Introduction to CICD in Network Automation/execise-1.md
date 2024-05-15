@@ -217,8 +217,10 @@ deploy:
           (?i)Password: "{{ gitlab_password }}"
 ```
 
-Once you commit this code a new project and a template gets created in ansible tower
-![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/1fcdb5eb-194a-4193-b2c8-e70743eed8e6)
+Once you commit the code a new project and a template gets created in ansible tower
 
-![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/40ed7795-9b7f-4f54-b187-e592e2a1e8a1)
+![alt text](image-27.png)
 
+![alt text](image-26.png)
+
+Now you can execute the template like we have executed in the last exercise.

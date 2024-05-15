@@ -46,13 +46,14 @@ FROM python:3
 RUN apt update
 RUN apt install iputils-ping -y
 RUN apt install git -y
-RUN pip install rich ansible netmiko pexpect pandas
+RUN pip install rich ansible netmiko pexpect pandas pan-python pandevice
+RUN ansible-galaxy collection install paloaltonetworks.panos
 CMD ["bash"]
 ```
 
 Your file should look like this:
 
-![alt text](image-23.png)
+![alt text](image-24.png)
 
 Now, let's open a new terminal window in VS Code:
 
