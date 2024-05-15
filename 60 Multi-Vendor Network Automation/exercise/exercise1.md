@@ -116,13 +116,23 @@ if __name__ == "__main__":
 ```
 3. Verifying current VLAN status in Cisco NXOS.
 
+```code
+show vlan
+```
+
 ![alt text](image-27.png)
 
 4. Verifying current VLAN status in Arista OS.
+```code
+show vlan
+```
 
 ![alt text](image-28.png)
 
 5. Executing python script.
+```code
+python3 vlan.py
+```
 
 ![alt text](image-29.png)
 
@@ -141,9 +151,14 @@ if __name__ == "__main__":
 ![alt text](image-32.png)
 
 7. Verifying current VLAN status in Cisco NXOS.
+```code
+show vlan
+```
 
 ![alt text](image-33.png)
 
 8. Verifying current VLAN status in Arista OS.
-
+```code
+show vlan
+```
 ![alt text](image-34.png)

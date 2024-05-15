@@ -64,21 +64,26 @@ ansible_become_password=admin
 ```
 
 3. Check the current connection status.
+  1. Login to nexus os and run below command.
+
+```code
+ping 2.2.2.2 source 1.1.1.1
+```
 
 ![alt text](image-35.png)
 
 4. Open VSCODE terminal. Run below command.
 
+```code
 ansible-playbook add_block_policy.yml -i inventory.ini
+```
 
 5. We can see we are able to ping the destination IP from source.
 
 ![alt text](image-36.png)
 
 
-6. Open VSCODE terminal. Run below command.
-
-ansible-playbook remove_block_policy.yml -i inventory.ini
+6. Open VSCODE terminal. add new file remove_block_policy.yml. add below code.
 
 ```ansible
 ---
@@ -100,7 +105,16 @@ ansible-playbook remove_block_policy.yml -i inventory.ini
         commit: 'true'
 ```
 
+7. Open VSCODE terminal. Run below command.
 
-5. Connection is restored.
+```code
+ansible-playbook remove_block_policy.yml -i inventory.ini
+```
+
+8. Again login to nexus device and configure below. Run below command. Now we are able ping device.
+
+```code
+ping 2.2.2.2 source 1.1.1.1
+```
 
 ![alt text](image-37.png)

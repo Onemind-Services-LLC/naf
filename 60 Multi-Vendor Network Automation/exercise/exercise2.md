@@ -78,7 +78,7 @@ palo_alto_config= {
     'interfaces' :['ethernet1/1','ethernet1/3']
 }
 ```
-3. Create configurations_ny.py and add below config
+3. Create configure_ospf_ny.py and add below config
 
 Description: Below mentioned code will configure the OSPF on all the devices. Below is the brief description about each function which is defined in the code.
 
@@ -336,8 +336,9 @@ if __name__ == "__main__":
 
 
 4. Open VSCODE terminal and run below command.
-
-    python3 config_ny.py
+```code
+python3 configure_ospf_ny.py
+```
 
 ![alt text](image-5.png)
 
