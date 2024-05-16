@@ -6,7 +6,6 @@ In the next few exercises, we will be using GitLab CI. For this, we need a GitLa
 
 ### Setting up Runner
 
-- 
 ```sh
 sudo apt-get update
 sudo apt-get install python-is-python3
