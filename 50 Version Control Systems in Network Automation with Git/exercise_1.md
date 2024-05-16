@@ -119,7 +119,7 @@ with ConnectHandler(**router_details) as ssh:
     ssh.save_config()
     # Check interface configuration after changes
     print("Interface configuration after changes:")
-    print(ssh.send_command("sh run int gig4"))
+    print(ssh.send_command("sh run int lo100"))
 
 print("Router configuration has been updated.")
 ```
@@ -166,6 +166,8 @@ print("Router configuration has been updated.")
    
    
       This will execute the `restore_config.py` program within the Docker container, allowing you to check the status of the device.
+
+   ![alt text](image-65.png)
    
    #### Note: When prompted, ensure to pass the GitLab access token for authentication.
 
