@@ -22,7 +22,54 @@
 ### Lab guide:
 Follow these steps to set up the lab environment:
 
-1. Create a new file named devices.py and add the following code:
+To do this exercise create a folder `multivendor_automation` in user's home directory using
+- In last excercise we were in containers shell to exit from there run the exit command
+```sh
+exit
+```
+![alt text](image-38.png)
+- To create a multivendor_automation directory in users home directory run the below commands
+```sh
+cd ~
+mkdir multivendor_automation
+cd multivendor_automation
+```
+![alt text](image-39.png)
+
+- Open the vscode in newly created directory for that lets run the below command
+```sh
+code .
+```
+![alt text](image-40.png)
+
+- It will ask you the password for the user, when u give the password, it should open vscode in `ansible_automation` folder
+![alt text](image-3.png)
+
+1 . Open VSCODE and open terminal.
+
+![alt text](image-41.png)
+
+2. Run the container with the appropriate bind mount using the following command:
+
+```sh
+docker container run -it -v $(pwd):/multivendor_automation ansible_lab
+```
+If you encounter issues while creating the Docker image, replace the image name with the one we have already pushed to Docker registry. Use the image name onemindservices2024/naf2024 instead of ansible_lab. The new command will look like this:
+```sh
+docker container run -it -v $(pwd):/multivendor_automation onemindservices2024/naf2024
+```
+![alt text](image-8.png)
+
+3. Navigate to the `/ansible_automation` directory within the container:
+
+```sh
+cd multivendor_automation
+```
+
+![alt text](image-9.png)
+
+
+4. Create a new file named devices.py and add the following code:
 
 ```inventory
 # Define Arista device details
@@ -41,7 +88,7 @@ cisco_device = {
     'password': 'admin',
 }
 ```
-2. Create a new file named vlan.py and add the following code:
+5. Create a new file named vlan.py and add the following code:
 
 ```python
 import os
@@ -122,7 +169,7 @@ if __name__ == "__main__":
     if cisco_ssh:
         configure_device(cisco_ssh, cisco_config, "Cisco", vlan_number, vlan_description)
 ```
-3. Verify the current VLAN status in Cisco NX-OS by running the following command:
+6. Verify the current VLAN status in Cisco NX-OS by running the following command:
 
 ```code
 show vlan
@@ -130,21 +177,22 @@ show vlan
 
 ![alt text](image-27.png)
 
-4. To verify the current VLAN status in Arista EOS, execute the following command:
+7. To verify the current VLAN status in Arista EOS, execute the following command:
 ```code
 show vlan
 ```
 
 ![alt text](image-28.png)
 
-5. Execute the Python script by running the following command:
+
+8. Execute the Python script by running the following command:
 ```code
 python3 vlan.py
 ```
 
 ![alt text](image-29.png)
 
-6. Please enter a VLAN number between 1 and 3096. This restriction is because Cisco NX-OS reserves VLANs above 3096.
+9. Please enter a VLAN number between 1 and 3096. This restriction is because Cisco NX-OS reserves VLANs above 3096.
 
     After that, input the description you wish to configure on the interface, and hit Enter again.
 
@@ -164,14 +212,18 @@ Below are the Cisco IOS device configuration commands displayed in the output. T
 
 ![alt text](image-32.png)
 
-7. After executing, you can verify the current VLAN status in Cisco NX-OS by running the following command:
+Below is the validation done by python program.
+
+![alt text](image-42.png)
+
+10. After executing, you can verify the current VLAN status in Cisco NX-OS by running the following command:
 ```code
 show vlan
 ```
 
 ![alt text](image-33.png)
 
-8. To verify the current VLAN status in Arista EOS, execute the following command:
+11. To verify the current VLAN status in Arista EOS, execute the following command:
 
 ```code
 show vlan

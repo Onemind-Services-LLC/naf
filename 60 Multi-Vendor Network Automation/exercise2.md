@@ -20,7 +20,7 @@ Below is the topology for the New York site, which we will use to configure OSPF
 
 ### Lab guide:
 Steps:
-1. Create a file named device_vars_ny.py and add the following configuration:
+1. Create a file named 'device_vars_ny.py' and add the following configuration:
 
 Description: In the code snippet below, we are creating a file to store device variables. This file will contain details for three devices: Nexus OS, Palo Alto OS, and Juniper OS.
 Each device is represented as a dictionary with its IP address, username, and password.
@@ -58,7 +58,7 @@ devices_vars = {
 }
 
 ```
-2. Next, create a file named configurations_ny.py and add the following command:
+2. Next, create a file named 'configurations_ny.py' and add the following command:
 
 Description: This file contains configuration commands for setting up OSPF between Nexus OS, Juniper OS, and Palo Alto OS devices in the New York site.
 The commands are organized into lists corresponding to each device's configuration requirements.
@@ -82,7 +82,7 @@ palo_alto_config= {
     'interfaces' :['ethernet1/1','ethernet1/3']
 }
 ```
-3. Proceed by creating a file named configure_ospf_ny.py and add the following configuration:
+3. Proceed by creating a file named 'configure_ospf_ny.py' and add the following configuration:
 
 Description: This script configures OSPF on all devices in the network. Below is a brief description of each function defined in the code.
 
@@ -347,7 +347,7 @@ Verify that OSPF configuration is not present or not enabled. This can be confir
 ![alt text](image-4.png)
 
 
-4. Open VSCODE terminal and run below command.
+4. Open VSCODE terminal and run below command. You should see all devices configured successfully. If you see any connection failed error. Please rerun below command.
 ```code
 python3 configure_ospf_ny.py
 ```
@@ -395,6 +395,3 @@ We are using Rest API for palo alto. Program will connect to palo alto and gener
 
 
 6. We have successfully configured OSPF at New York site.
-
-
-

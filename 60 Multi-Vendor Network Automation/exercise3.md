@@ -14,15 +14,17 @@ Below is the topology for the San Francisco site which we are going to use for c
 * Configure dynamic Routing Protocol in San Francisco site.
 
 ### Solution
-* We will create ospf between VYOS and Arista OS device at newyork site.
-* We will create ospf between Arista OS and Palo alto device at newyork site.
+* We will create ospf between VYOS and Arista OS device at San Francisco site.
+* We will create ospf between Arista OS and Palo alto device at San Francisco site.
 
 
 ### Lab guide:
 Steps:
-1. Create device_vars_sf.py and add below config.
+1. Create a file named 'device_vars_sf.py' and add the following configuration:
 
-Description: In below we are creating device variables file which will be having the three device details Nexus OS and palo Alto OS and Juniper OS. This file is having dictionary with three device IP details and username and password our script will authenticate to the devices using these details. 
+Description: In the code snippet below, we are creating a file to store device variables. This file will contain details for three devices: Arista OS, Palo Alto OS, and VYOS OS.
+Each device is represented as a dictionary with its IP address, username, and password.
+These details will be utilized by our script to authenticate to the respective devices during the configuration process.  
 
 ```python
 # device_vars_sf.py
@@ -63,9 +65,11 @@ devices_vars = {
     }
 }
 ```
-2. Create configurations_sf.py and add below command.
+2. Next, create a file named 'configurations_sf.py' and add the following command:
 
-Description: Below is the configuration which we define for each device. In total we have three different devices. So we are defining three dictionary vyos1_config, vyos2_config, arista_config, Palo_alto_config. Each dictionary is having OSPF required information for configuring the OSPF on those devices.
+Description: This file contains configuration commands for setting up OSPF between Arista OS, Palo Alto OS, and VYOS OS devices in the San Francisco.
+The commands are organized into lists corresponding to each device's configuration requirements.
+
 ```python
 # configurations_sf.py
 
@@ -89,22 +93,19 @@ palo_alto_config= {
     'interfaces' :['ethernet1/1','ethernet1/3']
 }
 ```
-3. Create config_sf.py and add below config
+3. Proceed by creating a file named 'configure_ospf_sf.py' and add the following configuration:
 
-Description: Below mentioned code will configure the OSPF on all the devices. Below is the brief description about each function which is defined in the code.
+Description: This script configures OSPF on all devices within the San Francisco site. It contains a series of functions tailored to handle specific tasks required for OSPF configuration across multiple vendors.
 
-check_ssh_connectivity: This function will check the connectivity status to the all devices before configuring the OSPF.
+Functions:
+- check_ssh_connectivity: This function verifies the SSH connectivity status to all devices before initiating OSPF configuration.
+- apply_ospf_config_vyos: Utilizing the netmiko library, this function configures OSPF on the VyOS device.
+- apply_ospf_config_arista: Leveraging the netmiko library, this function configures OSPF on the Arista device.
+- generate_palo_alto_api_key: Establishes a connection to the Palo Alto device and generates the API token required for REST API operations.
+- modify_virtual_router: Modifies the virtual router settings on the Palo Alto device to enable OSPF functionality.
+- commit_configuration: Safely saves the configuration changes made on the Palo Alto device.
 
-apply_ospf_config_vyos: This function uses the netmiko library and configures the VYOS device.
-
-
-apply_ospf_config_arista: This function uses the netmiko library and configures the arista device.
-
-generate_palo_alto_api_key: This function connects to the Palo Alto device and generates the API token for rest API.
-
-modify_virtual_router: This function modifies the virtual router in the Palo Alto and enables the OSPF in it.
-
-commit_configuration: This function safe The PALO Alto configuration.
+Note: This script orchestrates OSPF configuration seamlessly across various devices, ensuring consistent and reliable routing functionality within the San Francisco site.
 
 ```python
 import requests
@@ -199,7 +200,6 @@ def generate_palo_alto_api_key(device_name, device_info, ospf_config):
             print(f"API key generated successfully for {device_name} ({device_info['host']}).")
             # Modify virtual router to enable OSPF
             vr_name = "default"  # Modify accordingly
-            modify_virtual_router(api_endpoint, api_key, vr_name, ospf_config)
             return api_key
         else:
             print(f"Failed to generate API key for {device_name} ({device_info['host']}): No API key found.")
@@ -327,28 +327,42 @@ if __name__ == "__main__":
 
 ```
 
-3. Let's check the current status of the connectivity.
-    step1: Open EVENG lab.
-    Open VYOS device CLI and run below command.
+3.Checking Current Connectivity Status
+Open the EVE-NG lab environment.
 
+Access the Cisco VYOS OS device Command Line Interface (CLI).
+
+Run the following command to display the OSPF neighbor information:
+
+```code
+show ip ospf neighbor
+```
+![alt text](image-15.png)
+
+Access the Arista OS device Command Line Interface (CLI).
+
+Run the following command to display the OSPF neighbor information:
+
+```code
     show ip ospf neighbor
+```
 
-    ![alt text](image-15.png)
+![alt text](image-16.png)
 
-    Open arista device CLI and run below command.
+Open a web browser and navigate to the PAN-OS device by accessing the following URL: https://172.16.14.213
 
-    show ip ospf neighbor
+Click on "Network" to access network-related configurations.
 
-    ![alt text](image-16.png)
+Verify that OSPF configuration is not present or not enabled. This can be confirmed by checking the OSPF configuration section or by searching for OSPF-related settings.
 
-    Open PAN OS device and clic on network device. We can see currently ospf is not configured.
-
-    ![alt text](image-17.png)
+![alt text](image-17.png)
 
 
 4. Open VSCODE terminal and run below command.
 
-    python3 config_sf.py
+```code
+python3 configure_ospf_sf.py
+```
 
 ![alt text](image-18.png)
 
@@ -371,16 +385,23 @@ Below is configuration done for VYOS. We can see configured commands for OSPF.
 
 5. Verifying OSPF configuration.
     
-    Open VYOS device CLI and run below command.
-    show ip ospf neighbors 
+Open VYOS device CLI and run below command.
 
-    ![alt text](image-23.png)
+```code
+show ip ospf neighbors 
+```
 
-    Open arista device CLI and run below command.
+![alt text](image-23.png)
 
-    ![alt text](image-25.png)
+Access the Arista OS device Command Line Interface (CLI).
 
-    Open PAN OS device and clic on network >> Virtual Routers >> More routing stats >> OSPF. We can see currently ospf is not configured.
+![alt text](image-25.png)
+
+Open a web browser and navigate to the PAN-OS device by accessing the following URL: https://172.16.14.213
+
+Click on "Network" to access network-related configurations.
+
+Verify that OSPF configuration is not present or not enabled. This can be confirmed by checking the OSPF configuration section or by searching for OSPF-related settings.
 
     ![alt text](image-24.png)
 

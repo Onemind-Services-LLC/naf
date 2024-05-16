@@ -10,14 +10,14 @@ Please find below lab topology used for this lab demonstration.
 ![alt text](image-26.png)
 
 ### Problem Statement:
-* Loopback in NXOS in New York(loopback0 1.1.1.1) and Loopback in VYOS in San Francisco(loopback0 2.2.2.2) are able to communicate
+* The loopback interface configured on the NXOS device in New York (1.1.1.1) and the loopback interface configured on the VYOS device in San Francisco (2.2.2.2) are successfully able to communicate with each other.
 
 ### Solution
-* Configure block policy in PALO ALTO to block communication between mentioned source and destination.
+* To address the issue of communication between the loopback interfaces in New York and San Francisco, we will configure a block policy in the Palo Alto firewall. This policy will effectively block communication between the specified source and destination IP addresses, ensuring that the loopback interfaces cannot communicate with each other.
 
 ### Lab guide:
 Steps:
-1. Create inventory.ini and add below config.
+1. Create a file named 'inventory.ini' and add the following configuration:
 
 ```inventory
 [ny]
@@ -35,7 +35,7 @@ ansible_become_method=enable
 ansible_become_password=admin
 ```
 
-2. Create add_block_policy.yml and add below config.
+2. Next, create a file named 'add_block_policy.yml' and add the following ansible code:
 
 ```ansible
 ---
@@ -64,7 +64,7 @@ ansible_become_password=admin
 ```
 
 3. Check the current connection status.
-  1. Login to nexus os and run below command.
+  1. Login to the Nexus OS and run the following command.
 
 ```code
 ping 2.2.2.2 source 1.1.1.1
@@ -78,7 +78,7 @@ ping 2.2.2.2 source 1.1.1.1
 ansible-playbook add_block_policy.yml -i inventory.ini
 ```
 
-5. We can see we are able to ping the destination IP from source.
+5. We can see connectivity is blocked after executing above command.
 
 ![alt text](image-36.png)
 
