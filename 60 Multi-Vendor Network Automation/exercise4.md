@@ -83,7 +83,7 @@ ansible-playbook add_block_policy.yml -i inventory.ini
 ![alt text](image-36.png)
 
 
-6. Open VSCODE terminal. add new file remove_block_policy.yml. add below code.
+6. Open VSCODE terminal. add new file 'remove_block_policy.yml'. add below code.
 
 ```ansible
 ---
