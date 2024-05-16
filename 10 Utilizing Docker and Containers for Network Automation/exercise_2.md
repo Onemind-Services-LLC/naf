@@ -78,3 +78,5 @@ You should see a package named `ansible_lab` in the list.
 ![alt text](image-21.png)
 
 That's it! We've successfully made our special package using the Dockerfile.
+
+If you encounter any issues while creating the Docker image, don't worry. We've already built an image and pushed it to Docker Hub, which you can use directly. We'll demonstrate this step in future lab exercises.
