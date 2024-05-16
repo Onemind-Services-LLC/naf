@@ -1,6 +1,6 @@
 ## Exercise:
 ### Problem Statement:
-Write the parsed output in the previous exercise to an excel sheet.
+Write the parsed output in the previous exercise to an excel/CSV file
 
 ### Solution
 - Create a python file with name 'parse_save.py'
@@ -47,6 +47,8 @@ if __name__ == "__main__":
 ![alt text](image-18.png)
 
 ![alt text](image-19.png)
+
+![alt text](image-21.png)
 
 - Extra challenge:-
 - - Execute multiple commands and save the parsed output in seperate tabs of excel. One tab for each command.

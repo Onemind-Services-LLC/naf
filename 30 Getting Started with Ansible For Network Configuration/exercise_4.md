@@ -1,4 +1,8 @@
+# OBJECTIVE:
 ### Modify the previous playbook to save output of all commands in a single file
+
+# SOLUTION:
+- lets create playbook in your current working directory (that is `ansible_automation`)  create a file `multi_cmnd_single.yaml` with the below content
 
 ```yaml
 ---
@@ -34,7 +38,7 @@
 ### Execute the above playbook
 
 ```
-ansible-playbook -i inventory.ini your_playbook.yml
+ansible-playbook -i inventory.ini multi_cmnd_single.yaml
 ```
 
 ![alt text](image-31.png)

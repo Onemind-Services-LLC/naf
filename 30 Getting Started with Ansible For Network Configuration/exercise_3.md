@@ -1,4 +1,8 @@
+# OBJECTIVE:
 ### Modify the previous playbook to run multple commands
+
+### Solution
+- lets create playbook in your current working directory (that is `ansible_automation`)  create a file `multi_cmnd.yaml` with the below content
 
 ```yaml
 ---
@@ -36,7 +40,7 @@
 ### Execute the above playbook
 
 ```
-ansible-playbook -i inventory.ini your_playbook.yml
+ansible-playbook -i inventory.ini multi_cmnd.yaml
 ```
 
 Make sure the playbook file and the inventory file are in the same directory, or provide the correct path to the playbook file if it's in a different directory.
@@ -44,6 +48,6 @@ Make sure the playbook file and the inventory file are in the same directory, or
 output
 ![alt text](image-29.png)
 
+Your output should look like this or similar to this
 
 ![alt text](image-30.png)
-#TODO: change the inventory ss bcz vyos site2 issue.

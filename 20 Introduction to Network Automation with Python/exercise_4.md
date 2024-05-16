@@ -24,6 +24,8 @@ if __name__ == "__main__":
 
 ```
 
+Your output should look like this or similar to this
+
 ![alt text](image-15.png)
 
 #### Try parsing another command like "show ip interface brief"
@@ -43,7 +45,8 @@ if __name__ == "__main__":
         print(output)
 ```
 
-Expected output
+
+Your output should look like this or similar to this
 
 ```yaml
 [
@@ -57,4 +60,3 @@ Expected output
 - - Try to execute multiple commands together on same and then on seperate devices.
   - To complete further, you can chose combination of commands and different platforms.
   - Try logging the parsed output to a single text file or to seperate text file, one for each command or one for each host instead.
- 

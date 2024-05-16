@@ -1,6 +1,6 @@
 In the last exercise, we installed the Remote SSH plugin, allowing us to access the development server via the terminal.
 
-## Exercise-1: How can Docker be installed on Development Server?
+## Exercise: Install Docker on Development Server?
 
 Now, let's install Docker in our development environment, which we'll use in the upcoming exercises. Follow these commands:
 

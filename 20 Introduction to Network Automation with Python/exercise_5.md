@@ -61,7 +61,9 @@ if __name__ == "__main__":
         print("======================================")
 ```
 
-The output should capture the pre and post state of the interface descriptions.
+The output should capture the pre and post state of the interface descriptions.  
+Your output should look like this or similar to this
+
 
 ```txt
 -------------------------------------------------------------------------------

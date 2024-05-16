@@ -1,26 +1,7 @@
-<<<<<<< HEAD
-```yaml
-- name: Backup configuration of devices in dc_group
-  hosts: nexus-site1
-  gather_facts: no
-  tasks:
-    - name: PyATS Parser
-      ansible.utils.cli_parse:
-        command: show version
-        parser:
-          name: ansible.netcommon.ntc_templates
-      register: parsed_data
-    
-    - debug:
-        msg: 'uptime is {{parsed_data["parsed"][0]["uptime"] }}'
-=======
-# Parse command outputs with Ansible using textfsm
->>>>>>> b7e1729b3787077e01d62312b3f0a163f7f5c6c3
+# Write a playbook to parse output of commands
+# SOLUTION:
+- lets create playbook in your current working directory (that is `ansible_automation`)  create a file `parser.yaml` with the below content
 
-<<<<<<< HEAD
-```
-![alt text](image-35.png)
-=======
 
 ```yaml
 - name: Parse command output
@@ -304,4 +285,3 @@ nexus-site1                : ok=2    changed=0    unreachable=0    failed=0    s
 
 root@5e9393be42b8:/python_automation# 
 ```
->>>>>>> b7e1729b3787077e01d62312b3f0a163f7f5c6c3

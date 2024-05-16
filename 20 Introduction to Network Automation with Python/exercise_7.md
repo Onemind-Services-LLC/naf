@@ -108,6 +108,8 @@ print(template)
 print(template.render(variable_data))
 
 ```
+Your output should look like this or similar to this
+
 ```output
 {
     'hostname': 'my-rtr-01',

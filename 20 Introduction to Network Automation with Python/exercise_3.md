@@ -111,7 +111,7 @@ if __name__ == "__main__":
 
 ```
 ![alt text](image-11.png)
-- Execute the `python run_multi_command.py` in the container.
+- Execute the `python run_multi_command.py` in the container.  
 You can see the output below.
 
 ```txt
@@ -214,5 +214,4 @@ Interface            IP Address      Interface Status
 Vlan10               192.168.1.1     protocol-up/link-up/admin-up       
 Eth1/1               10.10.10.2      protocol-up/link-up/admin-up       
 Eth1/3               10.10.10.6      protocol-up/link-up/admin-up       
-
 ```

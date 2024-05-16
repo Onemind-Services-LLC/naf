@@ -10,7 +10,7 @@ Write a Python program that takes the following as user input:
 
 Then, it runs the following commands on a device:
 - show version
-- show IP interface brief
+- show IP interface brief  
 
 Use the Docker environment created in the previous exercise.
 
@@ -53,7 +53,7 @@ if __name__ == "__main__":
         "show version",
         "show ip interface brief",
     ]
-    
+
     device_output = run_commands_on_device(device_info, commands_to_run)
     if device_output:
         print("Device Output:")
@@ -68,6 +68,6 @@ This program connects to a device using the netmiko library and runs specified c
 
 ![alt text](image-13.png)
 
-You can see the output below.
+You can see an output similar to below.
 
 ![alt text](image-14.png)

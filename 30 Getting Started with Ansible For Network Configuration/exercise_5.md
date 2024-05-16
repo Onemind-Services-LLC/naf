@@ -4,6 +4,11 @@
 - However, there are pre build modules that specifically takes the backup of show run and save them to specific directory
 - These modules provide a layer of abstraction
 
+
+# SOLUTION:
+- lets create playbook in your current working directory (that is `ansible_automation`)  create a file `vyos_backup.yaml` with the below content
+
+
 ```yaml
 ---
 - name: Backup configuration of devices in dc_group
@@ -29,7 +34,7 @@ https://docs.ansible.com/ansible/latest/collections/index.html
 ### Execute the above playbook
 
 ```
-ansible-playbook -i inventory.ini your_playbook.yml
+ansible-playbook -i inventory.ini vyos_backup.yaml
 ```
 
 Make sure the playbook file and the inventory file are in the same directory, or provide the correct path to the playbook file if it's in a different directory.

@@ -2,47 +2,49 @@
 ### Problem Statement:
 ### Create an Ansible inventory that includes the following hosts
 
-| Device name  | Device Group |      IP         | username | password | network_os |
-|--------------|--------------|-----------------|----------|----------|------------|
-| nexus-site1  | ny           | 172.16.14.210   | admin    | admin    |   nxos     |
-| vmx1-site1   | ny           | 172.16.14.211   | root     | Juniper  |   junos    |
-| pa-site1     | ny           | 172.16.14.212   | admin    | Test12345|   panos    |
-| pa-site2     | sf           | 172.16.14.213   | admin    | Test12345|   panos    |
-| arista1-site2| sf           | 172.16.14.214   | admin    | password |   eos      |
-| vyos1-site1  | sf           | 172.16.14.215   | vyos     | vyos     |   vyos     |
-| vyos2-site2  | sf           | 172.16.14.216   | vyos     | vyos     |   vyos     |
+| Device name  | Device Group |      IP       | username | password | network_os |
+|--------------|--------------|---------------|----------|----------|------------|
+| nexus-site1  |      ny      | 172.16.14.210 |   admin  | admin    |   nxos     |
+| vmx1-site1   |      ny      | 172.16.14.211 |   root   | Juniper  |   junos    |
+| pa-site1     |      ny      | 172.16.14.212 |   admin  | Test12345|   panos    |
+| pa-site2     |      sf      | 172.16.14.213 |   admin  | Test12345|   panos    |
+| arista1-site2|      sf      | 172.16.14.214 |   admin  | password |   eos      |
+| vyos1-site1  |      sf      | 172.16.14.215 |   vyos   | vyos     |   vyos     |
+| vyos2-site2  |      sf      | 172.16.14.216 |   vyos   | vyos     |   vyos     |
 
 
 For the host named "local_test," ensure it uses a local connection method. Additionally  
 Organize the hosts into groups:
-
 - ny
 - sf
 - Include variables such as "connection," "network_os," "username," "password," and "become_method" within the inventory.
 
 ### Solution
-to do this exercise create a folder `ansible_automation` in user's home directory using
-- in last excercise we were in containers shell to exit from there run the exit command
+To do this exercise create a folder `ansible_automation` in user's home directory using
+- In last excercise we were in containers shell to exit from there run the exit command
 ```sh
 exit
 ```
 ![alt text](image.png)
-- to create a ansible_automation directory in users home directory run the below commands
+- To create a ansible_automation directory in users home directory run the below commands
 ```sh
 cd ~
 mkdir ansible_automation
 cd ansible_automation
 ```
 ![alt text](image-1.png)
-- open the vscode in newly created directory for that lets run the below command
+- Open the vscode in newly created directory for that lets run the below command
 ```sh
 code .
 ```
 ![alt text](image-2.png)
-- it will ask you the password for the user, when u give the password, it should open vscode in `ansible_automation` folder
+
+- It will ask you the password for the user, when u give the password, it should open vscode in `ansible_automation` folder
 ![alt text](image-3.png)
-- lets create a new file with `inventory.ini` with below content
+
+- Lets create a new file with `inventory.ini` with below content  
 ![alt text](image-4.png)
+
 ```ini
 local_test ansible_connection=local
 
@@ -127,4 +129,6 @@ sf:
       ansible_network_os: vyos
 
 ```
+Your output should look like this or similar to this
+
 ![alt text](image-27.png)

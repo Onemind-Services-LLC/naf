@@ -66,7 +66,6 @@ if __name__ == '__main__':
 ```
 
 - Create a new playbook called "retreive_interfaces.yaml" in the same level as library folder
-- 
 
 ```yaml
 ---

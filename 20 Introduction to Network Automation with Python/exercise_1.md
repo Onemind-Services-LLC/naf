@@ -84,7 +84,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 ```
 
 In this program:
@@ -132,6 +131,8 @@ cd /python_automation
 ```sh
 python device_status.py
 ```
+
+Your output should look like this or similar to this
 
 ![alt text](image-12.png)
 
