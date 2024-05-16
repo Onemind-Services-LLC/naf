@@ -117,6 +117,11 @@ To run the program in a Docker container, follow these steps:
 ```sh
 docker container run -it -v $(pwd):/python_automation ansible_lab
 ```
+If you encounter issues while creating the Docker image, replace the image name with the one we have already pushed to Docker registry. Use the image name onemindservices2024/naf2024 instead of ansible_lab. The new command will look like this:
+```sh
+docker container run -it -v $(pwd):/python_automation onemindservices2024/naf2024
+```
+
 
 ![alt text](image-6.png)
 
