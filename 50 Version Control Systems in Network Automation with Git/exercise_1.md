@@ -44,19 +44,18 @@ interface Loopback0
 ip address 1.1.1.1 255.255.255.0
 no shutdown
 ```
-  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/4efebc68-3c66-4b4f-b9da-0ce86f0e6903)
-
+![alt text](4efebc68-3c66-4b4f-b9da-0ce86f0e6903.png)
 
 ### 3. Create an Access Token:
 
 - Go to the project's settings and click on "Access Tokens".
 - Give a name to the token "access-token-for-python" and generate a new access token.
 
-  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/d9ded552-6e91-4728-a52d-3e9b974c2645)
+![alt text](d9ded552-6e91-4728-a52d-3e9b974c2645.png)
 
 - Copy the access token.
 
-  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/a7899266-15d2-4bb1-b856-7cea00faf978)
+![alt text](a7899266-15d2-4bb1-b856-7cea00faf978.png)
 
 - If you're logged into a container, exit from the container using the following command.
 

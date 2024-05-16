@@ -9,7 +9,7 @@ In the previous exercise, we executed the playbook using AAP (Ansible Automation
 
 We are not automating the credentials to avoid storing them in the source code management system. Instead, we'll use the credentials created in the last exercise. Furthermore, we'll set up the GitLab Runner and utilize it to execute the pipeline in GitLab CI.
 
-#### Solution
+## Solution
 
 ### Setting up Runner
 
@@ -46,11 +46,11 @@ ansible-galaxy collection install awx.awx:19.4.
 - **Runner Machine Configuration**
     - Go to GitLab and login using the provided username and password from exercise one.
     ![alt text](image-6.png)
-    - Click on the admin area.
+    - Click on the admin area.  
     ![alt text](image-7.png)
-    - Click on "Runner".
+    - Click on "Runner".  
     ![alt text](image-8.png)
-    - Runner details are available here.
+    - Runner details are available here.  
     ![alt text](image-9.png)
 
 - **Configure Runner**
@@ -84,7 +84,7 @@ ansible-galaxy collection install awx.awx:19.4.
     ![alt text](image-19.png)
 
 - **Runner Status Online**
-    - Now you can see that the runner is online.
+    - Now you can see that the runner is online.  
     ![alt text](image-17.png)
 
 - **Creating a Git Repo**
@@ -92,7 +92,7 @@ ansible-galaxy collection install awx.awx:19.4.
     ![alt text](image-20.png)
     - Click on "Web IDE".
     ![alt text](image-21.png)
-    - Create folder and file structure as shown below.
+    - Create folder and file structure as shown below.  
     ![alt text](image-25.png)
 
 below is the content of the files

@@ -122,3 +122,68 @@ PLAY RECAP *********************************************************************
 nexus-site1                : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0  
 
 ```
+
+Extra:-
+
+Let's create a simple custom Python module for Ansible that generates a random password of a specified length. This module will allow us to generate random passwords dynamically during playbook execution.
+
+Here's the structure of our custom Python module:
+
+- Module Name: random_password.py
+- Functionality: Generate a random password of a specified length.
+- Input Parameters:
+- 1. length: Length of the password to generate.
+- 2. Output: Randomly generated password.
+
+```python
+#!/usr/bin/python
+from ansible.module_utils.basic import AnsibleModule
+import random
+import string
+
+def generate_password(length):
+    """Generate a random password of specified length."""
+    characters = string.ascii_letters + string.digits + string.punctuation
+    password = ''.join(random.choice(characters) for i in range(length))
+    return password
+
+def main():
+    module = AnsibleModule(
+        argument_spec=dict(
+            length=dict(type='int', required=True)
+        )
+    )
+
+    length = module.params['length']
+    password = generate_password(length)
+
+    module.exit_json(changed=False, password=password)
+
+if __name__ == '__main__':
+    main()
+
+```
+
+### Explanation of the code:
+
+- We import AnsibleModule from ansible.module_utils.basic to create an Ansible module.  
+- We define a function generate_password that takes a length parameter and generates a random password of the specified length using uppercase letters, lowercase letters, digits, and punctuation characters.  
+- In the main function, we define the input parameters for our module (length) and use the generate_password function to generate a random password.  
+-  Finally, we use module.exit_json to exit the module execution and return the generated password as the result.  
+- To use this custom Python module in an Ansible playbook, you would save the code above to a file named random_password.py in the library directory of your Ansible project.  
+- Then, you can invoke the module in your playbook like this:
+
+```yaml
+---
+- hosts: localhost
+  tasks:
+    - name: Generate Random Password
+      random_password:
+        length: 12
+      register: password_result
+
+    - debug:
+        msg: "Generated Password: {{ password_result.password }}"
+```
+
+

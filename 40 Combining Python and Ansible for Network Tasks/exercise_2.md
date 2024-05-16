@@ -52,3 +52,48 @@ ok: [localhost] => {
 ```
 
 The custom filter plugin `format_mac` converts the MAC address from `01:23:45:67:89:AB` format to `0123.4567.89AB` format as expected.
+
+
+
+Let's create a simple custom filter plugin in Ansible that converts a string to title case, where the first letter of each word is capitalized. We'll name our filter plugin titlecase.
+
+Here's how you can create the custom filter plugin:
+
+- Create a directory named filter_plugins in your Ansible project directory.
+- Inside the filter_plugins directory, create a Python file named titlecase.py.
+- Add the following code to titlecase.py:
+
+```python
+class FilterModule(object):
+    """Custom filters."""
+
+    def filters(self):
+        return {
+            'titlecase': self.titlecase_filter
+        }
+
+    def titlecase_filter(self, value):
+        """Convert a string to title case."""
+        return ' '.join(word.capitalize() for word in value.split())
+
+```
+### Explanation of the code:
+
+- We define a class named FilterModule, which serves as our custom filter plugin.
+Inside the class, we define a method named filters, which returns a dictionary mapping filter names to filter functions.  
+- In this case, we define a filter named titlecase, which is mapped to the titlecase_filter method.
+The titlecase_filter method takes a string as input, splits it into words, capitalizes the first letter of each word, and joins them back together with spaces.  
+- This filter converts a string to title case.  
+- Now that we've created our custom filter plugin, let's see how to use it in an Ansible playbook:  
+
+```yaml
+---
+- hosts: localhost
+  vars:
+    my_string: "hello world"
+
+  tasks:
+    - name: Apply title case filter
+      debug:
+        msg: "{{ my_string | titlecase }}"
+```

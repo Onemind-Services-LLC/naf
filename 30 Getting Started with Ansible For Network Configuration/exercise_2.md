@@ -13,7 +13,10 @@ In the previous task, we created an inventory of devices. Now, we need to use An
 ```sh
 docker container run -it -v $(pwd):/ansible_automation ansible_lab
 ```
-
+If you encounter issues while creating the Docker image, replace the image name with the one we have already pushed to Docker registry. Use the image name onemindservices2024/naf2024 instead of ansible_lab. The new command will look like this:
+```sh
+docker container run -it -v $(pwd):/ansible_automation onemindservices2024/naf2024
+```
 ![alt text](image-8.png)
 
 3. Navigate to the `/ansible_automation` directory within the container:
