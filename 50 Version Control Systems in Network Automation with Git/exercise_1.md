@@ -153,11 +153,12 @@ no shutdown
       ```sh
       docker container run -it -v $(pwd):/git_python_automation ansible_lab
       ```
-   If you encounter issues while creating the Docker image, replace the image name with the one we have already pushed to Docker registry. Use the image name onemindservices2024/naf2024 instead of ansible_lab. The new command will look like this:
+      If you encounter issues while creating the Docker image, replace the image name with the one we have already pushed to Docker registry. Use the image name onemindservices2024/naf2024 instead of ansible_lab. The new command will look like this:
  
-    ```sh
-      docker container run -it -v $(pwd):/git_python_automation onemindservices2024/naf2024
-   ```
+      ```sh
+         docker container run -it -v $(pwd):/git_python_automation onemindservices2024/naf2024
+      ```
+
    - Navigate to the `/python_automation` directory within the container:
       ```sh
       cd /python_automation
