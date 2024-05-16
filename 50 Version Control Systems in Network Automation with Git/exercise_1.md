@@ -40,11 +40,10 @@ By following these steps, you'll have a Python program that securely pulls route
 - Add the following content to the file:
 
 ```
-interface Loopback0
-ip address 1.1.1.1 255.255.255.0
-no shutdown
+interface loopback100
+  ip address 100.100.100.100 255.255.255.0
 ```
-![alt text](4efebc68-3c66-4b4f-b9da-0ce86f0e6903.png)
+![alt text](image-64.png)
 
 ### 3. Create an Access Token:
 
@@ -83,63 +82,58 @@ no shutdown
   ![alt text](image-8.png)
 
 - Paste the following content into the Python file.
-   ```python
-   from netmiko import ConnectHandler
-   import subprocess
-   # Prompt the user to enter router details
-   host = input("Enter router IP address: ")
-   username = input("Enter username: ")
-   password = input("Enter password: ")
-   enable_secret = input("Enter enable secret (if any): ")
-   
-   # Router details
-   router_details = {
-       'device_type': 'cisco_xe',
-       'host': host,
-       'username': username,
-       'password': password,
-       'secret': enable_secret  # Assuming this is the enable secret
-   }
-   
-   # Prompt the user to enter GitLab access token
-   gitlab_access_token = input("Enter GitLab access token: ")
-   gitlab_repo_url = f'http://auth2:{gitlab_access_token}@172.16.14.101/ansible/router_configurations.git'
-   
-   # Clone the GitLab repository
-   clone_command = f'git clone {gitlab_repo_url}'
-   subprocess.run(clone_command, shell=True, check=True)
-   
-   # Path to the configuration file within the cloned repository
-   config_file_path = './router_configurations/routerconf.txt'
-   
-   # Read configurations from file
-   with open(config_file_path, "r") as file:
-       router_config = file.readlines()
-   
-   # Connect to router
-   with ConnectHandler(**router_details) as ssh:
-       ssh.enable()  # Enter enable mode
-       # Configure router
-       ssh.send_config_set(router_config)
-       # Optionally, you can save the configuration
-       ssh.save_config()
-       # Check interface configuration after changes
-       print("Interface configuration after changes:")
-       print(ssh.send_command("sh run int gig4"))
-   
-   print("Router configuration has been updated.")
-   ```
-   ![alt text](image-9.png)
+```python
+from netmiko import ConnectHandler
+import subprocess
+
+# Router details
+router_details = {
+    'device_type': 'cisco_nxos',
+    'host': '172.16.14.210',
+    'username': 'admin',
+    'password': 'admin',
+    'secret': 'admin'  # Assuming this is the enable secret
+}
+
+# Prompt the user to enter GitLab access token
+gitlab_access_token = input("Enter GitLab access token: ")
+gitlab_repo_url = f'http://auth2:{gitlab_access_token}@172.16.14.202/ansible/router_configurations.git'
+
+# Clone the GitLab repository
+clone_command = f'git clone {gitlab_repo_url}'
+subprocess.run(clone_command, shell=True, check=True)
+
+# Path to the configuration file within the cloned repository
+config_file_path = './router_configurations/routerconf.txt'
+
+# Read configurations from file
+with open(config_file_path, "r") as file:
+    router_config = file.readlines()
+
+# Connect to router
+with ConnectHandler(**router_details) as ssh:
+    ssh.enable()  # Enter enable mode
+    # Configure router
+    ssh.send_config_set(router_config)
+    # Optionally, you can save the configuration
+    ssh.save_config()
+    # Check interface configuration after changes
+    print("Interface configuration after changes:")
+    print(ssh.send_command("sh run int gig4"))
+
+print("Router configuration has been updated.")
+```
+  
 
    Ensure that you put the correct GitLab repository URL.
 
   ## Script Explanation:
 
-     - The script uses the netmiko library to connect to a Cisco XE router and execute commands.
-     - It defines connection details for the router (csr1000v dictionary), including IP address, credentials, and SSH port.
-     - The run_commands_on_router function establishes an SSH connection to the router and executes specified commands. It returns the output of the commands.
-     - In the main block (if __name__ == "__main__":), it specifies the commands to run on the router (commands_to_run), which includes "sh run int gig4" to show the configuration of interface GigabitEthernet4.
-     - It executes the commands using the run_commands_on_router function and prints the output.
+   - The script uses the netmiko library to connect to a Cisco XE router and execute commands.
+   - It defines connection details for the router (csr1000v dictionary), including IP address, credentials, and SSH port.
+   - The run_commands_on_router function establishes an SSH connection to the router and executes specified commands. It returns the output of the commands.
+   - In the main block (if __name__ == "__main__":), it specifies the commands to run on the router (commands_to_run), which includes "sh run int gig4" to show the configuration of interface GigabitEthernet4.
+   - It executes the commands using the run_commands_on_router function and prints the output.
 
 
 ## To run the program in a Docker container, follow these steps:
@@ -163,7 +157,6 @@ no shutdown
       ```sh
       cd /python_automation
       ```
-     ![alt text](image-11.png)
    
    - Run the Python program:
    
@@ -171,14 +164,10 @@ no shutdown
       python restore_config.py
       ```
    
-      ![alt text](image-12.png)
    
       This will execute the `restore_config.py` program within the Docker container, allowing you to check the status of the device.
    
    #### Note: When prompted, ensure to pass the GitLab access token for authentication.
-
- - Exit from container using `exit` command
-   ![alt text](image-13.png)
 
 ## Conclusion:
 
