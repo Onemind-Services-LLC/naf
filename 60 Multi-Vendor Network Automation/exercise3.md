@@ -407,6 +407,16 @@ Verify that OSPF configuration is not present or not enabled. This can be confir
 
 6. We have successfully configured OSPF at New York site.
 
+ Check the current connection status. We are able to communicate New York site to San Francisco site.
+
+7. Login to the Nexus OS and run the following command.
+
+```code
+ping 2.2.2.2 source 1.1.1.1
+```
+
+![alt text](image-35.png)
+
 
 
 
