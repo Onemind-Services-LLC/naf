@@ -51,10 +51,6 @@ RUN ansible-galaxy collection install paloaltonetworks.panos
 CMD ["bash"]
 ```
 
-Your file should look like this:
-
-![alt text](image-24.png)
-
 Now, let's open a new terminal window in VS Code:
 
 ![alt text](image-19.png)
