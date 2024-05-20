@@ -40,10 +40,10 @@ cd multivendor_automation
 ```sh
 code .
 ```
-![alt text](image-40.png)
 
 - It will ask you the password for the user, when u give the password, it should open vscode in `ansible_automation` folder
-![alt text](image-3.png)
+
+![alt text](image-40.png)
 
 1 . Open VSCODE and open terminal.
 

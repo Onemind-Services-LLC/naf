@@ -327,7 +327,7 @@ if __name__ == "__main__":
 
 ```
 
-3.Checking Current Connectivity Status
+4.Checking Current Connectivity Status
 Open the EVE-NG lab environment.
 
 Access the Cisco VYOS OS device Command Line Interface (CLI).
@@ -353,12 +353,19 @@ Open a web browser and navigate to the PAN-OS device by accessing the following 
 
 Click on "Network" to access network-related configurations.
 
-Verify that OSPF configuration is not present or not enabled. This can be confirmed by checking the OSPF configuration section or by searching for OSPF-related settings.
+Verify that OSPF configuration is not present or not enabled. Open PAN OS device and clic on network >> Virtual Routers >> More routing stats >> OSPF. We can see currently ospf is not configured.
 
 ![alt text](image-17.png)
 
+Login to the Nexus OS and run the following command. Currently we don't have communication as OSPF is not configured.
 
-4. Open VSCODE terminal and run below command.
+```code
+ping 2.2.2.2 source 1.1.1.1
+```
+
+![alt text](image-36.png)
+
+5. Open VSCODE terminal and run below command.
 
 ```code
 python3 configure_ospf_sf.py
@@ -383,7 +390,7 @@ Below is configuration done for VYOS. We can see configured commands for OSPF.
 
 ![alt text](image-22.png)
 
-5. Verifying OSPF configuration.
+6. Verifying OSPF configuration. OSPF is configured.
     
 Open VYOS device CLI and run below command.
 
@@ -393,7 +400,7 @@ show ip ospf neighbors
 
 ![alt text](image-23.png)
 
-Access the Arista OS device Command Line Interface (CLI).
+Access the Arista OS device Command Line Interface (CLI). OSPF is configured.
 
 ![alt text](image-25.png)
 
@@ -401,15 +408,15 @@ Open a web browser and navigate to the PAN-OS device by accessing the following 
 
 Click on "Network" to access network-related configurations.
 
-Verify that OSPF configuration is not present or not enabled. This can be confirmed by checking the OSPF configuration section or by searching for OSPF-related settings.
+Verify that OSPF configuration is not present or not enabled. Open PAN OS device and clic on network >> Virtual Routers >> More routing stats >> OSPF. We can see currently ospf is configured.
 
-    ![alt text](image-24.png)
+![alt text](image-24.png)
 
-6. We have successfully configured OSPF at New York site.
+7. We have successfully configured OSPF at New York site.
 
  Check the current connection status. We are able to communicate New York site to San Francisco site.
 
-7. Login to the Nexus OS and run the following command.
+8. Login to the Nexus OS and run the following command.
 
 ```code
 ping 2.2.2.2 source 1.1.1.1

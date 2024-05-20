@@ -315,7 +315,7 @@ if __name__ == "__main__":
 
 ```
 
-3. Checking Current Connectivity Status
+4. Checking Current Connectivity Status
 Open the EVE-NG lab environment.
 
     Access the Cisco Nexus OS (NX-OS) device Command Line Interface (CLI).
@@ -342,12 +342,12 @@ Open a web browser and navigate to the PAN-OS device by accessing the following 
 
 Click on "Network" to access network-related configurations.
 
-Verify that OSPF configuration is not present or not enabled. This can be confirmed by checking the OSPF configuration section or by searching for OSPF-related settings.
+Verify that OSPF configuration is not present or not enabled. Clic on virtual routers to see OSPF status.
 
 ![alt text](image-4.png)
 
 
-4. Open VSCODE terminal and run below command. You should see all devices configured successfully. If you see any connection failed error. Please rerun below command.
+5. Open VSCODE terminal and run below command. You should see all devices configured successfully. If you see any connection failed error. Please rerun below command.
 ```code
 python3 configure_ospf_ny.py
 ```
@@ -371,9 +371,9 @@ We are using Rest API for palo alto. Program will connect to palo alto and gener
 
 ![alt text](image-10.png)
 
-5. Verifying OSPF configuration.
+6. Verifying OSPF configuration.
     
-    Open NXOS device CLI and run below command.
+    Open NXOS device CLI and run below command. OSPF is configured.
 
     ```code
     show ip ospf neighbors
@@ -381,7 +381,7 @@ We are using Rest API for palo alto. Program will connect to palo alto and gener
 
     ![alt text](image-11.png)
 
-    Open Juniper device CLI and run below command.
+    Open Juniper device CLI and run below command. OSPF is configured.
 
     ```code
     show ospf neighbor
@@ -389,9 +389,8 @@ We are using Rest API for palo alto. Program will connect to palo alto and gener
 
     ![alt text](image-12.png)
 
-    Open PAN OS device and clic on network >> Virtual Routers >> More routing stats >> OSPF. We can see currently ospf is not configured.
-
+    Open PAN OS device and clic on network >> Virtual Routers >> More routing stats >> OSPF. We can see currently ospf is configured.
     ![alt text](image-13.png)
 
 
-6. We have successfully configured OSPF at New York site.
+7. We have successfully configured OSPF at New York site.
