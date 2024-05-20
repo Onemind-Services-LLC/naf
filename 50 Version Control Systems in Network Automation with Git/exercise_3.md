@@ -231,3 +231,5 @@ Let's utilize Ansible Tower to execute all the tasks we completed in the previou
 ![alt text](image-62.png)
 
 In this lab, we successfully automated the process of backing up configurations and integrating Ansible with Git for version control using GitLab.
+
+**Currently, we're executing the "show version" and "show ip interface" commands, storing their outputs in GitLab. Additionally, we can back up the router configuration to GitLab as well.**

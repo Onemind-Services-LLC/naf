@@ -1,3 +1,18 @@
+### Please refer to the table below for your upcoming lab exercises.
+| Device name  | Device Group |      IP       | username | password | network_os |
+|--------------|--------------|---------------|----------|----------|------------|
+| nexus-site1  |      ny      | 172.16.14.210 |   admin  | admin    |   nxos     |
+| vmx1-site1   |      ny      | 172.16.14.211 |   root   | Juniper  |   junos    |
+| pa-site1     |      ny      | 172.16.14.212 |   admin  | Test12345|   panos    |
+| pa-site2     |      sf      | 172.16.14.213 |   admin  | Test12345|   panos    |
+| arista1-site2|      sf      | 172.16.14.214 |   admin  | password |   eos      |
+| vyos1-site1  |      sf      | 172.16.14.215 |   vyos   | vyos     |   vyos     |
+| vyos2-site2  |      sf      | 172.16.14.216 |   vyos   | vyos     |   vyos     |
+
+## Please refer to the lab topology below for your upcoming lab exercises.
+
+![alt text](image-20.png)
+
 # Instructions for setting up VSCODE
 To complete all the steps, follow these instructions:
 
