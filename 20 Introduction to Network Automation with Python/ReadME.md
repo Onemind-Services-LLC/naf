@@ -1,9 +1,8 @@
 Owner: Gaurav Sharma
+
 Objective: Introduce basic programming concepts using Python and demonstrate how to automate simple network tasks. 
 
-Tasks: 
-
-    Setup Python Environment: Guide on setting up Python on different operating systems and using virtual environments. 
+- Setup Python Environment: Guide on setting up Python on different operating systems and using virtual environments. 
 
     Python Basics: Cover variables, data types, control structures, functions, and modules. 
 
@@ -33,7 +32,7 @@ Modules
 > Nornir  
 > 
 
-Working with Files  
+Working with Files
 
 
 # Network Scripting
