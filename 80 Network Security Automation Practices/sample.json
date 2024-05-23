@@ -1,0 +1,121 @@
+{
+    "interfaces": {
+        "ethernet": {
+            "eth0": {
+                "address": [
+                    "10.10.10.38/30"
+                ],
+                "hw-id": "50:02:00:02:00:00"
+            },
+            "eth1": {
+                "address": [
+                    "172.16.14.215/24"
+                ],
+                "hw-id": "50: 02: 00: 02: 00: 01"
+            },
+            "eth2": {
+                "hw-id": "50: 02: 00: 02: 00: 02"
+            },
+            "eth3": {
+                "hw-id": "50: 02: 00: 02: 00: 03"
+            }
+        },
+        "loopback": {
+            "lo": {}
+        }
+    },
+    "protocols": {
+        "ospf": {
+            "area": {
+                "0.0.0.0": {
+                    "network": [
+                        "10.10.10.36/30"
+                    ]
+                }
+            }
+        },
+        "rip": {
+            "interface": {
+                "eth0": {},
+                "lo": {}
+            }
+        },
+        "static": {
+            "route": {
+                "0.0.0.0/0": {
+                    "next-hop": {
+                        "172.16.14.1": {}
+                    }
+                }
+            }
+        }
+    },
+    "service": {
+        "ntp": {
+            "allow-client": {
+                "address": [
+                    "127.0.0.0/8",
+                    "169.254.0.0/16",
+                    "10.0.0.0/8",
+                    "172.16.0.0/12",
+                    "192.168.0.0/16",
+                    ": : 1/128",
+                    "fe80: :/10",
+                    "fc00: :/7"
+                ]
+            },
+            "server": {
+                "time1.vyos.net": {},
+                "time2.vyos.net": {},
+                "time3.vyos.net": {}
+            }
+        },
+        "ssh": {}
+    },
+    "system": {
+        "config-management": {
+            "commit-revisions": "100"
+        },
+        "conntrack": {
+            "modules": {
+                "ftp": {},
+                "h323": {},
+                "nfs": {},
+                "pptp": {},
+                "sip": {},
+                "sqlnet": {},
+                "tftp": {}
+            }
+        },
+        "console": {
+            "device": {
+                "ttyS0": {
+                    "speed": "115200"
+                }
+            }
+        },
+        "host-name": "vyos",
+        "login": {
+            "user": {
+                "vyos": {
+                    "authentication": {
+                        "encrypted-password": "$6$rounds=656000$aoxOaenDXNBmhkYT$3bDfFlwpzb4QaqHGqAAMeqDst.1iUBmIg7cXhfFaCQgQY0ruxVWJMahodCyI4cIxxcy5N35sShEx01rAXcvmQ.",
+                        "plaintext-password": ""
+                    }
+                }
+            }
+        },
+        "syslog": {
+            "global": {
+                "facility": {
+                    "all": {
+                        "level": "info"
+                    },
+                    "local7": {
+                        "level": "debug"
+                    }
+                }
+            }
+        }
+    }
+}

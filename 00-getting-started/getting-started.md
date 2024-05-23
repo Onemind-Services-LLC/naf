@@ -16,7 +16,7 @@
 # Instructions for setting up VSCODE
 To complete all the steps, follow these instructions:
 
-1. Log in to the RPD server using the details provided in the table.  
+1. Log in to the RDP server using the details provided in the table.  
 
 2. Open VS Code in the RDP environment.  
    ![alt text](image.png)
@@ -43,7 +43,7 @@ To complete all the steps, follow these instructions:
       User cml
     ```
    It should look like the image below.
-   
+
    ![alt text](image-18.png)
 
 9. Click on "Refresh" to update the SSH server list.  
