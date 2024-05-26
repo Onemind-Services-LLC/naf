@@ -3,6 +3,11 @@
 #### Create an ansible playbook that fetches "show version" output from all devices in dc_group and store it to a file, Make sure to use the Docker environment created earlier for your development.
 
 ### Solution
+- Create ansible.cfg and add below 2 lines in it otherwise you might run into ssh fingerprint issue while dealing with network devices.
+  ```text
+  [defaults]
+  host_key_checking = False
+  ``` 
 - lets create playbook in your current working directory (that is `ansible_automation`)  create a file `run_cmnd.yaml` with the below content
 ```yaml
 ---
@@ -34,7 +39,7 @@
 ### Execute the above playbook
 
 ```
-ansible-playbook -i inventory.ini run_cmd.yaml
+ansible-playbook -i inventory.ini run_cmnd.yaml
 ```
 ![alt text](image-16.png)  
 Make sure the playbook file and the inventory file are in the same directory, or provide the correct path to the playbook file if it's in a different directory.
