@@ -34,7 +34,7 @@
 ### Execute the above playbook
 
 ```
-ansible-playbook -i inventory.ini run_cmnd.yaml
+ansible-playbook -i inventory.ini run_cmd.yaml
 ```
 ![alt text](image-16.png)  
 Make sure the playbook file and the inventory file are in the same directory, or provide the correct path to the playbook file if it's in a different directory.
