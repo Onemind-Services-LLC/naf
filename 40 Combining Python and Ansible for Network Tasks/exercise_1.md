@@ -79,7 +79,7 @@ if __name__ == '__main__':
         host: "172.16.14.210"
         username: "admin"
         password: "admin"
-        register: interface_info
+      register: interface_info
 
     - debug:
         var: interface_info
