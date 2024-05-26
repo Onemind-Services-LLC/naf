@@ -39,9 +39,9 @@ Let's utilize Ansible Tower to execute all the tasks we completed in the previou
   ![alt text](image-40.png)
   - Click on add and fill in the below details  
   ```yaml
-    ---
-    ansible_host: 172.16.14.215
-    ansible_network_os: vyos
+  ---
+  ansible_host: 172.16.14.215
+  ansible_network_os: vyos
   ```
   ![alt text](image-41.png)
   - Click on save
