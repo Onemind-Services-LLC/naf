@@ -46,7 +46,7 @@ FROM python:3
 RUN apt update
 RUN apt install iputils-ping -y
 RUN apt install git -y
-RUN pip install rich ansible netmiko pexpect pandas pan-python pandevice requests pytest pytest-html ipaddress
+RUN pip install rich ansible netmiko pexpect pandas pan-python pandevice requests pytest pytest-html ipaddress openpyxl
 RUN ansible-galaxy collection install paloaltonetworks.panos
 CMD ["bash"]
 ```
