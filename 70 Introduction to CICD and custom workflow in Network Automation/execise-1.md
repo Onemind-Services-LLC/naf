@@ -27,7 +27,7 @@ In the next few exercises, we will be using GitLab CI. For this, we need a GitLa
     sudo apt-get update
     sudo apt-get install python-is-python3
     sudo apt-get install ansible
-    ansible-galaxy collection install awx.awx:v19.4.0
+    ansible-galaxy collection install awx.awx
     echo "172.16.14.202 gitlab-ce" | sudo  tee -a /etc/hosts
     ```
     ```sh
