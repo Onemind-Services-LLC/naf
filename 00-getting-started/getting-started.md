@@ -9,6 +9,13 @@
 | vyos1-site1  |      sf      | 172.16.14.215 |   vyos   | vyos     |   vyos     |
 | vyos2-site2  |      sf      | 172.16.14.216 |   vyos   | vyos     |   vyos     |
 
+| Device name  |              |      IP       | username | password |            |
+|--------------|--------------|---------------|----------|----------|------------|
+| dev_server   |              | 172.16.14.200 |   cml    |   cml    |            |
+| runner       |              | 172.16.14.201 |   cml    |   cml    |            |
+| gitlab UI    |              | 172.16.14.202 | ansible  | cisco!23 |            |
+| ansible tower|              | 172.16.14.203 |   admin  | ansible  |            |
+
 ## Please refer to the lab topology below for your upcoming lab exercises.
 
 ![alt text](image-20.png)
