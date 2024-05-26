@@ -99,7 +99,7 @@ import yaml
 from rich import print
 from jinja2 import Environment, FileSystemLoader
 
-variable_data = yaml.load(open('variables.yaml'), Loader=yaml.FullLoader)
+variable_data = yaml.load(open('source.yaml'), Loader=yaml.FullLoader)
 print(variable_data)
 
 env = Environment(loader = FileSystemLoader('./'), trim_blocks=True, lstrip_blocks=True)
