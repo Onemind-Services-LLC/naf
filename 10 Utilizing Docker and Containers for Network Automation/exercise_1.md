@@ -83,3 +83,10 @@ Now, let's install Docker in our development environment, which we'll use in the
     docker run hello-world
     ```
     ![alt text](image-13.png)
+
+13. Reboot the VM:
+    ```sh
+    cml@cml:~/docker_build$ sudo reboot
+    [sudo] password for cml: cml
+    ```
+14. Wait for a few seconds and reconnect to the same VM again via VSCODE.
