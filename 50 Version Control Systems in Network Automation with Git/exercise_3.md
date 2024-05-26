@@ -52,9 +52,9 @@ Let's utilize Ansible Tower to execute all the tasks we completed in the previou
 
 - Next, add a host "vyos2-site2" to the inventory.
   ```yaml
-    ---
-    ansible_host: 172.16.14.216
-    ansible_network_os: vyos
+  ---
+  ansible_host: 172.16.14.216
+  ansible_network_os: vyos
   ```
   ![alt text](image-43.png)
 - Click on save, and now you can see we have 2 devices in our inventory.  
