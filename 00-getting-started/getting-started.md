@@ -72,11 +72,11 @@ To complete all the steps, follow these instructions:
 14. Now you'll see a new terminal window like the one in the image below.
     ![alt text](image-13.png)
 
-15. Click on settings
-    ![image](https://github.com/Onemind-Services-LLC/naf/assets/97231401/02863b5c-adc8-4cbb-a5ac-25c9ddab5161)
+15. Click on settings  
+    ![alt text](02863b5c-adc8-4cbb-a5ac-25c9ddab5161.png)
 
 16. Change auto save settings from off to "onFocusChange" which will enable autofile save
-    ![image](https://github.com/Onemind-Services-LLC/naf/assets/97231401/960527bc-55a3-4f49-a5fa-4050e119b459)
+    ![alt text](960527bc-55a3-4f49-a5fa-4050e119b459.png)
 
 
 # Instructions for setting up VSCODE using ZeroTier

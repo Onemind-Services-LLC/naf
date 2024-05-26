@@ -210,15 +210,10 @@ Let's utilize Ansible Tower to execute all the tasks we completed in the previou
   - Select eve-inventory and config-backup for inventory and the project.
   - Select playbook.yaml as the playbook.
   - Link the previously configured credentials (select routers_creds, gitlab user details).
-![image](https://github.com/Onemind-Services-LLC/naf/assets/97231401/1f4f4cdf-696a-4edd-8322-a241f4f588c5)
+  ![alt text](1f4f4cdf-696a-4edd-8322-a241f4f588c5.png)
   - Save the  template
-
-  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/5ae74808-a621-4a74-abbf-b776c7f641e1)
-
   - Schedule the playbook as shown below.
-
-  ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/23ecf6c9-016f-465a-92bc-261807443db6)
-
+  ![alt text](23ecf6c9-016f-465a-92bc-261807443db6.png)
   - An Ansible template is developed within the AAP project, automating lab infrastructure setup and configuration.
 
 ### 7. Template Execution:
