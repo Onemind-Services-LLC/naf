@@ -19,7 +19,7 @@
       vyos.vyos.vyos_config:
         backup: yes
         backup_options:
-          filename: {{ inventory_hostname }}.cfg
+          filename: "{{ inventory_hostname }}.cfg"
           dir_path: ./vyos_backups
 
 ```
