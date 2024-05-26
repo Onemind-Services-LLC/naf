@@ -153,9 +153,9 @@ print("Router configuration has been updated.")
          docker container run -it -v $(pwd):/git_python_automation onemindservices2024/naf2024
       ```
 
-   - Navigate to the `/python_automation` directory within the container:
+   - Navigate to the `/git_python_automation` directory within the container:
       ```sh
-      cd /python_automation
+      cd /git_python_automation
       ```
    
    - Run the Python program:
