@@ -6,13 +6,6 @@ In the next few exercises, we will be using GitLab CI. For this, we need a GitLa
 
 ### Setting up Runner
 
-```sh
-sudo apt-get update
-sudo apt-get install python-is-python3
-sudo apt-get install ansible
-ansible-galaxy collection install awx.awx:19.4.
-```
-
 - **Open Command Prompt (Cmd)**
 
     ![alt text](image.png)
@@ -31,6 +24,12 @@ ansible-galaxy collection install awx.awx:19.4.
 
 - **Install the Runner using the Following Command**
     ```sh
+    sudo apt-get update
+    sudo apt-get install python-is-python3
+    sudo apt-get install ansible
+    ansible-galaxy collection install awx.awx
+    ```
+    ```sh
     sudo apt-get install gitlab-runner
     ```
     ![alt text](image-5.png)
@@ -48,9 +47,8 @@ ansible-galaxy collection install awx.awx:19.4.
 - **Configure Runner**
     - In the terminal, SSH into the runner machine and execute the command below, ensuring to replace the token and GitLab IP properly.
     ```sh
-    gitlab-runner register --name automation_lab --url "http://172.16.14.202/" --locked=false  --registration-token C-rzEaUyaTQFGVtDJPoP --executor shell --shell bash --non-interactiv
+    gitlab-runner register --name automation_lab --url "http://172.16.14.202/" --registration-token C-rzEaUyaTQFGVtDJPoP --executor shell --non-interactive
     ```
-    ![alt text](image-24.png)
 
 - **View Configured Runners**
     ```sh
@@ -68,11 +66,12 @@ ansible-galaxy collection install awx.awx:19.4.
     ```sh
     # Install and run as service
     sudo gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner
+    # if you get this error, you can ignore and proceed with next command
+    # FATAL: Failed to install gitlab-runner: Init already exists: /etc/systemd/system/gitlab-runner.service
     sudo gitlab-runner restart
     gitlab-runner run
     ```
     Ensure to run `gitlab-runner run` as a non-root user.
-    ![alt text](image-18.png)
     ![alt text](image-19.png)
 
 - **Runner Status Online**

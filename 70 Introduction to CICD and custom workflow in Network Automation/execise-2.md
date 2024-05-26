@@ -143,6 +143,9 @@ deploy:
 
 Once you commit the code a new project and a template gets created in ansible tower
 
+![alt text](image-28.png)
+
+Go to Ansible Tower and browse under projects
 ![alt text](image-27.png)
 
 ![alt text](image-26.png)
