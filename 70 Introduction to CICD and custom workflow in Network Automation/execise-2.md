@@ -20,7 +20,7 @@ We are not automating the credentials to avoid storing them in the source code m
     ![alt text](image-25.png)
 
 below is the content of the files
-#### .gitlab-ci.yaml
+#### .gitlab-ci.yml ( Ensure that the file is named .yml and not .yaml )
 ```yaml
 stages:
   - deploy
