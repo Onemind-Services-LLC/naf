@@ -213,6 +213,8 @@ Let's utilize Ansible Tower to execute all the tasks we completed in the previou
   - Click create template.
 ![alt text](image-60.png)
 
+  - Save the  template
+
   ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/5ae74808-a621-4a74-abbf-b776c7f641e1)
 
   - Schedule the playbook as shown below.
