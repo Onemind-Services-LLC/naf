@@ -210,9 +210,7 @@ Let's utilize Ansible Tower to execute all the tasks we completed in the previou
   - Select eve-inventory and backup-config for inventory and the project.
   - Select playbook.yaml as the playbook.
   - Link the previously configured credentials (select routers_creds, gitlab user details).
-  - Click create template.
-![alt text](image-60.png)
-
+![image](https://github.com/Onemind-Services-LLC/naf/assets/97231401/1f4f4cdf-696a-4edd-8322-a241f4f588c5)
   - Save the  template
 
   ![image](https://github.com/Onemind-Services-LLC/naf/assets/132569101/5ae74808-a621-4a74-abbf-b776c7f641e1)
