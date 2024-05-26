@@ -46,7 +46,7 @@ ospf:
     area: 1
 ```
 
-- Create a python file with name 'j2_to_config.yaml'
+- Create a python file with name 'j2_to_config.py'
 
 ```py
 import yaml
