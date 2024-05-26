@@ -223,7 +223,7 @@ Let's utilize Ansible Tower to execute all the tasks we completed in the previou
 
 ### 7. Template Execution:
   - Go to the templates list.
-  - Select the template that you just created.
+  - Select the template that you just created ( router-backup-conf )
   - Click on launch.
  ![alt text](image-61.png)
 
