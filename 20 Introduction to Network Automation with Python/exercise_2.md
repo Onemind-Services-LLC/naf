@@ -66,8 +66,8 @@ This program connects to a device using the netmiko library and runs specified c
 
 - Execute the `run_command.py` in the container.
 
-![alt text](assets\image-13.png)
+![alt text](assets/image-13.png)
 
 You can see an output similar to below.
 
-![alt text](assets\image-14.png)
+![alt text](assets/image-14.png)

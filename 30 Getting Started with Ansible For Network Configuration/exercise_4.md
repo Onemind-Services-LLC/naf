@@ -41,8 +41,8 @@
 ansible-playbook -i inventory.ini multi_cmnd_single.yaml
 ```
 
-![alt text](assets\image-31.png)
+![alt text](assets/image-31.png)
 
 Make sure the playbook file and the inventory file are in the same directory, or provide the correct path to the playbook file if it's in a different directory.
 
-![alt text](assets\image-32.png)
+![alt text](assets/image-32.png)

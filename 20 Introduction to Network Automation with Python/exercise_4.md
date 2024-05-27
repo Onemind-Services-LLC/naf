@@ -26,7 +26,7 @@ if __name__ == "__main__":
 
 Your output should look like this or similar to this
 
-![alt text](assets\image-15.png)
+![alt text](assets/image-15.png)
 
 #### Try parsing another command like "show ip interface brief"
 

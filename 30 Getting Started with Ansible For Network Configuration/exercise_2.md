@@ -6,7 +6,7 @@ In the previous task, we created an inventory of devices. Now, we need to use An
 
 1. Open the terminal.
 
-![alt text](assets\image-25.png)
+![alt text](assets/image-25.png)
 
 2. Run the container with the appropriate bind mount using the following command:
 
@@ -17,7 +17,7 @@ If you encounter issues while creating the Docker image, replace the image name 
 ```sh
 docker container run -it -v $(pwd):/ansible_automation onemindservices2024/naf2024
 ```
-![alt text](assets\image-8.png)
+![alt text](assets/image-8.png)
 
 3. Navigate to the `/ansible_automation` directory within the container:
 
@@ -25,7 +25,7 @@ docker container run -it -v $(pwd):/ansible_automation onemindservices2024/naf20
 cd ansible_automation
 ```
 
-![alt text](assets\image-9.png)
+![alt text](assets/image-9.png)
 
 4. Run the following command to ping all devices using an INI inventory:
 
@@ -33,7 +33,7 @@ cd ansible_automation
 ansible -m ping all -i inventory.ini 
 ```
 
-![alt text](assets\image-10.png)
+![alt text](assets/image-10.png)
 
 Alternatively, you can use a YAML inventory with the following command:
 
@@ -41,4 +41,4 @@ Alternatively, you can use a YAML inventory with the following command:
 ansible -m ping all -i inventory.yaml 
 ```
 
-![alt text](assets\image-13.png)
+![alt text](assets/image-13.png)

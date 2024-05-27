@@ -56,7 +56,7 @@ The idea is that the configuration itself is modular. Now if you were given the 
 
 Let's create all of the above jinja2 template files inside a templates directory and place the above content into a file named final_config.j2. The end result should look like this
 
-![alt text](assets\image-20.png)
+![alt text](assets/image-20.png)
 
 ### common.j2
 ```jinja2

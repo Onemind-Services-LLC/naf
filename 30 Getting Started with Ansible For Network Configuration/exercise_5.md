@@ -39,6 +39,6 @@ ansible-playbook -i inventory.ini vyos_backup.yaml
 
 Make sure the playbook file and the inventory file are in the same directory, or provide the correct path to the playbook file if it's in a different directory.
 
-![alt text](assets\image-33.png)
+![alt text](assets/image-33.png)
 
-![alt text](assets\image-34.png)
+![alt text](assets/image-34.png)

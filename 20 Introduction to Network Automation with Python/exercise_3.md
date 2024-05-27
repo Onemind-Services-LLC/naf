@@ -110,7 +110,7 @@ if __name__ == "__main__":
             print(f"Failed to retrieve output for device: {device['host']}")
 
 ```
-![alt text](assets\image-11.png)
+![alt text](assets/image-11.png)
 - Execute the `python run_multi_command.py` in the container.  
 You can see the output below.
 

@@ -19,7 +19,7 @@ Then, go into that folder:
 cd docker_build
 ```
 
-![alt text](image-14.png)
+![alt text](assets/image-14.png)
 
 Next, let's open a program called VS Code in this folder:
 
@@ -29,13 +29,13 @@ code .
 
 This will open a new window with VS Code.
 
-![alt text](image-15.png)
+![alt text](assets/image-15.png)
 
 Now, we're going to make a file called a Dockerfile. This file tells the computer what to put in our special package. 
 
 Make sure the file is named exactly `Dockerfile`.
 
-![alt text](image-17.png)
+![alt text](assets/image-17.png)
 
 Inside this file, write down these lines:
 
@@ -53,7 +53,7 @@ CMD ["bash"]
 
 Now, let's open a new terminal window in VS Code:
 
-![alt text](image-19.png)
+![alt text](assets/image-19.png)
 
 In this terminal, type this command to make our special package:
 
@@ -61,7 +61,7 @@ In this terminal, type this command to make our special package:
 docker image build -t ansible_lab .
 ```
 
-![alt text](image-20.png)
+![alt text](assets/image-20.png)
 
 Finally, let's check if our package was made correctly. Type this command:
 
@@ -71,7 +71,7 @@ docker image ls
 
 You should see a package named `ansible_lab` in the list.
 
-![alt text](image-21.png)
+![alt text](assets/image-21.png)
 
 That's it! We've successfully made our special package using the Dockerfile.
 
