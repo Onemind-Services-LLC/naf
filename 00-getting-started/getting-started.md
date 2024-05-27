@@ -1,4 +1,7 @@
+
+
 ### Please refer to the table below for your upcoming lab exercises.
+
 | Device name  | Device Group |      IP       | username | password | network_os |
 |--------------|--------------|---------------|----------|----------|------------|
 | nexus-site1  |      ny      | 172.16.14.210 |   admin  | admin    |   nxos     |
@@ -15,6 +18,23 @@
 | runner       |              | 172.16.14.201 |   cml    |   cml    |            |
 | gitlab UI    |              | 172.16.14.202 | ansible  | cisco!23 |            |
 | ansible tower|              | 172.16.14.203 |   admin  | ansible  |            |
+| EVENG        |              | https://172.16.15.2    | check email    | check email    |
+
+## Connecting to LAB Environment
+- You have been provided with username and password in the introduction email sent earlier
+- Use those credentials to login via web browser
+
+    ![alt text](assets/image-21.png)
+
+- Once logged in you should have RDP access to a ubuntu jumphost and you should also be presented with another login page to EVENG server or you can use the webbrowser inside of RDP session to connect to EVENG server that is running the simulated environment. The username and password remains the same.
+
+    ```https://172.16.15.2/#!/login```
+
+    ![alt text](assets/image-22.png)
+
+- If the nodes are not powered on, you can power on the nodes by clicking on more actions in the left navigation panel and then start all nodes. The bootup process might take a couple of minutes.
+
+    ![alt text](assets/image-23.png)
 
 ## Please refer to the lab topology below for your upcoming lab exercises.
 
