@@ -31,3 +31,7 @@ Good luck and have fun on the automation journey!
 
     ![alt text](assets/image-3.png)
 
+- At this point, you can start with the lab exercises.
+- Each folder has a readme file with .md extension that has the lab exercises and relevant information
+
+    ![alt text](assets/image-4.png)
