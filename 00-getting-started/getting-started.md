@@ -18,7 +18,7 @@
 
 ## Please refer to the lab topology below for your upcoming lab exercises.
 
-![alt text](assets\image-20.png)
+![alt text](assets/image-20.png)
 
 # Instructions for setting up VSCODE
 To complete all the steps, follow these instructions:
@@ -26,7 +26,7 @@ To complete all the steps, follow these instructions:
 1. Log in to the RDP server using the details provided in the table.  
 
 2. Open VS Code in the RDP environment.  
-   ![alt text](assets\image.png)
+   ![alt text](assets/image.png)
 
 3. Navigate to the Extensions view and search for "remote-ssh".  
    ![alt text](assets\image-2.png)
