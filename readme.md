@@ -16,7 +16,7 @@
 
 Good luck and have fun on the automation journey! 
 
-# Usage, Tips, and Tricks 
+# WebRDP Usage, Tips, and Tricks  
 
 - Use the key combination ctrl+shift+alt to open the Web RDP context menu.  The RDP Context menu contains basic settings and actions.  In the top right of the context menu is a submenu where you can find the Logout button as well as the option to disconnect from your current session.  Most common settings will be found within the main context menu. 
 
