@@ -8,19 +8,19 @@ In the next few exercises, we will be using GitLab CI. For this, we need a GitLa
 
 - **Open Command Prompt (Cmd)**
 
-    ![alt text](image.png)
+    ![alt text](./assets/image.png)
 
 - **Login to Runner**
     ```
     ssh -l cml 172.16.14.201
     ```
-    ![alt text](image-2.png)
+    ![alt text](./assets/image-2.png)
 
 - **Run the Below Command to Setup Registry**
     ```sh
     curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh" | sudo bash
     ```
-    ![alt text](image-4.png)
+    ![alt text](./assets/image-4.png)
 
 - **Install the Runner using the Following Command**
     ```sh
@@ -34,17 +34,17 @@ In the next few exercises, we will be using GitLab CI. For this, we need a GitLa
     ```sh
     sudo apt-get install gitlab-runner
     ```
-    ![alt text](image-5.png)
+    ![alt text](./assets/image-5.png)
 
 - **Runner Machine Configuration**
     - Go to GitLab and login using the provided username and password from exercise one.
-    ![alt text](image-6.png)
+    ![alt text](./assets/image-6.png)
     - Click on the admin area.  
-    ![alt text](image-7.png)
+    ![alt text](./assets/image-7.png)
     - Click on "Runner".  
-    ![alt text](image-8.png)
+    ![alt text](./assets/image-8.png)
     - Runner details are available here.  
-    ![alt text](image-9.png)
+    ![alt text](./assets/image-9.png)
 
 - **Configure Runner**
     - In the terminal, SSH into the runner machine and execute the command below, ensuring to replace the token and GitLab IP properly.
