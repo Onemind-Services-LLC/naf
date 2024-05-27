@@ -4,7 +4,7 @@
 * Below is the lab topology used for this configuration demonstration.
 
 
-![alt text](image.png)
+![alt text](./assets/image.png)
 
 ### Problem Statement:
 * Configure VLANs on devices from different vendors.
@@ -27,14 +27,14 @@ To do this exercise create a folder `multivendor_automation` in user's home dire
 ```sh
 exit
 ```
-![alt text](image-38.png)
+![alt text](./assets/image-38.png)
 - To create a multivendor_automation directory in users home directory run the below commands
 ```sh
 cd ~
 mkdir multivendor_automation
 cd multivendor_automation
 ```
-![alt text](image-39.png)
+![alt text](./assets/image-39.png)
 
 - Open the vscode in newly created directory for that lets run the below command
 ```sh
@@ -43,11 +43,11 @@ code .
 
 - It will ask you the password for the user, when u give the password, it should open vscode in `ansible_automation` folder
 
-![alt text](image-40.png)
+![alt text](./assets/image-40.png)
 
 1 . Open VSCODE and open terminal.
 
-![alt text](image-41.png)
+![alt text](./assets/image-41.png)
 
 2. Run the container with the appropriate bind mount using the following command:
 
@@ -58,7 +58,7 @@ If you encounter issues while creating the Docker image, replace the image name 
 ```sh
 docker container run -it -v $(pwd):/multivendor_automation onemindservices2024/naf2024
 ```
-![alt text](image-8.png)
+![alt text](./assets/image-8.png)
 
 3. Navigate to the `/ansible_automation` directory within the container:
 
@@ -66,7 +66,7 @@ docker container run -it -v $(pwd):/multivendor_automation onemindservices2024/n
 cd multivendor_automation
 ```
 
-![alt text](image-9.png)
+![alt text](./assets/image-9.png)
 
 
 4. Create a new file named devices.py and add the following code:
@@ -175,14 +175,14 @@ if __name__ == "__main__":
 show vlan
 ```
 
-![alt text](image-27.png)
+![alt text](./assets/image-27.png)
 
 7. To verify the current VLAN status in Arista EOS, execute the following command:
 ```code
 show vlan
 ```
 
-![alt text](image-28.png)
+![alt text](./assets/image-28.png)
 
 
 8. Execute the Python script by running the following command:
@@ -190,7 +190,7 @@ show vlan
 python3 vlan.py
 ```
 
-![alt text](image-29.png)
+![alt text](./assets/image-29.png)
 
 9. Please enter a VLAN number between 1 and 3096. This restriction is because Cisco NX-OS reserves VLANs above 3096.
 
@@ -200,32 +200,32 @@ python3 vlan.py
 
 
 
-![alt text](image-30.png)
+![alt text](./assets/image-30.png)
 
 Output Explanation:
 
 The provided output displays the configuration commands for the Arista EOS device. These commands represent the VLAN configuration applied to the device.
     
-![alt text](image-31.png)
+![alt text](./assets/image-31.png)
 
 Below are the Cisco IOS device configuration commands displayed in the output. These commands represent the VLAN configuration applied to the device.
 
-![alt text](image-32.png)
+![alt text](./assets/image-32.png)
 
 Below is the validation done by python program.
 
-![alt text](image-42.png)
+![alt text](./assets/image-42.png)
 
 10. After executing, you can verify the current VLAN status in Cisco NX-OS by running the following command:
 ```code
 show vlan
 ```
 
-![alt text](image-33.png)
+![alt text](./assets/image-33.png)
 
 11. To verify the current VLAN status in Arista EOS, execute the following command:
 
 ```code
 show vlan
 ```
-![alt text](image-34.png)
+![alt text](./assets/image-34.png)

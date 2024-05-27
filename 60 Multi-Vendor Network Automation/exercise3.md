@@ -3,12 +3,12 @@
 # Lab topology
 Please find below lab topology used for this lab demonstration.
 
-![alt text](image.png)
+![alt text](./assets/image.png)
 
 # Devices used for current excercise:
 Below is the topology for the San Francisco site which we are going to use for configuring OSPF.
 
-![alt text](image-14.png)
+![alt text](./assets/image-14.png)
 
 ### Problem Statement:
 * Configure dynamic Routing Protocol in San Francisco site.
@@ -337,7 +337,7 @@ Run the following command to display the OSPF neighbor information:
 ```code
 show ip ospf neighbor
 ```
-![alt text](image-15.png)
+![alt text](./assets/image-15.png)
 
 Access the Arista OS device Command Line Interface (CLI).
 
@@ -347,7 +347,7 @@ Run the following command to display the OSPF neighbor information:
     show ip ospf neighbor
 ```
 
-![alt text](image-16.png)
+![alt text](./assets/image-16.png)
 
 Open a web browser and navigate to the PAN-OS device by accessing the following URL: https://172.16.14.213
 
@@ -355,7 +355,7 @@ Click on "Network" to access network-related configurations.
 
 Verify that OSPF configuration is not present or not enabled. Open PAN OS device and clic on network >> Virtual Routers >> More routing stats >> OSPF. We can see currently ospf is not configured.
 
-![alt text](image-17.png)
+![alt text](./assets/image-17.png)
 
 Login to the Nexus OS and run the following command. Currently we don't have communication as OSPF is not configured.
 
@@ -363,7 +363,7 @@ Login to the Nexus OS and run the following command. Currently we don't have com
 ping 2.2.2.2 source 1.1.1.1
 ```
 
-![alt text](image-36.png)
+![alt text](./assets/image-36.png)
 
 5. Open VSCODE terminal and run below command.
 
@@ -371,24 +371,24 @@ ping 2.2.2.2 source 1.1.1.1
 python3 configure_ospf_sf.py
 ```
 
-![alt text](image-18.png)
+![alt text](./assets/image-18.png)
 
 Lets review code output.
 First code with connect to all devices before executing OSPF config.
     
-![alt text](image-19.png)
+![alt text](./assets/image-19.png)
 
 We are using Rest API for palo alto. Program will connect to palo alto and generate api key and configure OSPF in device.
 
-![alt text](image-20.png)
+![alt text](./assets/image-20.png)
 
 Below is configuration done for Arista. We can see configured commands for OSPF.
 
-![alt text](image-21.png)
+![alt text](./assets/image-21.png)
 
 Below is configuration done for VYOS. We can see configured commands for OSPF.
 
-![alt text](image-22.png)
+![alt text](./assets/image-22.png)
 
 6. Verifying OSPF configuration. OSPF is configured.
     
@@ -398,11 +398,11 @@ Open VYOS device CLI and run below command.
 show ip ospf neighbors 
 ```
 
-![alt text](image-23.png)
+![alt text](./assets/image-23.png)
 
 Access the Arista OS device Command Line Interface (CLI). OSPF is configured.
 
-![alt text](image-25.png)
+![alt text](./assets/image-25.png)
 
 Open a web browser and navigate to the PAN-OS device by accessing the following URL: https://172.16.14.213
 
@@ -410,7 +410,7 @@ Click on "Network" to access network-related configurations.
 
 Verify that OSPF configuration is not present or not enabled. Open PAN OS device and clic on network >> Virtual Routers >> More routing stats >> OSPF. We can see currently ospf is configured.
 
-![alt text](image-24.png)
+![alt text](./assets/image-24.png)
 
 7. We have successfully configured OSPF at New York site.
 
@@ -422,7 +422,7 @@ Verify that OSPF configuration is not present or not enabled. Open PAN OS device
 ping 2.2.2.2 source 1.1.1.1
 ```
 
-![alt text](image-35.png)
+![alt text](./assets/image-35.png)
 
 
 

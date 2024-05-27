@@ -4,12 +4,12 @@
 
 Below is the lab topology used for this lab demonstration.
 
-![alt text](image.png)
+![alt text](./assets/image.png)
 
 # Devices used for current excercise:
 Below is the topology for the New York site, which we will use to configure OSPF.
 
-![alt text](image-1.png)
+![alt text](./assets/image-1.png)
 
 ### Problem Statement:
 * Configure a dynamic routing protocol in the New York site.
@@ -326,7 +326,7 @@ Open the EVE-NG lab environment.
     show ip ospf neighbors 
 ```
 
-![alt text](image-2.png)
+![alt text](./assets/image-2.png)
 
   Access the Juniper device Command Line Interface (CLI).
 
@@ -336,7 +336,7 @@ Run the following command to display OSPF neighbor information:
     show ospf neighbor
 ```
 
-![alt text](image-3.png)
+![alt text](./assets/image-3.png)
 
 Open a web browser and navigate to the PAN-OS device by accessing the following URL: https://172.16.14.212
 
@@ -344,7 +344,7 @@ Click on "Network" to access network-related configurations.
 
 Verify that OSPF configuration is not present or not enabled. Clic on virtual routers to see OSPF status.
 
-![alt text](image-4.png)
+![alt text](./assets/image-4.png)
 
 
 5. Open VSCODE terminal and run below command. You should see all devices configured successfully. If you see any connection failed error. Please rerun below command.
@@ -352,24 +352,24 @@ Verify that OSPF configuration is not present or not enabled. Clic on virtual ro
 python3 configure_ospf_ny.py
 ```
 
-![alt text](image-5.png)
+![alt text](./assets/image-5.png)
 
 Lets review code output.
 First code with connect to all devices before executing OSPF config.
     
-![alt text](image-7.png)
+![alt text](./assets/image-7.png)
 
 Below is configuration done for cisco. We can see configured commands for OSPF.
 
-![alt text](image-8.png)
+![alt text](./assets/image-8.png)
 
 Below is configuration done for Juniper. We can see configured commands for OSPF.
 
-![alt text](image-9.png)
+![alt text](./assets/image-9.png)
 
 We are using Rest API for palo alto. Program will connect to palo alto and generate api key and configure OSPF in device.
 
-![alt text](image-10.png)
+![alt text](./assets/image-10.png)
 
 6. Verifying OSPF configuration.
     
@@ -379,7 +379,7 @@ We are using Rest API for palo alto. Program will connect to palo alto and gener
     show ip ospf neighbors
     ```
 
-    ![alt text](image-11.png)
+    ![alt text](./assets/image-11.png)
 
     Open Juniper device CLI and run below command. OSPF is configured.
 
@@ -387,10 +387,10 @@ We are using Rest API for palo alto. Program will connect to palo alto and gener
     show ospf neighbor
     ```
 
-    ![alt text](image-12.png)
+    ![alt text](./assets/image-12.png)
 
     Open PAN OS device and clic on network >> Virtual Routers >> More routing stats >> OSPF. We can see currently ospf is configured.
-    ![alt text](image-13.png)
+    ![alt text](./assets/image-13.png)
 
 
 7. We have successfully configured OSPF at New York site.
