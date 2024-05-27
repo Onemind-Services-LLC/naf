@@ -9,7 +9,7 @@
 | pa-site1     |      ny      | 172.16.14.212 |   admin  | Test12345|   panos    |
 | pa-site2     |      sf      | 172.16.14.213 |   admin  | Test12345|   panos    |
 | arista1-site2|      sf      | 172.16.14.214 |   admin  | password |   eos      |
-| vyos1-site1  |      sf      | 172.16.14.215 |   vyos   | vyos     |   vyos     |
+| vyos1-site2  |      sf      | 172.16.14.215 |   vyos   | vyos     |   vyos     |
 | vyos2-site2  |      sf      | 172.16.14.216 |   vyos   | vyos     |   vyos     |
 
 | Device name  |              |      IP       | username | password |            |

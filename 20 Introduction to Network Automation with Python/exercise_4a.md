@@ -11,7 +11,7 @@ from netmiko import ConnectHandler
 from rich import print
 
 if __name__ == "__main__":
-    device_details = [nexus_site1, vmx1_site1]
+    device_details = [vmx1_site1]
     for device in device_details:
         print(device)
         net_connect = ConnectHandler(**device)

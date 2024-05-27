@@ -71,7 +71,7 @@ Now we need a template that can subsite the values that the python script has re
 - Each key-value pair in yaml is read as a dictionary by python while loading yaml.
 - Key values denoted by ‘ — ‘ are regarded as elements of the same list. So ospf key contains a list of dictionaries
 
-- Create a j2 template file named j2template.j2
+- Create a j2 template file named `j2template.j2`
 
 ```j2
 hostname {{ hostname }}
@@ -103,7 +103,7 @@ variable_data = yaml.load(open('source.yaml'), Loader=yaml.FullLoader)
 print(variable_data)
 
 env = Environment(loader = FileSystemLoader('./'), trim_blocks=True, lstrip_blocks=True)
-template = env.get_template('template.j2')
+template = env.get_template('j2template.j2')
 print(template)
 print(template.render(variable_data))
 
