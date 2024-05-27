@@ -63,7 +63,7 @@ To complete all the steps, follow these instructions:
 7. Open the SSH configuration file (usually located at C:\User\user1\\.ssh\config on my machine).  
    ![alt text](assets/image-6.png)
 
-8. Paste the following content into your config file. Replace "172.16.14.200" with your Dev server IP and "*cml*" with your username.  
+8. Paste the following content into your config file.  
     ```
     Host Dev_server
       HostName 172.16.14.200
