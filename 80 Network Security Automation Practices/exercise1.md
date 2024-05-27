@@ -104,10 +104,10 @@ pytest audit.py --html=report.html --self-contained-html
 ```
 
 - Right click on report.html in the file viewer and click on download and save to desktop
-![alt text](image-1.png)
+![alt text](assets/image-1.png)
 
 - Navigate to desktop and open the file with chrome browser to see the test execution results.  
-![alt text](image-2.png)
+![alt text](assets/image-2.png)
 
 Testcase2:-
 - The default static route should be set to 172.16.14.1
@@ -440,17 +440,17 @@ if __name__ == "__main__":
 
 The final test report if all are success should look like this
 
-![alt text](image-3.png)
+![alt text](assets/image-3.png)
 
 You can modify the configuration of the device for the tests to fail and see the report.
 
 For example:-
 Let's modify the syslog level for all facility level to debug instead of info and see the result on compliance report.
 
-![alt text](image-4.png)
+![alt text](assets/image-4.png)
 
-![alt text](image-6.png)
+![alt text](assets/image-6.png)
 
-![alt text](image-8.png)
+![alt text](assets/image-8.png)
 
-![alt text](image-7.png)
+![alt text](assets/image-7.png)
