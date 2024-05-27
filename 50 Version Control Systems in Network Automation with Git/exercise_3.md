@@ -5,26 +5,26 @@ Let's utilize Ansible Tower to execute all the tasks we completed in the previou
 ## Steps
 
 - **First login to Ansible Tower**: Details of the Tower can be found in the first lab.
-![alt text](image-35.png)
+![alt text](./images/image-35.png)
 
 #### Creation of GitLab Credentials in AAP:
 
    - Navigate to the "Credentials" section in AAP.  
-    ![alt text](image-37.png)
+    ![alt text](./images/image-37.png)
    
    - Click on "Add Credentials" and select "Source control" as the credential type.  
-    ![alt text](image-36.png)
+    ![alt text](./images/image-36.png)
    
    - Provide the required GitLab credentials (username and password).
    - Save the credential configuration.
-   ![alt text](image-38.png)
+   ![alt text](./images/image-38.png)
 
    - GitLab credentials are configured within AAP, allowing seamless access to the GitLab repository.
 
 #### Inventory Creation in Ansible Automation Platform (AAP):
 - Navigate to the "Inventory" section under Resources.
 
-    ![alt text](image-39.png)
+    ![alt text](./images/image-39.png)
 
 - Click on "Add" and enter "eve_inventory" as the name and select the organization as default.
     in the variables please fill the below text.
@@ -32,22 +32,22 @@ Let's utilize Ansible Tower to execute all the tasks we completed in the previou
     ansible_connection: ansible.netcommon.network_cli
     ```
 
-  ![alt text](image-63.png)
+  ![alt text](./images/image-63.png)
 
 - Next, add a host "vyos1-site2" to the inventory.
   - Go to hosts in eve_inventory  
-  ![alt text](image-40.png)
+  ![alt text](./images/image-40.png)
   - Click on add and fill in the below details  
   ```yaml
   ---
   ansible_host: 172.16.14.215
   ansible_network_os: vyos
   ```
-  ![alt text](image-41.png)
+  ![alt text](./images/image-41.png)
   - Click on save
   - Let's add one more host, go to hosts again.
 
-  ![alt text](image-42.png)
+  ![alt text](./images/image-42.png)
   - Click on add and fill in the below details
 
 - Next, add a host "vyos2-site2" to the inventory.
@@ -56,23 +56,23 @@ Let's utilize Ansible Tower to execute all the tasks we completed in the previou
   ansible_host: 172.16.14.216
   ansible_network_os: vyos
   ```
-  ![alt text](image-43.png)
+  ![alt text](./images/image-43.png)
 - Click on save, and now you can see we have 2 devices in our inventory.  
-![alt text](image-44.png)
+![alt text](./images/image-44.png)
 
 #### Now let's create credentials for these routers that we are going to use in our inventory.
  - Click on "Add Credentials" and select "machine" as the credential type.
 
- ![alt text](image-45.png)
- ![alt text](image-46.png)
+ ![alt text](./images/image-45.png)
+ ![alt text](./images/image-46.png)
 - Fill in the details as per your need.
-![alt text](image-47.png)
+![alt text](./images/image-47.png)
 - Click on save.
 
 #### Now Create custom creds that are going to be used for cloning the repo and also pushing the code into that repo.
 - Go to the credential type.
 
-![alt text](image-51.png)
+![alt text](./images/image-51.png)
 - Click on add.
 - Fill the details like name *Gitlab Creds*
     - Input configurations
@@ -96,25 +96,25 @@ Let's utilize Ansible Tower to execute all the tasks we completed in the previou
       gitlab_password: '{{ gitlab_password }}'
       gitlab_username: '{{ gitlab_username }}'
     ```
-    ![alt text](image-50.png)
+    ![alt text](./images/image-50.png)
 
 
 - Now go to credentials and create a new credential with the type (Gitlab Creds) 
 - Click on add and fill in the details
-![alt text](image-52.png)
+![alt text](./images/image-52.png)
 - Click on save.
 
 #### Now our required steps are completed. Let's go to GitLab and commit our playbook in the GitLab repository. 
 - Now go to GitLab and create the project (my project name is gitlab-ansible-tower), feel free to change it.
-![alt text](image-33.png)
+![alt text](./images/image-33.png)
 
 - Open the repo in the web IDE.
-![alt text](image-34.png)
+![alt text](./images/image-34.png)
 
 
 - Create the files that we created in the last lab (playbook.yaml) with the below content.
 
-![alt text](image-48.png)
+![alt text](./images/image-48.png)
 
 ```yaml
 ---
@@ -171,11 +171,11 @@ Let's utilize Ansible Tower to execute all the tasks we completed in the previou
 
 ```
 - Click on *commit...*.  
-![alt text](image-53.png)
+![alt text](./images/image-53.png)
 
 - Click on commit to the master branch.
 
-![alt text](image-54.png)
+![alt text](./images/image-54.png)
 
 
 #### Now we have placed our project in GitLab. Let's go to Ansible Tower and create a project in it.
@@ -184,7 +184,7 @@ Let's utilize Ansible Tower to execute all the tasks we completed in the previou
 
   - Navigate to the "Projects" section in AAP.
 
-![alt text](image-55.png)
+![alt text](./images/image-55.png)
 
   - Click on "add" and specify config-backup as the name.
 
@@ -192,7 +192,7 @@ Let's utilize Ansible Tower to execute all the tasks we completed in the previou
   - Link the project to the previously configured GitLab credentials.
   - Save the project configuration.
 
-  ![alt text](image-56.png)
+  ![alt text](./images/image-56.png)
 
   - A project is created within AAP, utilizing GitLab
 
@@ -201,29 +201,29 @@ Let's utilize Ansible Tower to execute all the tasks we completed in the previou
 ### 6. Template Creation and Scheduled Execution:
   - Go to the template.
 
-  ![alt text](image-57.png)
+  ![alt text](./images/image-57.png)
   - Click on *add job template*.
 
-![alt text](image-59.png)
+![alt text](./images/image-59.png)
 
   - Create a template with "router-backup-conf" as the name.
   - Select eve-inventory and config-backup for inventory and the project.
   - Select playbook.yaml as the playbook.
   - Link the previously configured credentials (select routers_cred, gitlab user details).
-  ![alt text](1f4f4cdf-696a-4edd-8322-a241f4f588c5.png)
+  ![alt text](./images/1f4f4cdf-696a-4edd-8322-a241f4f588c5.png)
   - Save the  template
   - Schedule the playbook as shown below.
-  ![alt text](23ecf6c9-016f-465a-92bc-261807443db6.png)
+  ![alt text](./images/23ecf6c9-016f-465a-92bc-261807443db6.png)
   - An Ansible template is developed within the AAP project, automating lab infrastructure setup and configuration.
 
 ### 7. Template Execution:
   - Go to the templates list.
   - Select the template that you just created ( router-backup-conf )
   - Click on launch.
- ![alt text](image-61.png)
+ ![alt text](./images/image-61.png)
 
 - Now you can go and check in GitLab your configurations files updated.
-![alt text](image-62.png)
+![alt text](./images/image-62.png)
 
 In this lab, we successfully automated the process of backing up configurations and integrating Ansible with Git for version control using GitLab.
 
