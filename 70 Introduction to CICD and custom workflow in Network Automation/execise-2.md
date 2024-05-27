@@ -13,11 +13,11 @@ We are not automating the credentials to avoid storing them in the source code m
 
 - **Creating a Git Repo**
     - Create a Git repository with any name you want. I'm using `cicd_automation_lab` as the repo name.
-    ![alt text](image-20.png)
+    ![alt text](./assets/image-20.png)
     - Click on "Web IDE".
-    ![alt text](image-21.png)
+    ![alt text](./assets/image-21.png)
     - Create folder and file structure as shown below.  
-    ![alt text](image-25.png)
+    ![alt text](./assets/image-25.png)
 
 below is the content of the files
 #### .gitlab-ci.yml ( Ensure that the file is named .yml and not .yaml )
@@ -143,11 +143,11 @@ deploy:
 
 Once you commit the code a new project and a template gets created in ansible tower
 
-![alt text](image-28.png)
+![alt text](./assets/image-28.png)
 
 Go to Ansible Tower and browse under projects
-![alt text](image-27.png)
+![alt text](./assets/image-27.png)
 
-![alt text](image-26.png)
+![alt text](./assets/image-26.png)
 
 Now you can execute the template like we have executed in the last exercise.
