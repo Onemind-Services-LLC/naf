@@ -4,7 +4,7 @@
 - In the form on-screen please fill out your details, you must use the email you used to sign up for the workshop.  Once the form is submitted, you should receive an email with your user-specific access credentials. 
     - If you do not receive the email, please check your spam/junk folder and if it is not present in those folders, please contact our support or one of the proctors.  Support details will be listed below. 
 - Once you open the email you will be presented with all the details needed to connect to your pod.  The email will look similar to the one below:
-![alt text](image.png)
+![alt text](assets/image.png)
 - The default access method we are providing is a WebRDP experience.  This has been chosen so there are no requirements to install any specific software and should be vendor agnostic. 
     - Additional access methods such as Zerotier and direct RDP are also available upon request by contacting support. 
     - To login to the webRDP you should use the same credentials that were sent to you. 
@@ -20,14 +20,14 @@ Good luck and have fun on the automation journey!
 
 - Use the key combination ctrl+shift+alt to open the Web RDP context menu.  The RDP Context menu contains basic settings and actions.  In the top right of the context menu is a submenu where you can find the Logout button as well as the option to disconnect from your current session.  Most common settings will be found within the main context menu. 
 
-    ![alt text](image-1.png)
+    ![alt text](assets/image-1.png)
 
 
 - In order to facilitate the use of the clipboard a text box is provided in the context menu to share text with the Remote Operating System. 
 
-    ![alt text](image-2.png)
+    ![alt text](assets/image-2.png)
 
 - At times some key combinations intended for the guest may invoke browser hotkeys.  To work around this issue, the on-screen keyboard option may be used. 
 
-    ![alt text](image-3.png)
+    ![alt text](assets/image-3.png)
 
