@@ -56,12 +56,12 @@ In the next few exercises, we will be using GitLab CI. For this, we need a GitLa
     ```sh
     gitlab-runner list
     ```
-    ![alt text](image-11.png)
+    ![alt text](./assets/image-11.png)
 
 - **Refreshing Runner Configuration**
     - After refreshing the runner configuration page in GitLab, you can see the list of runners configured just now, and you can see that the *runner currently online is 0*.
 
-    ![alt text](image-15.png)
+    ![alt text](./assets/image-15.png)
 
 - **Start the Runner**
     - In the terminal, where the runner is already SSHed, run the below command:
@@ -74,8 +74,8 @@ In the next few exercises, we will be using GitLab CI. For this, we need a GitLa
     gitlab-runner run
     ```
     Ensure to run `gitlab-runner run` as a non-root user.
-    ![alt text](image-19.png)
+    ![alt text](./assets/image-19.png)
 
 - **Runner Status Online**
     - Now you can see that the runner is online.  
-    ![alt text](image-17.png)
+    ![alt text](./assets/image-17.png)
