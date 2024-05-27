@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
 Notice the prompts that are displayed at each step
 
-![alt text](image-16.png)
+![alt text](assets\image-16.png)
 
 Now lets push interface description on an interface
 

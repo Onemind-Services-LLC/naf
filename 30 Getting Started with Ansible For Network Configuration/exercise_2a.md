@@ -34,20 +34,20 @@
             content: "{{ show_version_output.stdout[0] | replace('\\n','\n')}}"
             dest: "./configs/{{ inventory_hostname }}_show_version.cfg"
 ```
-![alt text](image-22.png)
+![alt text](assets\image-22.png)
 
 ### Execute the above playbook
 
 ```
 ansible-playbook -i inventory.ini run_cmnd.yaml
 ```
-![alt text](image-16.png)  
+![alt text](assets\image-16.png)  
 Make sure the playbook file and the inventory file are in the same directory, or provide the correct path to the playbook file if it's in a different directory.
 
 The output shows an image similar to the one below:
-![alt text](image-24.png)
+![alt text](assets\image-24.png)
 
 Additionally, you can find the saved configuration files in the "config" folder within your current working directory:  
 Your output should look like this or similar to this
 
-![alt text](image-23.png)
+![alt text](assets\image-23.png)

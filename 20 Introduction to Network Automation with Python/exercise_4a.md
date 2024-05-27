@@ -19,7 +19,7 @@ if __name__ == "__main__":
         print(output)
 
 ```
-![alt text](image-17.png)
+![alt text](assets\image-17.png)
 
 ### Let's write the parsed output to an excel sheet
 
@@ -44,11 +44,11 @@ if __name__ == "__main__":
 - You can right click and download the excel file and view it on your desktop.
 - You can also install a VSCODE plugin to view excel sheets withi vscode.
 
-![alt text](image-18.png)
+![alt text](assets\image-18.png)
 
-![alt text](image-19.png)
+![alt text](assets\image-19.png)
 
-![alt text](image-21.png)
+![alt text](assets\image-21.png)
 
 - Extra challenge:-
 - - Execute multiple commands and save the parsed output in seperate tabs of excel. One tab for each command.

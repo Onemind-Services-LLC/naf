@@ -25,25 +25,25 @@ To do this exercise create a folder `ansible_automation` in user's home director
 ```sh
 exit
 ```
-![alt text](image.png)
+![alt text](assets\image.png)
 - To create a ansible_automation directory in users home directory run the below commands
 ```sh
 cd ~
 mkdir ansible_automation
 cd ansible_automation
 ```
-![alt text](image-1.png)
+![alt text](assets\image-1.png)
 - Open the vscode in newly created directory for that lets run the below command
 ```sh
 code .
 ```
-![alt text](image-2.png)
+![alt text](assets\image-2.png)
 
 - It will ask you the password for the user, when u give the password, it should open vscode in `ansible_automation` folder
-![alt text](image-3.png)
+![alt text](assets\image-3.png)
 
 - Lets create a new file with `inventory.ini` with below content  
-![alt text](image-4.png)
+![alt text](assets\image-4.png)
 
 ```ini
 local_test ansible_connection=local
@@ -68,7 +68,7 @@ ansible_become_method=enable
 ansible_become_password=admin
 
 ```
-![alt text](image-26.png)
+![alt text](assets\image-26.png)
 
 ## YAML FORMAT
 
@@ -131,4 +131,4 @@ sf:
 ```
 Your output should look like this or similar to this
 
-![alt text](image-27.png)
+![alt text](assets\image-27.png)

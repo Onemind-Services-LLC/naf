@@ -19,21 +19,21 @@ cd ~
 mkdir python_automation
 cd python_automation
 ```
-![alt text](image-1.png)
+![alt text](assets\image-1.png)
 open the vscode in newly created directory for that lets run the below command
 
 ```sh
 code .
 ```
-![alt text](image-2.png)
+![alt text](assets\image-2.png)
 
 it should open vscode in `python_automation` folder
 
-![alt text](image-3.png)
+![alt text](assets\image-3.png)
 
 lets create a new file with `device_status.py` with below content
 
-![alt text](image-4.png)
+![alt text](assets\image-4.png)
 
 ```python
 import os
@@ -110,7 +110,7 @@ To run the program in a Docker container, follow these steps:
 
 1. Open the terminal.
 
-![alt text](image-5.png)
+![alt text](assets\image-5.png)
 
 2. Run the container with the appropriate bind mount using the following command:
 
@@ -123,7 +123,7 @@ docker container run -it -v $(pwd):/python_automation onemindservices2024/naf202
 ```
 
 
-![alt text](image-6.png)
+![alt text](assets\image-6.png)
 
 3. Navigate to the `/python_automation` directory within the container:
 
@@ -139,6 +139,6 @@ python device_status.py
 
 Your output should look like this or similar to this
 
-![alt text](image-12.png)
+![alt text](assets\image-12.png)
 
 This will execute the `device_status.py` program within the Docker container, allowing you to check the status of the device.
