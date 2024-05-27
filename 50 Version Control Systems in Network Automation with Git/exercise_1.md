@@ -21,12 +21,12 @@ By following these steps, you'll have a Python program that securely pulls route
 
 ### 1. Create a New GitLab Project:
 - Click on the plus icon in the top menu.
-![alt text](image.png)
+![alt text](./images/image.png)
 - Click on new project
-![alt text](image-1.png)
+![alt text](./images/image-1.png)
 - Click on *create blank project*
 - Go to GitLab and create a new project/repository named `router_configurations`.
-![alt text](image-2.png)
+![alt text](./images/image-2.png)
 - Ensure "Initialize repository with a README" is selected.
 - Click "Create project".
 
@@ -35,7 +35,7 @@ By following these steps, you'll have a Python program that securely pulls route
 - Inside the repository, create a new file named `routerconf.txt`.
 - Click add new file
  
-  ![alt text](image-3.png)
+  ![alt text](./images/image-3.png)
   
 - Add the following content to the file:
 
@@ -43,22 +43,22 @@ By following these steps, you'll have a Python program that securely pulls route
 interface loopback100
   ip address 100.100.100.100 255.255.255.0
 ```
-![alt text](image-64.png)
+![alt text](./images/image-64.png)
 
 ### 3. Create an Access Token:
 
 - Go to the project's settings and click on "Access Tokens".
 - Give a name to the token "access-token-for-python" and generate a new access token.
 
-![alt text](d9ded552-6e91-4728-a52d-3e9b974c2645.png)
+![alt text](./images/d9ded552-6e91-4728-a52d-3e9b974c2645.png)
 
 - Copy the access token.
 
-![alt text](a7899266-15d2-4bb1-b856-7cea00faf978.png)
+![alt text](./images/a7899266-15d2-4bb1-b856-7cea00faf978.png)
 
 - If you're logged into a container, exit from the container using the following command.
 
-  ![alt text](image-4.png)
+  ![alt text](./images/image-4.png)
   
 - Let's create a folder named git_python_automation in the user's home directory using the commands below.
   
@@ -67,19 +67,19 @@ interface loopback100
    mkdir git_python_automation
    cd git_python_automation
    ```
-   ![alt text](image-5.png)
+   ![alt text](./images/image-5.png)
 
 - Open Visual Studio Code in the git_python_automation folder using the command below.
    ```sh
    code .
    ```
-   ![alt text](image-6.png)
+   ![alt text](./images/image-6.png)
 
 - Visual Studio Code is now open in the git_python_automation directory.
-   ![alt text](image-7.png)
+   ![alt text](./images/image-7.png)
 
 - Lets create a new file with name `restore_config.py`
-  ![alt text](image-8.png)
+  ![alt text](./images/image-8.png)
 
 - Paste the following content into the Python file.
 ```python
@@ -140,7 +140,7 @@ print("Router configuration has been updated.")
 
   -  Open the terminal.
 
-     ![alt text](image-10.png)
+     ![alt text](./images/image-10.png)
 
   -  Run the container with the appropriate bind mount using the following command:
 
@@ -167,7 +167,7 @@ print("Router configuration has been updated.")
    
       This will execute the `restore_config.py` program within the Docker container, allowing you to check the status of the device.
 
-   ![alt text](image-65.png)
+   ![alt text](./images/image-65.png)
    
    #### Note: When prompted, ensure to pass the GitLab access token for authentication.
 

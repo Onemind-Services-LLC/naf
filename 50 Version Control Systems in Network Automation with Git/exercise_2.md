@@ -16,17 +16,17 @@
 
 ### 1. Create a New GitLab Project:
 - Click on the plus icon in the top menu.
-  ![alt text](image.png)
+  ![alt text](./images/image.png)
 - Click on new project
-  ![alt text](image-1.png)
+  ![alt text](./images/image-1.png)
 - Click on *create blank project*
 - Go to GitLab and create a new project/repository named `backup_configurations`.
-  ![alt text](image-20.png)
+  ![alt text](./images/image-20.png)
 - Ensure "Initialize repository with a README" is selected.
 - Click "Create project".
 
 - If you're logged into a container, exit from the container using the following command.
-  ![alt text](image-14.png)
+  ![alt text](./images/image-14.png)
 
 - Let's create a folder named git_python_automation in the user's home directory using the commands below.
   ```sh
@@ -34,17 +34,17 @@
   mkdir git_ansible_automation
   cd git_ansible_automation
   ```
-  ![alt text](image-15.png)
+  ![alt text](./images/image-15.png)
 
 
 - Open Visual Studio Code in the git_ansible_automation folder using the command below.
   ```sh
   code .
   ```
-  ![alt text](image-16.png)
+  ![alt text](./images/image-16.png)
  
 - Visual Studio Code is now open in the git_ansible_automation directory.
-   ![alt text](image-7.png)
+   ![alt text](./images/image-7.png)
   
 - Create a new file with name `ansible.cfg` with below content
   ```ini
@@ -52,7 +52,7 @@
   host_key_checking = false
   timeout = 60
   ```
-  ![alt text](image-28.png)
+  ![alt text](./images/image-28.png)
 
 - Create a file with name `inventory.ini` with below content
 ```ini
@@ -78,7 +78,7 @@ ansible_become_method=enable
 ansible_become_password=admin
   ```
   
- ![alt text](image-29.png)
+ ![alt text](./images/image-29.png)
 
 - Create a playbook with `playbook.yaml` name with below content
 
@@ -140,7 +140,7 @@ ansible_become_password=admin
 
 1. Open the terminal.
 
-   ![alt text](image-22.png)
+   ![alt text](./images/image-22.png)
 
 2. Run the container with the appropriate bind mount using the following command:
 
@@ -153,7 +153,7 @@ ansible_become_password=admin
    cd /git_ansible_automation
    ```
 
-   ![alt text](image-23.png)
+   ![alt text](./images/image-23.png)
 
 4. Run the ansible playbook using below command:
 
@@ -162,12 +162,12 @@ ansible_become_password=admin
    ```
    Sample Output
    
-   ![alt text](image-30.png)
+   ![alt text](./images/image-30.png)
 
 5. Now check if the backup configuration exists on GitLab.
-   ![alt text](image-31.png)
+   ![alt text](./images/image-31.png)
    
-   ![alt text](image-32.png)
+   ![alt text](./images/image-32.png)
 
 
 In this lab, we established a infrastructure by creating a private Git repository on GitLab to store router configurations, ensuring data confidentiality. We then automated the configuration backup process using Ansible, enhancing efficiency and reliability.
