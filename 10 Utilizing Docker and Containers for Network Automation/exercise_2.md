@@ -41,7 +41,7 @@ Inside this file, write down these lines:
 
 
 ```dockerfile
-FROM python:3
+FROM registry.tangience.net/docker.io/library/python:3
 # Install Ansible and Netmiko
 RUN apt update
 RUN apt install iputils-ping -y
