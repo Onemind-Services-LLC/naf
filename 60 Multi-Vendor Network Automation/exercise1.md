@@ -59,7 +59,7 @@ If you encounter issues while creating the Docker image, replace the image name 
 docker container run -it -v $(pwd):/multivendor_automation onemindservices2024/naf2024
 ```
 
-3. Navigate to the `/ansible_automation` directory within the container:
+3. Navigate to the `/multivendor_automation` directory within the container:
 
 ```sh
 cd multivendor_automation
