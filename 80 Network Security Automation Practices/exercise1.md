@@ -65,7 +65,7 @@ def json_data():
     for device in device_details:
         print(device)
         net_connect = ConnectHandler(**device)
-        output = net_connect.send_command('show configuration json'
+        output = net_connect.send_command('show configuration json')
         # json_data = json.loads(output)
         return output
 
