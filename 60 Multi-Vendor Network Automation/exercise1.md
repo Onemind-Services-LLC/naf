@@ -210,7 +210,7 @@ Below are the Cisco IOS device configuration commands displayed in the output. T
 
 Below is the validation done by python program.
 
-![alt text](./assets/image-42.png)
+![alt text](./assets/image-44.png)
 
 10. After executing, you can verify the current VLAN status in Cisco NX-OS by running the following command:
 ```code
