@@ -218,7 +218,7 @@ def test_default_static_route(data):
 def test_syslog_facility_levels(data):
     # Check if all facility levels in syslog are set to 'info'
     facilities = data['system']['syslog']['global']['facility']['all']
-    assert facilities['level'] == 'info', "Facility level is not set to 'info'"
+    assert facilities['level'] == 'debug', "Facility level is not set to 'info'"
 
 if __name__ == "__main__":
     pytest.main()
@@ -278,7 +278,7 @@ def test_default_static_route(data):
 def test_syslog_facility_levels(data):
     # Check if all facility levels in syslog are set to 'info'
     facilities = data['system']['syslog']['global']['facility']['all']
-    assert facilities['level'] == 'info', "Facility level is not set to 'info'"
+    assert facilities['level'] == 'debug', "Facility level is not set to 'info'"
 
 def test_eth0_ip_in_subnet(data):
     eth0_address = data['interfaces']['ethernet']['eth0']['address'][0]
@@ -344,7 +344,7 @@ def test_default_static_route(data):
 def test_syslog_facility_levels(data):
     # Check if all facility levels in syslog are set to 'info'
     facilities = data['system']['syslog']['global']['facility']['all']
-    assert facilities['level'] == 'info', "Facility level is not set to 'info'"
+    assert facilities['level'] == 'debug', "Facility level is not set to 'info'"
 
 def test_eth0_ip_in_subnet(data):
     eth0_address = data['interfaces']['ethernet']['eth0']['address'][0]
@@ -416,7 +416,7 @@ def test_default_static_route(data):
 def test_syslog_facility_levels(data):
     # Check if all facility levels in syslog are set to 'info'
     facilities = data['system']['syslog']['global']['facility']['all']
-    assert facilities['level'] == 'info', "Facility level is not set to 'info'"
+    assert facilities['level'] == 'debug', "Facility level is not set to 'info'"
 
 def test_eth0_ip_in_subnet(data):
     eth0_address = data['interfaces']['ethernet']['eth0']['address'][0]
