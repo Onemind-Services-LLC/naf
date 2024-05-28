@@ -20,7 +20,7 @@ Below is the topology for the New York site, which we will use to configure OSPF
 
 ### Lab guide:
 Steps:
-1. Create a file named 'device_vars_ny.py' and add the following configuration:
+1. Create a file named `device_vars_ny.py` and add the following configuration:
 
 Description: In the code snippet below, we are creating a file to store device variables. This file will contain details for three devices: Nexus OS, Palo Alto OS, and Juniper OS.
 Each device is represented as a dictionary with its IP address, username, and password.
@@ -58,7 +58,7 @@ devices_vars = {
 }
 
 ```
-2. Next, create a file named 'configurations_ny.py' and add the following command:
+2. Next, create a file named `configurations_ny.py` and add the following command:
 
 Description: This file contains configuration commands for setting up OSPF between Nexus OS, Juniper OS, and Palo Alto OS devices in the New York site.
 The commands are organized into lists corresponding to each device's configuration requirements.
@@ -82,21 +82,21 @@ palo_alto_config= {
     'interfaces' :['ethernet1/1','ethernet1/3']
 }
 ```
-3. Proceed by creating a file named 'configure_ospf_ny.py' and add the following configuration:
+3. Proceed by creating a file named `configure_ospf_ny.py` and add the following configuration:
 
-Description: This script configures OSPF on all devices in the network. Below is a brief description of each function defined in the code.
+`Description`: This script configures OSPF on all devices in the network. Below is a brief description of each function defined in the code.
 
-check_ssh_connectivity: This function checks the connectivity status to all devices before configuring OSPF.
+`check_ssh_connectivity`: This function checks the connectivity status to all devices before configuring OSPF.
 
-apply_ospf_config_cisco: This function utilizes the netmiko library to configure OSPF on Cisco NX-OS devices.
+`apply_ospf_config_cisco`: This function utilizes the netmiko library to configure OSPF on Cisco NX-OS devices.
 
-apply_ospf_config_juniper: This function uses the netmiko library to configure OSPF on Juniper devices.
+`apply_ospf_config_juniper`: This function uses the netmiko library to configure OSPF on Juniper devices.
 
-generate_palo_alto_api_key: This function connects to the Palo Alto device and generates the API token for the REST API.
+`generate_palo_alto_api_key`: This function connects to the Palo Alto device and generates the API token for the REST API.
 
-modify_virtual_router: This function modifies the virtual router in Palo Alto and enables OSPF.
+`modify_virtual_router`: This function modifies the virtual router in Palo Alto and enables OSPF.
 
-commit_configuration: This function safely commits the Palo Alto configuration.
+`commit_configuration`: This function safely commits the Palo Alto configuration.
 
 ```python
 import requests
@@ -314,38 +314,6 @@ if __name__ == "__main__":
         print("Not all devices are connected. Please check SSH connectivity.")
 
 ```
-
-4. Checking Current Connectivity Status
-Open the EVE-NG lab environment.
-
-    Access the Cisco Nexus OS (NX-OS) device Command Line Interface (CLI).
-
-    Run the following command to display the OSPF neighbor information:
-
-```code
-    show ip ospf neighbors 
-```
-
-![alt text](./assets/image-2.png)
-
-  Access the Juniper device Command Line Interface (CLI).
-
-Run the following command to display OSPF neighbor information:
-    
-```code
-    show ospf neighbor
-```
-
-![alt text](./assets/image-3.png)
-
-Open a web browser and navigate to the PAN-OS device by accessing the following URL: https://172.16.14.212
-
-Click on "Network" to access network-related configurations.
-
-Verify that OSPF configuration is not present or not enabled. Clic on virtual routers to see OSPF status.
-
-![alt text](./assets/image-4.png)
-
 
 5. Open VSCODE terminal and run below command. You should see all devices configured successfully. If you see any connection failed error. Please rerun below command.
 ```code

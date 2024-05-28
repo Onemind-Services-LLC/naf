@@ -65,7 +65,7 @@ docker container run -it -v $(pwd):/multivendor_automation onemindservices2024/n
 cd multivendor_automation
 ```
 
-4. Create a new file named devices.py and add the following code:
+4. Create a new file named `devices.py` and add the following code:
 
 ```inventory
 # Define Arista device details
@@ -84,7 +84,7 @@ cisco_device = {
     'password': 'admin',
 }
 ```
-5. Create a new file named vlan.py and add the following code:
+5. Create a new file named `vlan.py` and add the following code:
 
 ```python
 import os
