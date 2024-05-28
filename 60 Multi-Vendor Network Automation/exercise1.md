@@ -34,14 +34,14 @@ cd ~
 mkdir multivendor_automation
 cd multivendor_automation
 ```
-![alt text](./assets/image-39.png)
+![alt text](./assets/image-43.png)
 
 - Open the vscode in newly created directory for that lets run the below command
 ```sh
 code .
 ```
 
-- It will ask you the password for the user, when u give the password, it should open vscode in `ansible_automation` folder
+- It will ask you the password for the user, when u give the password, it should open vscode in `multivendor_automation` folder
 
 ![alt text](./assets/image-40.png)
 
@@ -58,16 +58,12 @@ If you encounter issues while creating the Docker image, replace the image name 
 ```sh
 docker container run -it -v $(pwd):/multivendor_automation onemindservices2024/naf2024
 ```
-![alt text](./assets/image-8.png)
 
 3. Navigate to the `/ansible_automation` directory within the container:
 
 ```sh
 cd multivendor_automation
 ```
-
-![alt text](./assets/image-9.png)
-
 
 4. Create a new file named devices.py and add the following code:
 
